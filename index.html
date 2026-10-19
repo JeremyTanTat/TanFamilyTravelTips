@@ -315,6 +315,27 @@
         </a>
       </section>
 
+      <section class="poll-section" id="city-poll" aria-labelledby="poll-title">
+        <div class="poll-heading">
+          <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span><span data-i18n="pollEyebrow">全家一起投票</span></p>
+          <h2 id="poll-title" data-i18n="pollTitle">下一次，你最想去哪座城市？</h2>
+          <p class="poll-intro" data-i18n="pollIntro">每人每天最多投3票，同一城市每天只能投一次。</p>
+        </div>
+        <p id="poll-remaining" class="poll-remaining" role="status" aria-live="polite"></p>
+        <ul id="poll-list" class="poll-list"></ul>
+        <form id="poll-form" class="poll-form" novalidate>
+          <label class="field-group" for="poll-city">
+            <span class="field-label" data-i18n="pollAddLabel">没有想去的城市？输入其他城市</span>
+            <input id="poll-city" name="city" type="text" list="poll-city-options" maxlength="60" autocomplete="off" aria-describedby="poll-city-hint" required>
+            <datalist id="poll-city-options"></datalist>
+            <small class="field-hint" id="poll-city-hint" data-i18n="pollAddHint">请从建议列表中选择正确的城市名称（支持中文或英文）。</small>
+          </label>
+          <button class="submit-button" type="submit"><span data-i18n="pollAddButton">加入并投票</span><span aria-hidden="true">→</span></button>
+        </form>
+        <p id="poll-status" class="poll-status" role="status" aria-live="polite"></p>
+        <p class="discussion-note" data-i18n="pollNote">投票结果和每日次数保存在本设备的浏览器中，其他家人暂时看不到；清除浏览器数据后可能重新计数。</p>
+      </section>
+
       <section class="planner" aria-labelledby="planner-title">
         <div class="section-heading">
           <div>
@@ -419,7 +440,41 @@
         </div>
         <div id="destination-list" class="destination-list"></div>
         <p id="no-results" class="no-results" data-i18n="noResults" hidden>没有找到符合条件的推荐城市，请尝试调整月份、预算或同行人员。</p>
-        <p class="results-disclaimer" data-i18n="resultsDisclaimer">推荐由本网站的季节、预算和同行人员资料筛选，并非实时从平台抓取。可通过 Trip.com 与 Skyscanner 链接核对当前住宿和机票；Skyscanner 示例日期为所选月份中旬。预算筛选仍参考从新加坡出发的每人经济型估算（约4天3晚），不会按所选出发城市重新计算。预订前请核对实际价格、官方信息和无障碍需求。</p>
+        <p class="results-disclaimer" data-i18n="resultsDisclaimer">推荐由本网站的季节、预算和同行人员资料筛选，并非实时从平台抓取。Trip.com 套餐链接已预填示例日期和人数，也可用 Google 链接核对当前价格。预算筛选仍参考从新加坡出发的每人经济型估算（约4天3晚），不会按所选出发城市重新计算。预订前请核对实际价格、官方信息和无障碍需求。</p>
+      </section>
+
+      <section class="discussion-section" id="discussion" aria-labelledby="discussion-title">
+        <div class="discussion-heading">
+          <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span><span data-i18n="discussionEyebrow">一家人的留言板</span></p>
+          <h2 id="discussion-title" data-i18n="discussionTitle">说说心里话，一起改进网站</h2>
+          <p class="discussion-intro" data-i18n="discussionIntro">欢迎家人分享旅途中的珍贵时刻，也提出对网站的建议。</p>
+        </div>
+        <form id="discussion-form" class="discussion-form" novalidate>
+          <div class="discussion-fields">
+            <label class="field-group" for="discussion-name">
+              <span class="field-label" data-i18n="discussionNameLabel">你的名字</span>
+              <input id="discussion-name" name="name" type="text" maxlength="40" autocomplete="name" required>
+            </label>
+            <label class="field-group" for="discussion-type">
+              <span class="field-label" data-i18n="discussionTypeLabel">留言类型</span>
+              <select id="discussion-type" name="type">
+                <option value="memory" data-i18n="discussionTypeMemory">分享珍贵时刻</option>
+                <option value="suggestion" data-i18n="discussionTypeSuggestion">网站改进建议</option>
+              </select>
+            </label>
+          </div>
+          <label class="field-group" for="discussion-message">
+            <span class="field-label" data-i18n="discussionMessageLabel">留言内容</span>
+            <textarea id="discussion-message" name="message" rows="4" maxlength="1000" required></textarea>
+          </label>
+          <div class="form-footer">
+            <p id="discussion-status" role="status" aria-live="polite"></p>
+            <button class="submit-button" type="submit"><span data-i18n="discussionSubmit">发布留言</span><span aria-hidden="true">→</span></button>
+          </div>
+        </form>
+        <p class="discussion-note" data-i18n="discussionNote">留言目前保存在本设备的浏览器中，其他家人暂时看不到。请勿填写护照、银行卡等敏感信息。</p>
+        <p id="discussion-empty" class="no-results" data-i18n="discussionEmpty">还没有留言，来写下第一条吧。</p>
+        <ul id="discussion-list" class="discussion-list" aria-label="留言列表"></ul>
       </section>
 
       <section class="thoughtful-note">

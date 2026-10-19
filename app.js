@@ -417,23 +417,35 @@ const cityAttractions = {
   Guangzhou: [
     {
       name: { zh: "广州塔", en: "Canton Tower" },
+      wikiTitles: ["Canton Tower", "Guangzhou"],
       alt: { zh: "广州现代城市天际线与高塔景色", en: "Modern skyline and tower views in Guangzhou" },
-      src: "https://images.unsplash.com/photo-1537531383496-f4749b8032f2?auto=format&fit=crop&w=800&q=80"
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Canton_Tower_2020.jpg?width=800",
+      fallbacks: [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Canton_Tower.jpg?width=800",
+        "https://images.unsplash.com/photo-1537531383496-f4749b8032f2?auto=format&fit=crop&w=800&q=80"
+      ]
     },
     {
       name: { zh: "陈家祠", en: "Chen Clan Ancestral Hall" },
+      wikiTitles: ["Chen Clan Ancestral Hall", "Chen Clan Academy"],
       alt: { zh: "岭南传统建筑与装饰细节灵感", en: "Traditional Lingnan architecture and decorative details" },
-      src: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=800&q=80"
+      src: "https://commons.wikimedia.org/wiki/Special:FilePath/Chen_Clan_Ancestral_Hall.jpg?width=800",
+      fallbacks: [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Chen_Clan_Academy.jpg?width=800",
+        "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=800&q=80"
+      ]
     }
   ],
   Taipei: [
     {
       name: { zh: "台北101", en: "Taipei 101" },
+      wikiTitles: ["Taipei 101"],
       alt: { zh: "台北城市地标与高楼景观", en: "A landmark skyscraper and cityscape in Taipei" },
       src: "https://images.unsplash.com/photo-1503152394-c571994fd383?auto=format&fit=crop&w=800&q=80"
     },
     {
       name: { zh: "饶河街观光夜市", en: "Raohe Street Night Market" },
+      wikiTitles: ["Raohe Street Night Market", "Night markets in Taiwan"],
       alt: { zh: "台北夜市与热闹街头美食区灵感", en: "Night-market and street-food-district inspiration in Taipei" },
       src: "https://images.unsplash.com/photo-1470004914212-05527e49370b?auto=format&fit=crop&w=800&q=80"
     }
@@ -658,9 +670,45 @@ const translations = {
     resultsEyebrow: "为你们一家精选灵感",
     resultsTitle: "一起去哪里玩？",
     resultsNote: "全球城市旅行灵感仅供参考；最多显示9个城市，每个国家不超过3个。",
-    resultsDisclaimer: "推荐由本网站的季节、预算和同行人员资料筛选，并非实时从平台抓取。每人预算估算按建议天数相对4天3晚基准按比例调整，团体总额按人数相乘；这只是规划估算。Trip.com 与 Skyscanner 链接用于查询当前选项，示例日期通常从所选月份15日开始；若该日期已过，则改为约一周后。预算筛选仍按从新加坡出发估算，不会按所选出发城市重新计算。链接中的人数按成人示例处理，请在平台按实际年龄修改；平台也可能忽略搜索条件。预订前请核对日期、实际价格、官方信息和无障碍需求。",
-    tripSearchLink: "Trip.com 搜索{city}套餐，约 S${budget}/人",
-    skyscannerSearchLink: "Skyscanner 搜索{city}航班",
+    resultsDisclaimer: "推荐由本网站的季节、预算和同行人员资料筛选，并非实时从平台抓取。每人预算估算按建议天数相对4天3晚基准按比例调整，团体总额按人数相乘；这只是规划估算。Trip.com 套餐链接已预填示例日期和人数，Google 链接用于对照搜索当前价格；示例日期通常从所选月份15日开始，若该日期已过，则改为约一周后。预算筛选仍按从新加坡出发估算，不会按所选出发城市重新计算。链接中的人数按成人示例处理，请在平台按实际年龄修改；平台也可能忽略预填条件。预订前请核对日期、实际价格、官方信息和无障碍需求。",
+    tripSearchLink: "在 Trip.com 查看{city}机票+酒店套餐（{count}位成人，{start}至{end}）",
+    googleSearchLink: "在 Google 搜索{city}套餐价格",
+    pollEyebrow: "全家一起投票",
+    pollTitle: "下一次，你最想去哪座城市？",
+    pollIntro: "每人每天最多投3票，同一城市每天只能投一次。",
+    pollRemaining: "今天还可以投 {left} 票（每天最多 {max} 票）。",
+    pollLimitReached: "今天的 {max} 票已经用完，请明天再来投票。",
+    pollVotes: "票数：{n}",
+    pollVoteButton: "投票",
+    pollVoteFor: "投给{city}",
+    pollVoted: "已投票",
+    pollAddLabel: "没有想去的城市？输入其他城市",
+    pollAddHint: "请从建议列表中选择正确的城市名称（支持中文或英文）。",
+    pollAddButton: "加入并投票",
+    pollNote: "投票结果和每日次数保存在本设备的浏览器中，其他家人暂时看不到；清除浏览器数据后可能重新计数。",
+    pollThanks: "谢谢！已为{city}投上一票。",
+    pollAdded: "已将{city}加入列表，并为它投上一票。",
+    pollAlreadyVoted: "今天已经投过{city}了，请选择其他城市，或明天再来。",
+    pollInvalidCity: "无法识别这个城市，请从建议列表中选择正确的城市名称。",
+    pollSaveFailed: "此浏览器无法保存投票。",
+    pollListLabel: "城市投票结果",
+    discussionEyebrow: "一家人的留言板",
+    discussionTitle: "说说心里话，一起改进网站",
+    discussionIntro: "欢迎家人分享旅途中的珍贵时刻，也提出对网站的建议。",
+    discussionNameLabel: "你的名字",
+    discussionTypeLabel: "留言类型",
+    discussionTypeMemory: "分享珍贵时刻",
+    discussionTypeSuggestion: "网站改进建议",
+    discussionMessageLabel: "留言内容",
+    discussionSubmit: "发布留言",
+    discussionNote: "留言目前保存在本设备的浏览器中，其他家人暂时看不到。请勿填写护照、银行卡等敏感信息。",
+    discussionEmpty: "还没有留言，来写下第一条吧。",
+    discussionListLabel: "留言列表",
+    discussionDelete: "删除",
+    discussionDeleteConfirm: "确定删除这条留言吗？",
+    discussionPosted: "留言已发布。",
+    discussionInvalid: "请填写名字和留言内容。",
+    discussionSaveFailed: "此浏览器无法保存留言。",
     noResults: "没有找到符合条件的推荐城市，请尝试调整月份、预算或同行人员。",
     noteEyebrow: "来自我们家的小提醒",
     noteTitle: "让旅程舒服一点，每个人都能玩得开心。",
@@ -678,6 +726,9 @@ const translations = {
     estimatedPerPerson: "经济型/人",
     estimatedMidTierPerPerson: "中档型/人",
     groupBudgetNote: "团体总额按每人估算乘以人数，仅作规划参考。",
+    packageSourceNote: "估算 = Trip.com 机票+酒店套餐样本（共{count}个，{date}记录；经济型取最便宜10%的平均，中档型取第30–50百分位的平均）+ 全程餐饮、交通与休闲平均开销（约 S${daily}/人/天）。",
+    baselineSourceNote: "尚无已记录的 Trip.com 套餐样本，暂用网站内置的基准估算（含餐饮、交通与休闲）。",
+    photoUnavailable: "暂时无法加载景点图片",
     groupDefault: "全家人",
     singleGroupSummary: "计划于{year}年{month}出行，同行人员：{group}{departure}{count}{budget}。",
     multiGroupPrefix: "计划于{year}年{month}出行，同行人员包括{group}{departure}{count}{budget}。",
@@ -804,9 +855,45 @@ const translations = {
     resultsEyebrow: "A FEW IDEAS FOR YOUR CREW",
     resultsTitle: "Where could you go together?",
     resultsNote: "Global city ideas are starting points; see up to 9 cities, with no more than 3 per country.",
-    resultsDisclaimer: "Recommendations are filtered from this site's seasonal, budget, and group-fit guidance; they are not fetched live from travel platforms. Per-person estimates scale the 4-day / 3-night baseline in proportion to the suggested stay; group totals multiply the estimate by traveller count. These are planning estimates only. Use Trip.com and Skyscanner links to check live options; example dates usually start on the 15th of the selected month, or about a week from today if that date has passed. Budget filtering still assumes departure from Singapore. Links treat the party size as adults; change ages on the provider site, which may also ignore search parameters. Verify dates, prices, official information, and access needs before booking.",
-    tripSearchLink: "Search {city} packages on Trip.com (about S${budget}/person)",
-    skyscannerSearchLink: "Search flights to {city} on Skyscanner",
+    resultsDisclaimer: "Recommendations are filtered from this site's seasonal, budget, and group-fit guidance; they are not fetched live from travel platforms. Per-person estimates scale the 4-day / 3-night baseline in proportion to the suggested stay; group totals multiply the estimate by traveller count. These are planning estimates only. The Trip.com package link is pre-filled with example dates and party size, and the Google link lets you cross-check current prices; example dates usually start on the 15th of the selected month, or about a week from today if that date has passed. Budget filtering still assumes departure from Singapore. Links treat the party size as adults; change ages on the provider site, which may also ignore pre-filled parameters. Verify dates, prices, official information, and access needs before booking.",
+    tripSearchLink: "View {city} Flight + Hotel packages on Trip.com ({count} adults, {start} to {end})",
+    googleSearchLink: "Search {city} package prices on Google",
+    pollEyebrow: "VOTE TOGETHER",
+    pollTitle: "Which city would you like to visit next?",
+    pollIntro: "Each visitor can cast up to 3 votes a day, and only one vote per city per day.",
+    pollRemaining: "You have {left} of {max} votes left today.",
+    pollLimitReached: "You have used all {max} votes for today. Please come back tomorrow to vote again.",
+    pollVotes: "Votes: {n}",
+    pollVoteButton: "Vote",
+    pollVoteFor: "Vote for {city}",
+    pollVoted: "Voted",
+    pollAddLabel: "Not on the list? Type another city",
+    pollAddHint: "Choose a valid city name from the suggestions (English or Chinese).",
+    pollAddButton: "Add and vote",
+    pollNote: "Votes and the daily limit are saved in this device's browser, so other family members cannot see them yet, and clearing browser data may reset the count.",
+    pollThanks: "Thanks! Your vote for {city} was counted.",
+    pollAdded: "{city} was added to the list and your vote was counted.",
+    pollAlreadyVoted: "You have already voted for {city} today. Try another city, or come back tomorrow.",
+    pollInvalidCity: "We could not recognise that city. Please pick a valid city name from the suggestions.",
+    pollSaveFailed: "This browser could not save your vote.",
+    pollListLabel: "City vote results",
+    discussionEyebrow: "OUR FAMILY NOTICE BOARD",
+    discussionTitle: "Share your thoughts and help us improve the site",
+    discussionIntro: "Share precious travel moments and suggest ways to improve the website.",
+    discussionNameLabel: "Your name",
+    discussionTypeLabel: "Type of comment",
+    discussionTypeMemory: "Share a precious moment",
+    discussionTypeSuggestion: "Website suggestion",
+    discussionMessageLabel: "Your comment",
+    discussionSubmit: "Post comment",
+    discussionNote: "Comments are currently saved in this device's browser only, so other family members cannot see them yet. Please do not enter passport, bank card or other sensitive details.",
+    discussionEmpty: "No comments yet. Be the first to write one.",
+    discussionListLabel: "Comments",
+    discussionDelete: "Delete",
+    discussionDeleteConfirm: "Delete this comment?",
+    discussionPosted: "Comment posted.",
+    discussionInvalid: "Please enter your name and a comment.",
+    discussionSaveFailed: "This browser could not save the comment.",
     noResults: "No recommended cities found. Try changing the month, budget, or travel group.",
     noteEyebrow: "A NOTE FROM OUR FAMILY TO YOURS",
     noteTitle: "Good trips leave room for everyone.",
@@ -825,6 +912,9 @@ const translations = {
     estimatedPerPerson: "Budget / person",
     estimatedMidTierPerPerson: "Mid-tier / person",
     groupBudgetNote: "Group total multiplies the per-person estimate by traveller count; use as a planning guide.",
+    packageSourceNote: "Estimate = Trip.com flight + hotel package sample ({count} packages, recorded {date}; budget = average of the cheapest 10%, mid-tier = average of the 30th–50th percentile) + average food, transport and leisure for the whole trip (about S${daily}/person/day).",
+    baselineSourceNote: "No recorded Trip.com package sample yet, so the site's built-in baseline estimate (including food, transport and leisure) is used.",
+    photoUnavailable: "Attraction photo unavailable right now",
     groupDefault: "your group",
     singleGroupSummary: "Ideas for {group} travelling in {month} {year}{departure}{count}{budget}.",
     multiGroupPrefix: "Ideas for {group} travelling in {month} {year}{departure}{count}{budget}.",
@@ -941,9 +1031,67 @@ const stayDurations = {
   RioDeJaneiro: { days: 6, nights: 5 }
 };
 
+// Average food, local transport and leisure spend in SGD per person per day (illustrative planning assumptions, not live prices).
+const dailyExpenses = {
+  Singapore: 90,
+  Tokyo: 120,
+  Osaka: 110,
+  Seoul: 100,
+  Beijing: 80,
+  Shanghai: 85,
+  Guangzhou: 70,
+  Taipei: 80,
+  Bangkok: 65,
+  Paris: 150,
+  London: 160,
+  Sydney: 140,
+  Dubai: 130,
+  Rome: 140,
+  Vancouver: 140,
+  CapeTown: 90,
+  RioDeJaneiro: 100
+};
+
+// Flight + Hotel package prices (SGD per person, for the suggested stay length) recorded from
+// https://sg.trip.com/packages/?sourceFrom=IBUBundle_home&locale=en-SG&curr=SGD
+// Format: CityKey: { checked: "YYYY-MM-DD", prices: [number, ...] }.
+// Cities without a recorded sample use the baseline estimates in `destinations`.
+// Bangkok: 70 packages, 1 adult, SIN→BKK, 15–18 Dec 2026 (3 nights), checked 2026-10-19.
+const tripHotelCityIds = { Bangkok: 359 };
+
+const tripPackageSamples = {
+  Bangkok: {
+    checked: "2026-10-19",
+    prices: [
+      435, 586, 468, 425, 427, 576, 426, 410, 416, 447, 470, 511, 482, 498, 413, 432, 386, 459, 406, 487,
+      441, 496, 477, 427, 456, 420, 413, 570, 481, 569, 588, 456, 653, 444, 605, 410, 440, 455, 477, 427,
+      474, 518, 464, 398, 470, 491, 510, 521, 433, 413, 472, 433, 437, 462, 474, 467, 428, 441, 484, 492,
+      749, 445, 616, 432, 591, 417, 501, 457, 469, 432
+    ]
+  }
+};
+
+function averageOf(values) {
+  return values.reduce((total, value) => total + value, 0) / values.length;
+}
+
+// Budget = mean of the cheapest 10% of packages; mid-tier = mean of packages in the 30th–50th percentile.
+function getPackageTierPrices(prices) {
+  const sorted = prices.filter((price) => Number.isFinite(price) && price > 0).sort((a, b) => a - b);
+  if (sorted.length === 0) {
+    return null;
+  }
+  const count = sorted.length;
+  const budgetSlice = sorted.slice(0, Math.max(1, Math.ceil(count * 0.1)));
+  const midStart = Math.min(Math.floor(count * 0.3), count - 1);
+  const midSlice = sorted.slice(midStart, Math.max(midStart + 1, Math.ceil(count * 0.5)));
+  return { budget: averageOf(budgetSlice), midTier: averageOf(midSlice), count };
+}
+
 const main = document.querySelector("main");
 const momentsSection = document.querySelector(".moments-section");
 main.insertBefore(document.querySelector(".planner"), momentsSection);
+main.insertBefore(document.querySelector("#city-poll"), document.querySelector(".planner"));
 main.insertBefore(results, momentsSection);
 
 function populateUpcomingMonths() {
@@ -1011,6 +1159,10 @@ function applyLanguage(language) {
   languageToggle.setAttribute("aria-label", language === "zh" ? "Switch to English" : "切换到简体中文");
   populateUpcomingMonths();
   updateTravelerValidity();
+  discussionStatus.textContent = "";
+  setPollStatus("");
+  renderPoll();
+  renderDiscussion();
 
   if (lastPlan) {
     renderResults(lastPlan);
@@ -1072,10 +1224,6 @@ function getGroupDescription(travelers) {
   return travelers.map((traveler) => labels[traveler]).join(currentLanguage === "zh" ? "、" : " and ");
 }
 
-function formatSkyscannerDate(year, month, day) {
-  return `${String(year).slice(-2)}${String(month).padStart(2, "0")}${String(day).padStart(2, "0")}`;
-}
-
 function formatTripDate(date) {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 }
@@ -1097,9 +1245,21 @@ function formatTripEstimate(amount) {
 
 function getTripEstimates(destination) {
   const stay = stayDurations[destination.cityKey];
+  const sample = tripPackageSamples[destination.cityKey];
+  const tiers = sample ? getPackageTierPrices(sample.prices) : null;
+  if (tiers) {
+    const extras = dailyExpenses[destination.cityKey] * stay.days;
+    return {
+      stay,
+      budgetPerPerson: tiers.budget + extras,
+      midTierPerPerson: tiers.midTier + extras,
+      packageSource: { count: tiers.count, checked: sample.checked }
+    };
+  }
   const durationMultiplier = stay.days / 4;
   return {
     stay,
+    packageSource: null,
     budgetPerPerson: destination.budgetEstimate.budget * durationMultiplier,
     midTierPerPerson: destination.budgetEstimate.midTier * durationMultiplier
   };
@@ -1114,11 +1274,44 @@ function makeProviderLink(href, label) {
   return link;
 }
 
+const attractionPhotoCache = new Map();
+
+// Looks up a current Wikipedia lead image (public, keyless endpoint) for each candidate title; resolves to null so the bundled photos are used instead.
+function fetchAttractionPhoto(attraction) {
+  const titles = attraction.wikiTitles ?? [attraction.name.en];
+  const cacheKey = titles.join("|");
+  if (!attractionPhotoCache.has(cacheKey)) {
+    const lookup = async () => {
+      for (const title of titles) {
+        try {
+          const response = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`);
+          const data = response.ok ? await response.json() : null;
+          if (data && data.type === "standard" && data.thumbnail) {
+            return data.thumbnail.source;
+          }
+        } catch {
+          // Try the next candidate title.
+        }
+      }
+      return null;
+    };
+    attractionPhotoCache.set(cacheKey, lookup());
+  }
+  return attractionPhotoCache.get(cacheKey);
+}
+
+// Last-resort local illustration so a card never shows a broken image.
+function makeFallbackPhoto(label) {
+  const safeLabel = label.replace(/[<>&"']/g, "");
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="533" viewBox="0 0 800 533"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#cfe8e4"/><stop offset="1" stop-color="#f6dfc4"/></linearGradient></defs><rect width="800" height="533" fill="url(#g)"/><circle cx="620" cy="130" r="48" fill="#fff6" /><path d="M0 420 L180 270 L300 360 L460 220 L620 350 L800 260 V533 H0Z" fill="#7aa9a0" opacity=".6"/><text x="400" y="480" text-anchor="middle" font-family="sans-serif" font-size="34" fill="#35524e">${safeLabel}</text></svg>`;
+  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+}
+
 function makeDestinationCard(destination, fit, travelers, plan) {
   const language = currentLanguage;
   const copy = localizedDestinations[destination.country][language];
   const text = translations[language];
-  const { stay, budgetPerPerson, midTierPerPerson } = getTripEstimates(destination);
+  const { stay, budgetPerPerson, midTierPerPerson, packageSource } = getTripEstimates(destination);
   const card = document.createElement("article");
   card.className = "destination-card";
 
@@ -1160,7 +1353,15 @@ function makeDestinationCard(destination, fit, travelers, plan) {
       ? `${text.groupBudgetNote} ${text.localStaycationNote}`
       : text.budgetDisclaimer
     : `${text.groupBudgetNote} ${text.departureEstimateNote}`;
-  estimates.append(estimatesTitle, estimateList, estimateNote);
+  const sourceNote = document.createElement("p");
+  sourceNote.className = "budget-estimate-note";
+  sourceNote.textContent = packageSource
+    ? text.packageSourceNote
+      .replace("{count}", String(packageSource.count))
+      .replace("{date}", packageSource.checked)
+      .replace("{daily}", String(dailyExpenses[destination.cityKey]))
+    : text.baselineSourceNote;
+  estimates.append(estimatesTitle, estimateList, estimateNote, sourceNote);
 
   const summary = document.createElement("p");
   summary.textContent = copy.summary;
@@ -1175,7 +1376,29 @@ function makeDestinationCard(destination, fit, travelers, plan) {
   for (const attraction of cityAttractions[destination.cityKey]) {
     const figure = document.createElement("figure");
     const image = document.createElement("img");
-    image.src = attraction.src;
+    let sources = [attraction.src, ...(attraction.fallbacks ?? []), makeFallbackPhoto(attraction.name[language])];
+    let sourceIndex = 0;
+    image.referrerPolicy = "no-referrer";
+    image.addEventListener("error", () => {
+      sourceIndex += 1;
+      if (sourceIndex < sources.length) {
+        image.src = sources[sourceIndex];
+        return;
+      }
+      const placeholder = document.createElement("div");
+      placeholder.className = "photo-placeholder";
+      placeholder.setAttribute("role", "img");
+      placeholder.setAttribute("aria-label", attraction.alt[language]);
+      placeholder.textContent = text.photoUnavailable;
+      image.replaceWith(placeholder);
+    });
+    fetchAttractionPhoto(attraction).then((url) => {
+      if (url) {
+        sources = [url, ...sources];
+        sourceIndex = 0;
+      }
+      image.src = sources[0];
+    });
     image.alt = attraction.alt[language];
     image.loading = "lazy";
     image.decoding = "async";
@@ -1201,40 +1424,55 @@ function makeDestinationCard(destination, fit, travelers, plan) {
 
   const providerLinks = document.createElement("div");
   providerLinks.className = "provider-links";
-  const tripSearchUrl = new URL("https://sg.trip.com/");
-  tripSearchUrl.searchParams.set("locale", "en-SG");
-  tripSearchUrl.searchParams.set("curr", "SGD");
   const cityName = cityNames[destination.cityKey][language];
   const outboundDate = getExampleStartDate(plan);
   const returnDate = new Date(outboundDate);
   returnDate.setDate(returnDate.getDate() + stay.days - 1);
-  const tripPackageQuery = `${cityName} travel package`;
-  tripSearchUrl.searchParams.set("q", tripPackageQuery);
-  tripSearchUrl.searchParams.set("destination", cityName);
-  tripSearchUrl.searchParams.set("maxPricePerPerson", String(Math.round(budgetPerPerson)));
-  tripSearchUrl.searchParams.set("travellers", String(plan.travellerCount));
-  tripSearchUrl.searchParams.set("startDate", formatTripDate(outboundDate));
-  tripSearchUrl.searchParams.set("endDate", formatTripDate(returnDate));
-  providerLinks.append(makeProviderLink(tripSearchUrl.href, text.tripSearchLink
-    .replace("{city}", cityName)
-    .replace("{budget}", Math.round(budgetPerPerson).toLocaleString("en-SG"))));
-
+  const startText = formatTripDate(outboundDate);
+  const endText = formatTripDate(returnDate);
   const originCode = departureAirportCodes[plan.departureCity];
-  if (originCode !== destination.skyscannerCode) {
-    const flightSearchUrl = new URL(
-      `https://www.skyscanner.com.sg/transport/flights/${originCode}/${destination.skyscannerCode}/${formatSkyscannerDate(outboundDate.getFullYear(), outboundDate.getMonth() + 1, outboundDate.getDate())}/${formatSkyscannerDate(returnDate.getFullYear(), returnDate.getMonth() + 1, returnDate.getDate())}/`
+
+  // Pre-filled Trip.com Flight + Hotel packages results page (dates, adults and rooms); Trip.com may ignore parameters.
+  const tripSearchUrl = new URL("https://sg.trip.com/packages/list");
+  const tripParams = {
+    adult: String(plan.travellerCount),
+    child: "0",
+    infants: "0",
+    aCityCode: destination.skyscannerCode.toUpperCase(),
+    dCityCode: originCode.toUpperCase(),
+    tripWay: "round-trip",
+    classType: "ys",
+    dDate: startText,
+    rDate: endText,
+    iDate: startText,
+    oDate: endText,
+    room: String(Math.ceil(plan.travellerCount / 2)),
+    sourceFrom: "IBUBundle_home",
+    destinationName: destination.cityKey === "Singapore" ? "Singapore" : cityNames[destination.cityKey].en,
+    isOversea: "true",
+    locale: "en-SG",
+    curr: "SGD"
+  };
+  if (tripHotelCityIds[destination.cityKey]) {
+    tripParams.hCity = String(tripHotelCityIds[destination.cityKey]);
+  }
+  if (originCode.toLowerCase() !== destination.skyscannerCode) {
+    tripSearchUrl.search = new URLSearchParams(tripParams).toString();
+    providerLinks.append(makeProviderLink(tripSearchUrl.href, text.tripSearchLink
+      .replace("{city}", cityName)
+      .replace("{count}", String(plan.travellerCount))
+      .replace("{start}", startText)
+      .replace("{end}", endText)));
+
+    const googleSearchUrl = new URL("https://www.google.com/search");
+    googleSearchUrl.searchParams.set(
+      "q",
+      `${cityNames[destination.cityKey].en} flight hotel package price SGD ${plan.travellerCount} adults ${startText} to ${endText}`
     );
-    flightSearchUrl.search = new URLSearchParams({
-      adults: String(plan.travellerCount),
-      adultsv2: String(plan.travellerCount),
-      cabinclass: "economy",
-      children: "0",
-      infants: "0",
-      rtn: "1"
-    }).toString();
+    googleSearchUrl.searchParams.set("hl", language === "zh" ? "zh-CN" : "en-SG");
     providerLinks.append(makeProviderLink(
-      flightSearchUrl.href,
-      text.skyscannerSearchLink.replace("{city}", cityName)
+      googleSearchUrl.href,
+      text.googleSearchLink.replace("{city}", cityName)
     ));
   }
 
@@ -1335,6 +1573,315 @@ form.addEventListener("submit", (event) => {
 
 languageToggle.addEventListener("click", () => {
   applyLanguage(currentLanguage === "zh" ? "en" : "zh");
+});
+
+// Cities accepted by the poll: [English name, Simplified Chinese name, optional aliases]. Free-text entries must match one of these.
+const pollCatalog = [
+  ["Seoul", "首尔"], ["Tokyo", "东京"], ["Bangkok", "曼谷"], ["Beijing", "北京"], ["Shanghai", "上海"],
+  ["Dubai", "迪拜"], ["Sydney", "悉尼"], ["Taipei", "台北"], ["Guangzhou", "广州"], ["Bali", "巴厘岛", ["Denpasar"]],
+  ["Singapore", "新加坡"], ["Kuala Lumpur", "吉隆坡"], ["Penang", "槟城", ["George Town"]], ["Kota Kinabalu", "亚庇"],
+  ["Kuching", "古晋"], ["Johor Bahru", "新山"], ["Malacca", "马六甲", ["Melaka"]], ["Langkawi", "兰卡威"],
+  ["Jakarta", "雅加达"], ["Yogyakarta", "日惹"], ["Manila", "马尼拉"], ["Cebu", "宿务"], ["Hanoi", "河内"],
+  ["Ho Chi Minh City", "胡志明市", ["Saigon"]], ["Da Nang", "岘港"], ["Siem Reap", "暹粒"], ["Phnom Penh", "金边"],
+  ["Vientiane", "万象"], ["Luang Prabang", "琅勃拉邦"], ["Yangon", "仰光"], ["Phuket", "普吉岛"],
+  ["Chiang Mai", "清迈"], ["Pattaya", "芭堤雅"], ["Krabi", "甲米"], ["Hong Kong", "香港"], ["Macau", "澳门", ["Macao"]],
+  ["Shenzhen", "深圳"], ["Chengdu", "成都"], ["Chongqing", "重庆"], ["Hangzhou", "杭州"], ["Suzhou", "苏州"],
+  ["Xi'an", "西安", ["Xian"]], ["Nanjing", "南京"], ["Xiamen", "厦门"], ["Guilin", "桂林"], ["Kunming", "昆明"],
+  ["Lijiang", "丽江"], ["Harbin", "哈尔滨"], ["Qingdao", "青岛"], ["Kaohsiung", "高雄"], ["Taichung", "台中"],
+  ["Hualien", "花莲"], ["Osaka", "大阪"], ["Kyoto", "京都"], ["Nagoya", "名古屋"], ["Sapporo", "札幌"],
+  ["Fukuoka", "福冈"], ["Hiroshima", "广岛"], ["Okinawa", "冲绳"], ["Nara", "奈良"], ["Busan", "釜山"],
+  ["Jeju", "济州岛"], ["Ulaanbaatar", "乌兰巴托"], ["Kathmandu", "加德满都"], ["Colombo", "科伦坡"], ["Male", "马累"],
+  ["Delhi", "德里", ["New Delhi"]], ["Mumbai", "孟买"], ["Jaipur", "斋浦尔"], ["Agra", "阿格拉"],
+  ["Istanbul", "伊斯坦布尔"], ["Abu Dhabi", "阿布扎比"], ["Doha", "多哈"], ["Cairo", "开罗"],
+  ["Marrakech", "马拉喀什", ["Marrakesh"]], ["Cape Town", "开普敦"], ["Nairobi", "内罗毕"], ["Paris", "巴黎"],
+  ["London", "伦敦"], ["Rome", "罗马"], ["Venice", "威尼斯"], ["Florence", "佛罗伦萨"], ["Milan", "米兰"],
+  ["Barcelona", "巴塞罗那"], ["Madrid", "马德里"], ["Lisbon", "里斯本"], ["Amsterdam", "阿姆斯特丹"],
+  ["Berlin", "柏林"], ["Munich", "慕尼黑"], ["Vienna", "维也纳"], ["Prague", "布拉格"], ["Budapest", "布达佩斯"],
+  ["Zurich", "苏黎世"], ["Geneva", "日内瓦"], ["Athens", "雅典"], ["Santorini", "圣托里尼"], ["Edinburgh", "爱丁堡"],
+  ["Dublin", "都柏林"], ["Copenhagen", "哥本哈根"], ["Stockholm", "斯德哥尔摩"], ["Oslo", "奥斯陆"],
+  ["Helsinki", "赫尔辛基"], ["Reykjavik", "雷克雅未克"], ["Moscow", "莫斯科"], ["Melbourne", "墨尔本"],
+  ["Brisbane", "布里斯班"], ["Perth", "珀斯"], ["Gold Coast", "黄金海岸"], ["Auckland", "奥克兰"],
+  ["Queenstown", "皇后镇"], ["Vancouver", "温哥华"], ["Toronto", "多伦多"], ["New York", "纽约", ["New York City", "NYC"]],
+  ["Los Angeles", "洛杉矶"], ["San Francisco", "旧金山"], ["Las Vegas", "拉斯维加斯"], ["Honolulu", "檀香山", ["Hawaii"]],
+  ["Seattle", "西雅图"], ["Chicago", "芝加哥"], ["Mexico City", "墨西哥城"], ["Cancun", "坎昆"],
+  ["Rio de Janeiro", "里约热内卢"], ["Buenos Aires", "布宜诺斯艾利斯"], ["Lima", "利马"]
+];
+const pollDefaultCities = ["Seoul", "Tokyo", "Bangkok", "Beijing", "Shanghai", "Dubai", "Sydney", "Taipei", "Guangzhou", "Bali"];
+const pollMaxVotesPerDay = 3;
+const pollStorageKey = "tanFamilyCityPoll";
+const pollVoterKey = "tanFamilyCityPollVoter";
+const pollCatalogByKey = new Map(pollCatalog.map((entry) => [entry[0], entry]));
+
+const pollList = document.querySelector("#poll-list");
+const pollForm = document.querySelector("#poll-form");
+const pollCityInput = document.querySelector("#poll-city");
+const pollCityOptions = document.querySelector("#poll-city-options");
+const pollRemaining = document.querySelector("#poll-remaining");
+const pollStatus = document.querySelector("#poll-status");
+
+function normalizeCityText(value) {
+  return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+}
+
+function findPollCity(value) {
+  const wanted = normalizeCityText(value);
+  if (!wanted) {
+    return null;
+  }
+  const match = pollCatalog.find(([en, zh, aliases = []]) =>
+    [en, zh, ...aliases].some((name) => normalizeCityText(name) === wanted)
+  );
+  return match ? match[0] : null;
+}
+
+function getPollCityName(key) {
+  return pollCatalogByKey.get(key)[currentLanguage === "zh" ? 1 : 0];
+}
+
+function readStorage(key, fallback) {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(key));
+    return parsed && typeof parsed === "object" ? parsed : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function getPollState() {
+  const saved = readStorage(pollStorageKey, {});
+  const votes = {};
+  for (const [key, count] of Object.entries(saved.votes ?? {})) {
+    if (pollCatalogByKey.has(key) && Number.isInteger(count) && count > 0) {
+      votes[key] = count;
+    }
+  }
+  const custom = (Array.isArray(saved.custom) ? saved.custom : [])
+    .filter((key) => pollCatalogByKey.has(key) && !pollDefaultCities.includes(key));
+  return { votes, custom };
+}
+
+// The daily allowance resets automatically because it is keyed to today's local date.
+function getPollVoter() {
+  const today = formatTripDate(new Date());
+  const saved = readStorage(pollVoterKey, {});
+  const cities = saved.date === today && Array.isArray(saved.cities) ? saved.cities : [];
+  return { date: today, cities: cities.filter((key) => pollCatalogByKey.has(key)) };
+}
+
+function savePoll(state, voter) {
+  try {
+    localStorage.setItem(pollStorageKey, JSON.stringify(state));
+    localStorage.setItem(pollVoterKey, JSON.stringify(voter));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function setPollStatus(message) {
+  pollStatus.textContent = message;
+}
+
+// Returns "ok", "limit", "duplicate" or "error".
+function castPollVote(key, isNewCity) {
+  const state = getPollState();
+  const voter = getPollVoter();
+  if (voter.cities.length >= pollMaxVotesPerDay) {
+    return "limit";
+  }
+  if (voter.cities.includes(key)) {
+    return "duplicate";
+  }
+  if (isNewCity && !pollDefaultCities.includes(key) && !state.custom.includes(key)) {
+    state.custom.push(key);
+  }
+  state.votes[key] = (state.votes[key] ?? 0) + 1;
+  voter.cities.push(key);
+  return savePoll(state, voter) ? "ok" : "error";
+}
+
+function renderPoll(focusKey) {
+  const text = translations[currentLanguage];
+  const state = getPollState();
+  const voter = getPollVoter();
+  const keys = [...pollDefaultCities, ...state.custom];
+  const ranked = keys
+    .map((key, index) => ({ key, index, count: state.votes[key] ?? 0 }))
+    .sort((a, b) => b.count - a.count || a.index - b.index);
+  const topCount = Math.max(1, ...ranked.map((item) => item.count));
+  const limitReached = voter.cities.length >= pollMaxVotesPerDay;
+
+  pollRemaining.textContent = limitReached
+    ? text.pollLimitReached.replace("{max}", String(pollMaxVotesPerDay))
+    : text.pollRemaining
+      .replace("{left}", String(pollMaxVotesPerDay - voter.cities.length))
+      .replace("{max}", String(pollMaxVotesPerDay));
+  pollList.setAttribute("aria-label", text.pollListLabel);
+
+  pollList.replaceChildren(...ranked.map(({ key, count }) => {
+    const name = getPollCityName(key);
+    const item = document.createElement("li");
+    item.className = "poll-item";
+    const label = document.createElement("span");
+    label.className = "poll-name";
+    label.textContent = name;
+    const total = document.createElement("span");
+    total.className = "poll-count";
+    total.textContent = text.pollVotes.replace("{n}", String(count));
+    const bar = document.createElement("span");
+    bar.className = "poll-bar";
+    bar.setAttribute("aria-hidden", "true");
+    const fill = document.createElement("span");
+    fill.style.width = `${Math.round((count / topCount) * 100)}%`;
+    bar.append(fill);
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "poll-vote";
+    button.dataset.city = key;
+    const voted = voter.cities.includes(key);
+    button.textContent = voted ? text.pollVoted : text.pollVoteButton;
+    button.setAttribute("aria-label", text.pollVoteFor.replace("{city}", name));
+    button.disabled = voted || limitReached;
+    button.addEventListener("click", () => {
+      const result = castPollVote(key, false);
+      setPollStatus(getPollResultMessage(result, key, false));
+      renderPoll(key);
+    });
+    item.append(label, total, bar, button);
+    return item;
+  }));
+
+  pollCityOptions.replaceChildren(...pollCatalog.map((entry) => {
+    const option = document.createElement("option");
+    option.value = entry[currentLanguage === "zh" ? 1 : 0];
+    return option;
+  }));
+
+  if (focusKey) {
+    const target = pollList.querySelector(`button[data-city="${CSS.escape(focusKey)}"]`);
+    if (target && !target.disabled) {
+      target.focus();
+    }
+  }
+}
+
+function getPollResultMessage(result, key, isNewCity) {
+  const text = translations[currentLanguage];
+  const city = getPollCityName(key);
+  if (result === "limit") {
+    return text.pollLimitReached.replace("{max}", String(pollMaxVotesPerDay));
+  }
+  if (result === "duplicate") {
+    return text.pollAlreadyVoted.replace("{city}", city);
+  }
+  if (result === "error") {
+    return text.pollSaveFailed;
+  }
+  return (isNewCity ? text.pollAdded : text.pollThanks).replace("{city}", city);
+}
+
+pollForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const key = findPollCity(pollCityInput.value);
+  if (!key) {
+    setPollStatus(translations[currentLanguage].pollInvalidCity);
+    pollCityInput.focus();
+    return;
+  }
+  const alreadyListed = pollDefaultCities.includes(key) || getPollState().custom.includes(key);
+  const result = castPollVote(key, true);
+  setPollStatus(getPollResultMessage(result, key, !alreadyListed));
+  if (result === "ok") {
+    pollCityInput.value = "";
+  }
+  renderPoll();
+});
+
+const discussionForm = document.querySelector("#discussion-form");
+const discussionList = document.querySelector("#discussion-list");
+const discussionEmpty = document.querySelector("#discussion-empty");
+const discussionStatus = document.querySelector("#discussion-status");
+const discussionStorageKey = "tanFamilyDiscussion";
+
+function loadDiscussion() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(discussionStorageKey) ?? "[]");
+    return Array.isArray(saved) ? saved : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveDiscussion(entries) {
+  try {
+    localStorage.setItem(discussionStorageKey, JSON.stringify(entries));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function renderDiscussion() {
+  const text = translations[currentLanguage];
+  const entries = loadDiscussion();
+  discussionList.setAttribute("aria-label", text.discussionListLabel);
+  discussionEmpty.hidden = entries.length > 0;
+  discussionList.replaceChildren(...entries.map((entry) => {
+    const item = document.createElement("li");
+    item.className = "discussion-item";
+    const meta = document.createElement("p");
+    meta.className = "discussion-meta";
+    const author = document.createElement("strong");
+    author.textContent = entry.name;
+    const kind = document.createElement("span");
+    kind.className = "discussion-kind";
+    kind.textContent = entry.type === "suggestion" ? text.discussionTypeSuggestion : text.discussionTypeMemory;
+    const when = document.createElement("time");
+    when.dateTime = entry.createdAt;
+    when.textContent = new Date(entry.createdAt).toLocaleString(currentLanguage === "zh" ? "zh-CN" : "en-SG");
+    const remove = document.createElement("button");
+    remove.type = "button";
+    remove.className = "discussion-delete";
+    remove.textContent = text.discussionDelete;
+    remove.addEventListener("click", () => {
+      if (window.confirm(text.discussionDeleteConfirm)) {
+        saveDiscussion(loadDiscussion().filter((saved) => saved.id !== entry.id));
+        renderDiscussion();
+      }
+    });
+    meta.append(author, kind, when, remove);
+    const body = document.createElement("p");
+    body.className = "discussion-message";
+    body.textContent = entry.message;
+    item.append(meta, body);
+    return item;
+  }));
+}
+
+discussionForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const text = translations[currentLanguage];
+  const data = new FormData(discussionForm);
+  const name = String(data.get("name")).trim();
+  const message = String(data.get("message")).trim();
+  if (!name || !message) {
+    discussionStatus.textContent = text.discussionInvalid;
+    return;
+  }
+  const entry = {
+    id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+    name,
+    message,
+    type: data.get("type") === "suggestion" ? "suggestion" : "memory",
+    createdAt: new Date().toISOString()
+  };
+  if (!saveDiscussion([entry, ...loadDiscussion()])) {
+    discussionStatus.textContent = text.discussionSaveFailed;
+    return;
+  }
+  discussionForm.elements.message.value = "";
+  discussionStatus.textContent = text.discussionPosted;
+  renderDiscussion();
 });
 
 applyLanguage("zh");
