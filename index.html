@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#fff0f5">
+    <meta name="description" content="记录阖家旅行的温馨瞬间，为下一次全家出游寻找贴心灵感。">
+    <title>Tan 家庭旅行时光</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="Tan 家庭旅行时光首页">
+        <span class="brand-mark" aria-hidden="true">T</span>
+        <span data-i18n="brand">Tan 家庭旅行时光</span>
+      </a>
+      <div class="header-actions">
+        <span class="header-note"><span class="status-dot" aria-hidden="true"></span><span data-i18n="headerNote">一家人，慢慢走，一起看世界</span></span>
+        <button class="language-toggle" id="language-toggle" type="button" aria-label="Switch to English">EN</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span><span data-i18n="heroEyebrow">下一站，一起出发</span></p>
+          <h1 id="hero-title"><span data-i18n="heroTitle">最好的旅行，</span><span data-i18n="heroTitleAccent">是每个人都自在开心。</span></h1>
+          <p class="hero-description" data-i18n="heroDescription">告诉我们出行月份和同行家人，为长辈、孩子和每一位旅伴，找到更合心意的旅行灵感。</p>
+          <div class="hero-details">
+            <span><span aria-hidden="true">✳</span><span data-i18n="heroDetailOne">适合一家老小同行</span></span>
+            <span><span aria-hidden="true">↗</span><span data-i18n="heroDetailTwo">贴心又灵活的旅行灵感</span></span>
+          </div>
+        </div>
+        <figure class="hero-photo">
+          <img
+            src="Past%20Travel%20Photos/20161024_180747.jpg"
+            alt="一家几代人在热闹的夜市街头开心合影。"
+            data-alt-en="Several generations of family smile together on a lively night-market street."
+            fetchpriority="high">
+          <figcaption class="photo-caption">
+            <span class="caption-kicker" data-i18n="photoKicker">珍藏于家庭相册</span>
+            <span class="caption-title" data-i18n="photoTitle">又多了一段美好故事。</span>
+            <span class="caption-meta" data-i18n="photoMeta">灯火中的团聚 · 2016年10月</span>
+          </figcaption>
+          <span class="photo-number" data-i18n="photoNumber" aria-hidden="true">01 / 旅途</span>
+        </figure>
+      </section>
+
+      <section class="moments-section" aria-labelledby="moments-title">
+        <div class="moments-heading">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span><span data-i18n="momentsEyebrow">把旅途的小美好，收藏起来</span></p>
+            <h2 id="moments-title" data-i18n="momentsTitle">我们的旅行故事</h2>
+          </div>
+          <p class="moments-intro" data-i18n="momentsIntro">最珍贵的纪念，常常是沿途的新风景、一起的欢笑，还有全家人都在身边。</p>
+        </div>
+        <div class="moment-grid">
+          <article class="moment-card moment-card-tall">
+            <img
+              src="Past%20Travel%20Photos/20141105_193244_mr1415190298670_mh1415190345712.jpg"
+              alt="全家穿上色彩缤纷的和服，留下纪念合影。"
+              data-alt-en="The family dresses in colorful kimono for a keepsake photo."
+              loading="lazy">
+            <div class="moment-caption">
+              <span class="moment-date" data-i18n="moment1Date">2014年11月</span>
+              <h3 data-i18n="moment1Title">穿上和服的特别一天</h3>
+              <p data-i18n="moment1Text">一家人一起准备，也成了旅行回忆的一部分。</p>
+            </div>
+          </article>
+          <article class="moment-card">
+            <img
+              src="Past%20Travel%20Photos/2015-11-27_06.50.03.jpg"
+              alt="家人骑着红色自行车沿花园小路前行，同行家人在旁漫步。"
+              data-alt-en="A family member rides a red bicycle along a garden path as a companion walks alongside."
+              loading="lazy">
+            <div class="moment-caption">
+              <span class="moment-date" data-i18n="moment2Date">2015年11月</span>
+              <h3 data-i18n="moment2Title">沿着风景，慢慢走</h3>
+              <p data-i18n="moment2Text">放慢脚步，路上的风景也值得细细欣赏。</p>
+            </div>
+          </article>
+          <article class="moment-card">
+            <img
+              src="Past%20Travel%20Photos/IMG_20180818_134025_mr1534651346640.jpg"
+              alt="家人在童话风格的城堡前一起留影。"
+              data-alt-en="Family members pause together in front of a fairytale-style castle."
+              loading="lazy">
+            <div class="moment-caption">
+              <span class="moment-date" data-i18n="moment3Date">2018年8月</span>
+              <h3 data-i18n="moment3Title">城堡前的全家福</h3>
+              <p data-i18n="moment3Text">停下脚步，和喜欢的人一起记住这片风景。</p>
+            </div>
+          </article>
+          <article class="moment-card">
+            <img
+              src="Past%20Travel%20Photos/2015-11-27_06.40.18.jpg"
+              alt="家人们在车厢里并肩而坐，准备一起出发。"
+              data-alt-en="Family members sit together in a vehicle, ready to set off."
+              loading="lazy">
+            <div class="moment-caption">
+              <span class="moment-date" data-i18n="moment4Date">2015年11月</span>
+              <h3 data-i18n="moment4Title">出发路上就很热闹</h3>
+              <p data-i18n="moment4Text">旅程从大家坐在一起的那一刻开始。</p>
+            </div>
+          </article>
+          <article class="moment-card">
+            <img
+              src="Past%20Travel%20Photos/20161022_140707(0).jpg"
+              alt="家人陪着长辈体验街机游戏，笑容满满。"
+              data-alt-en="Family members enjoy an arcade game together with an older relative."
+              loading="lazy">
+            <div class="moment-caption">
+              <span class="moment-date" data-i18n="moment5Date">2016年10月</span>
+              <h3 data-i18n="moment5Title">一起玩，笑声停不下来</h3>
+              <p data-i18n="moment5Text">旅行里最开心的活动，是大家都能参与的活动。</p>
+            </div>
+          </article>
+          <article class="moment-card">
+            <img
+              src="Past%20Travel%20Photos/20161023_194319.jpg"
+              alt="几代家人在城市广场上亲密合影。"
+              data-alt-en="Several generations of family pose together in a city square."
+              loading="lazy">
+            <div class="moment-caption">
+              <span class="moment-date" data-i18n="moment6Date">2016年10月</span>
+              <h3 data-i18n="moment6Title">把全家人都装进镜头</h3>
+              <p data-i18n="moment6Text">珍贵的城市时光，也要和家人一起分享。</p>
+            </div>
+          </article>
+          <article class="moment-card">
+            <img
+              src="Past%20Travel%20Photos/20161024_180436.jpg"
+              alt="家人在夜市上举着写有祝福的灯笼。"
+              data-alt-en="Family members hold a lantern with a handwritten wish at a night market."
+              loading="lazy">
+            <div class="moment-caption">
+              <span class="moment-date" data-i18n="moment7Date">2016年10月</span>
+              <h3 data-i18n="moment7Title">把心愿写进灯火里</h3>
+              <p data-i18n="moment7Text">夜市的热闹与一家人的笑脸，都是旅途风景。</p>
+            </div>
+          </article>
+          <article class="moment-card">
+            <img
+              src="Past%20Travel%20Photos/2018%202.jpg"
+              alt="长辈和晚辈一起体验游乐设施。"
+              data-alt-en="An older and younger family member enjoy an amusement ride together."
+              loading="lazy">
+            <div class="moment-caption">
+              <span class="moment-date" data-i18n="moment8Date">2018年</span>
+              <h3 data-i18n="moment8Title">童心不分年龄</h3>
+              <p data-i18n="moment8Text">一起玩耍，让每一代人都成为主角。</p>
+            </div>
+          </article>
+          <article class="moment-card">
+            <img
+              src="Past%20Travel%20Photos/IMG_20180819_144002-01_mr1537619500554.jpg"
+              alt="长辈坐在透明穹顶下休息，享受片刻宁静。"
+              data-alt-en="An older family member rests beneath a clear dome and enjoys a quiet moment."
+              loading="lazy">
+            <div class="moment-caption">
+              <span class="moment-date" data-i18n="moment9Date">2018年8月</span>
+              <h3 data-i18n="moment9Title">旅行也要留一点留白</h3>
+              <p data-i18n="moment9Text">找个舒服的地方坐一坐，享受安静时光。</p>
+            </div>
+          </article>
+          <article class="moment-card">
+            <img
+              src="Past%20Travel%20Photos/mmexport1524731275561.jpg"
+              alt="家人穿着和服坐在一起，留下温馨合影。"
+              data-alt-en="Family members sit together in kimono for a warm keepsake photo."
+              loading="lazy">
+            <div class="moment-caption">
+              <span class="moment-date" data-i18n="moment10Date">家庭相册</span>
+              <h3 data-i18n="moment10Title">穿上当地服饰，留下回忆</h3>
+              <p data-i18n="moment10Text">体验一种新文化，也是一家人的共同故事。</p>
+            </div>
+          </article>
+          <article class="moment-card">
+            <img
+              src="Past%20Travel%20Photos/20151130_201049.jpg"
+              alt="长辈抱着小宝宝，家人在旁边一起出游。"
+              data-alt-en="An older family member holds a baby while relatives travel together."
+              loading="lazy">
+            <div class="moment-caption">
+              <span class="moment-date" data-i18n="moment11Date">2015年11月</span>
+              <h3 data-i18n="moment11Title">长辈抱着小宝贝</h3>
+              <p data-i18n="moment11Text">有家人陪伴，旅途每一站都更温暖。</p>
+            </div>
+          </article>
+          <article class="moment-card">
+            <img
+              src="Past%20Travel%20Photos/20151202_143017.jpg"
+              alt="家人们在车厢中坐在一起，享受旅途时光。"
+              data-alt-en="Family members sit together in a vehicle and enjoy the journey."
+              loading="lazy">
+            <div class="moment-caption">
+              <span class="moment-date" data-i18n="moment12Date">2015年12月</span>
+              <h3 data-i18n="moment12Title">车厢里的旅行时光</h3>
+              <p data-i18n="moment12Text">坐在一起聊天，路程也变成回忆。</p>
+            </div>
+          </article>
+          <article class="moment-card">
+            <img
+              src="Past%20Travel%20Photos/20180818_105322.jpg"
+              alt="几代家人在车站大厅集合，婴儿车也一同出发。"
+              data-alt-en="Several generations meet in a station hall, with a stroller ready for the trip."
+              loading="lazy">
+            <div class="moment-caption">
+              <span class="moment-date" data-i18n="moment13Date">2018年8月</span>
+              <h3 data-i18n="moment13Title">一家人，整装出发</h3>
+              <p data-i18n="moment13Text">出发前集合好，旅程就从这里开始。</p>
+            </div>
+          </article>
+          <article class="moment-card">
+            <img
+              src="Past%20Travel%20Photos/CIMG3620.jpg"
+              alt="两位家人坐在一起，开心地玩闹。"
+              data-alt-en="Two family members sit together and share a playful moment."
+              loading="lazy">
+            <div class="moment-caption">
+              <span class="moment-date" data-i18n="moment14Date">家庭相册</span>
+              <h3 data-i18n="moment14Title">笑着闹着的片刻</h3>
+              <p data-i18n="moment14Text">不经意的小插曲，最让人记得住。</p>
+            </div>
+          </article>
+          <article class="moment-card">
+            <img
+              src="Past%20Travel%20Photos/CIMG3699.jpg"
+              alt="大家庭在室内一起坐下合影，几代家人和孩子都在其中。"
+              data-alt-en="Several generations of a large family, including young children, gather for an indoor group photo."
+              loading="lazy">
+            <div class="moment-caption">
+              <span class="moment-date" data-i18n="moment15Date">家庭相册</span>
+              <h3 data-i18n="moment15Title">人多更热闹的全家福</h3>
+              <p data-i18n="moment15Text">把不同世代的笑脸，都留在同一张照片里。</p>
+            </div>
+          </article>
+          <article class="moment-card">
+            <img
+              src="Past%20Travel%20Photos/IMG-20141021-WA0026.jpg"
+              alt="两位家人在大型地球装置旁留影。"
+              data-alt-en="Two family members pose beside a large globe sculpture."
+              loading="lazy">
+            <div class="moment-caption">
+              <span class="moment-date" data-i18n="moment16Date">2014年10月</span>
+              <h3 data-i18n="moment16Title">在地球旁留下足迹</h3>
+              <p data-i18n="moment16Text">每一次出发，都让世界变得更近一点。</p>
+            </div>
+          </article>
+          <article class="moment-card">
+            <img
+              src="Past%20Travel%20Photos/IMG-20141021-WA0028.jpg"
+              alt="长辈抱着戴着太阳镜的小朋友，在开阔的山野前合影。"
+              data-alt-en="An older family member holds a child in sunglasses for a photo in open countryside."
+              loading="lazy">
+            <div class="moment-caption">
+              <span class="moment-date" data-i18n="moment17Date">2014年10月</span>
+              <h3 data-i18n="moment17Title">长辈和小小探险家</h3>
+              <p data-i18n="moment17Text">一起看看开阔的风景，也一起慢慢探索。</p>
+            </div>
+          </article>
+          <article class="moment-card">
+            <img
+              src="Past%20Travel%20Photos/IMG-20141021-WA0062.jpg"
+              alt="家人在餐桌旁坐在一起享用美食。"
+              data-alt-en="Family members gather around a table and share a meal."
+              loading="lazy">
+            <div class="moment-caption">
+              <span class="moment-date" data-i18n="moment18Date">2014年10月</span>
+              <h3 data-i18n="moment18Title">围坐一桌的好时光</h3>
+              <p data-i18n="moment18Text">一起吃顿饭，也是旅途中很幸福的一站。</p>
+            </div>
+          </article>
+          <article class="moment-card">
+            <img
+              src="Past%20Travel%20Photos/IMG-20141021-WA0072.jpg"
+              alt="两位家人在高耸的现代建筑前合影。"
+              data-alt-en="Two family members pose in front of a towering modern building."
+              loading="lazy">
+            <div class="moment-caption">
+              <span class="moment-date" data-i18n="moment19Date">2014年10月</span>
+              <h3 data-i18n="moment19Title">仰望城市天际线</h3>
+              <p data-i18n="moment19Text">抬头看看建筑，也为旅程添一段城市记忆。</p>
+            </div>
+          </article>
+          <article class="moment-card">
+            <img
+              src="Past%20Travel%20Photos/WhatsApp%20Image%202026-10-19%20at%2010.18.47.jpeg"
+              alt="大家庭在室内休息时一起合影。"
+              data-alt-en="A large family gathers for a group photo while taking a break indoors."
+              loading="lazy">
+            <div class="moment-caption">
+              <span class="moment-date" data-i18n="moment20Date">家庭相册</span>
+              <h3 data-i18n="moment20Title">旅途中也要一起合张影</h3>
+              <p data-i18n="moment20Text">休息一下，看看身边最熟悉的笑脸。</p>
+            </div>
+          </article>
+        </div>
+        <a
+          class="trip-moment-link"
+          href="https://sg.trip.com/moments/detail/jiufen-120424-152315585/?locale=en-SG&amp;curr=SGD"
+          target="_blank"
+          rel="noopener noreferrer">
+          <span class="trip-moment-icon" aria-hidden="true">↗</span>
+          <span class="trip-moment-copy">
+            <span class="moment-date" data-i18n="tripMomentKicker">台湾旅行灵感</span>
+            <strong data-i18n="tripMomentTitle">去九份走走，把这段旅程加入愿望清单</strong>
+            <span data-i18n="tripMomentText">前往 Trip.com 查看旅行者分享</span>
+          </span>
+          <span class="trip-moment-arrow" aria-hidden="true">↗</span>
+        </a>
+      </section>
+
+      <section class="planner" aria-labelledby="planner-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span><span data-i18n="plannerEyebrow">为你们一家，认真计划</span></p>
+            <h2 id="planner-title" data-i18n="plannerTitle">这次旅行，谁会同行？</h2>
+          </div>
+          <p class="section-aside" data-i18n="plannerAside">告诉我们一些小信息，<br>一起找到更适合你们的旅程。</p>
+        </div>
+
+        <form id="trip-form">
+          <div class="form-fields">
+            <label class="field-group" for="travel-month">
+              <span class="field-label" data-i18n="monthLabel">计划几月出发？</span>
+              <select id="travel-month" name="month" required>
+                <option value="" data-i18n="monthPlaceholder">请选择月份</option>
+              </select>
+            </label>
+            <label class="field-group" for="departure-city">
+              <span class="field-label" data-i18n="departingCityLabel">出发城市</span>
+              <select id="departure-city" name="departureCity" required>
+                <option value="" data-i18n="departingCityPlaceholder">请选择出发城市</option>
+                <option value="singapore" data-i18n="originSingapore">新加坡</option>
+                <option value="kualaLumpur" data-i18n="originKualaLumpur">吉隆坡</option>
+                <option value="kotaKinabalu" data-i18n="originKotaKinabalu">亚庇</option>
+                <option value="johorBahru" data-i18n="originJohorBahru">新山</option>
+              </select>
+            </label>
+            <label class="field-group" for="budget">
+              <span class="field-label" data-i18n="budgetLabel">旅行预算（新加坡元/人）</span>
+              <select id="budget" name="budget" required>
+                <option value="" data-i18n="budgetPlaceholder">请选择预算</option>
+                <option value="500">S$500</option>
+                <option value="600">S$600</option>
+                <option value="700">S$700</option>
+                <option value="800">S$800</option>
+                <option value="900">S$900</option>
+                <option value="1000">S$1,000</option>
+                <option value="1100">S$1,100</option>
+                <option value="1200">S$1,200</option>
+                <option value="1300">S$1,300</option>
+                <option value="1400">S$1,400</option>
+                <option value="1500">S$1,500</option>
+                <option value="1600">S$1,600</option>
+                <option value="1800">S$1,800</option>
+                <option value="2000">S$2,000</option>
+                <option value="2200">S$2,200</option>
+                <option value="2500">S$2,500</option>
+                <option value="3000">S$3,000</option>
+              </select>
+            </label>
+            <label class="field-group" for="traveller-count">
+              <span class="field-label" data-i18n="travellerCountLabel">同行人数</span>
+              <input id="traveller-count" name="travellerCount" type="number" min="1" max="20" step="1" value="2" aria-describedby="traveller-count-hint" required>
+              <small class="field-hint" id="traveller-count-hint" data-i18n="travellerCountHint">只填写人数，不区分年龄；预订时请按实际年龄填写。</small>
+            </label>
+          </div>
+
+          <fieldset class="traveler-fieldset">
+            <legend class="field-label"><span data-i18n="groupLabel">选择同行的家人</span> <span class="optional" data-i18n="groupHint">(可多选)</span></legend>
+            <div class="traveler-options">
+              <label class="traveler-option">
+                <input type="checkbox" name="traveler" value="seniors">
+                <span class="option-icon" aria-hidden="true">♧</span>
+                <span class="option-copy"><strong data-i18n="seniorsLabel">长辈</strong><small data-i18n="seniorsHint">轻松慢游</small></span>
+                <span class="checkmark" aria-hidden="true"></span>
+              </label>
+              <label class="traveler-option">
+                <input type="checkbox" name="traveler" value="mobility">
+                <span class="option-icon" aria-hidden="true">↗</span>
+                <span class="option-copy"><strong data-i18n="mobilityLabel">行动不便</strong><small data-i18n="mobilityHint">留意无障碍路线</small></span>
+                <span class="checkmark" aria-hidden="true"></span>
+              </label>
+              <label class="traveler-option">
+                <input type="checkbox" name="traveler" value="kids">
+                <span class="option-icon" aria-hidden="true">⌂</span>
+                <span class="option-copy"><strong data-i18n="kidsLabel">年幼孩子</strong><small data-i18n="kidsHint">轻松玩耍</small></span>
+                <span class="checkmark" aria-hidden="true"></span>
+              </label>
+              <label class="traveler-option">
+                <input type="checkbox" name="traveler" value="adults">
+                <span class="option-icon" aria-hidden="true">✳</span>
+                <span class="option-copy"><strong data-i18n="adultsLabel">纯成人同行</strong><small data-i18n="adultsHint">大人的专属乐趣</small></span>
+                <span class="checkmark" aria-hidden="true"></span>
+              </label>
+            </div>
+          </fieldset>
+          <div class="form-footer">
+            <p data-i18n="formFooter">按实际情况选择，每个家庭的旅行都不一样。</p>
+            <button class="submit-button" type="submit"><span data-i18n="submitButton">寻找适合我们的旅程</span><span aria-hidden="true">→</span></button>
+          </div>
+        </form>
+      </section>
+
+      <section id="results" class="results" aria-labelledby="results-title" aria-live="polite" hidden>
+        <div class="results-heading">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span><span data-i18n="resultsEyebrow">为你们一家精选灵感</span></p>
+            <h2 id="results-title" data-i18n="resultsTitle">一起去哪里玩？</h2>
+            <p id="results-summary" class="results-summary"></p>
+          </div>
+          <span class="results-note" data-i18n="resultsNote">全球城市旅行灵感仅供参考；最多显示9个城市，每个国家不超过3个。</span>
+        </div>
+        <div id="destination-list" class="destination-list"></div>
+        <p id="no-results" class="no-results" data-i18n="noResults" hidden>没有找到符合条件的推荐城市，请尝试调整月份、预算或同行人员。</p>
+        <p class="results-disclaimer" data-i18n="resultsDisclaimer">推荐由本网站的季节、预算和同行人员资料筛选，并非实时从平台抓取。可通过 Trip.com 与 Skyscanner 链接核对当前住宿和机票；Skyscanner 示例日期为所选月份中旬。预算筛选仍参考从新加坡出发的每人经济型估算（约4天3晚），不会按所选出发城市重新计算。预订前请核对实际价格、官方信息和无障碍需求。</p>
+      </section>
+
+      <section class="thoughtful-note">
+        <div class="note-icon" aria-hidden="true">✳</div>
+        <div>
+          <p class="eyebrow" data-i18n="noteEyebrow">来自我们家的小提醒</p>
+          <h2 data-i18n="noteTitle">让旅程舒服一点，每个人都能玩得开心。</h2>
+          <p data-i18n="noteText">如果同行家人使用轮椅、助行器或婴儿车，或需要较慢的步调，请提前确认路面、台阶、距离与交通接驳。细节因地点而异，预订前最好直接向场所确认。</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand footer-brand" href="#"><span class="brand-mark" aria-hidden="true">T</span><span data-i18n="brand">Tan 家庭旅行时光</span></a>
+      <p data-i18n="footerNote">用心记录，一家人一起出发的每段旅程。</p>
+      <span class="footer-year" data-i18n="footerTag">一家人的旅行计划</span>
+    </footer>
+  </body>
+</html>
