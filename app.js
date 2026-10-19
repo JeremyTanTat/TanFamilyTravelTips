@@ -685,9 +685,11 @@ const translations = {
     pollAddLabel: "没有想去的城市？输入其他城市",
     pollAddHint: "请从建议列表中选择正确的城市名称（支持中文或英文）。",
     pollAddButton: "加入并投票",
-    pollNote: "投票结果和每日次数保存在本设备的浏览器中，其他家人暂时看不到；清除浏览器数据后可能重新计数。",
-    pollThanks: "谢谢！已为{city}投上一票。",
-    pollAdded: "已将{city}加入列表，并为它投上一票。",
+    pollNote: "每日次数记录在本浏览器中。投票会打开一个预填好的 GitHub 页面，请点击 Submit new issue（需要免费 GitHub 账号），选票将在一两分钟内计入共享统计，刷新页面即可看到。",
+    pollSharedNote: "显示的是家庭 GitHub 文件中的共享统计。",
+    pollOffline: "暂时无法加载共享统计，票数可能显示为 0。",
+    pollThanks: "已为你打开{city}的 GitHub 投票页面，请在该页点击 Submit new issue 完成投票。",
+    pollAdded: "已为你打开添加{city}并投票的 GitHub 页面，请在该页点击 Submit new issue 完成投票。",
     pollAlreadyVoted: "今天已经投过{city}了，请选择其他城市，或明天再来。",
     pollInvalidCity: "无法识别这个城市，请从建议列表中选择正确的城市名称。",
     pollSaveFailed: "此浏览器无法保存投票。",
@@ -870,9 +872,11 @@ const translations = {
     pollAddLabel: "Not on the list? Type another city",
     pollAddHint: "Choose a valid city name from the suggestions (English or Chinese).",
     pollAddButton: "Add and vote",
-    pollNote: "Votes and the daily limit are saved in this device's browser, so other family members cannot see them yet, and clearing browser data may reset the count.",
-    pollThanks: "Thanks! Your vote for {city} was counted.",
-    pollAdded: "{city} was added to the list and your vote was counted.",
+    pollNote: "Your daily limit is tracked in this browser. Voting opens a pre-filled GitHub issue; press Submit new issue (a free GitHub account is needed) and the vote is added to the shared tally within a minute or two. Refresh to see it.",
+    pollSharedNote: "Showing the shared tally from the family's GitHub file.",
+    pollOffline: "The shared tally could not be loaded right now, so counts may show as 0.",
+    pollThanks: "A GitHub page opened for your {city} vote. Press Submit new issue there to finish.",
+    pollAdded: "A GitHub page opened to add {city} and cast your vote. Press Submit new issue there to finish.",
     pollAlreadyVoted: "You have already voted for {city} today. Try another city, or come back tomorrow.",
     pollInvalidCity: "We could not recognise that city. Please pick a valid city name from the suggestions.",
     pollSaveFailed: "This browser could not save your vote.",
@@ -1608,8 +1612,11 @@ const pollCatalog = [
 ];
 const pollDefaultCities = ["Seoul", "Tokyo", "Bangkok", "Beijing", "Shanghai", "Dubai", "Sydney", "Taipei", "Guangzhou", "Bali"];
 const pollMaxVotesPerDay = 3;
-const pollStorageKey = "tanFamilyCityPoll";
 const pollVoterKey = "tanFamilyCityPollVoter";
+const pollRepo = "JeremyTanTat/TanFamilyTravelTips";
+// Shared tally kept in the repository; only the admin (or the record-vote workflow) edits it.
+const pollResultsUrl = `https://raw.githubusercontent.com/${pollRepo}/main/poll-results.json`;
+let pollShared = { votes: {}, custom: [], loaded: false };
 const pollCatalogByKey = new Map(pollCatalog.map((entry) => [entry[0], entry]));
 
 const pollList = document.querySelector("#poll-list");
@@ -1648,16 +1655,33 @@ function readStorage(key, fallback) {
 }
 
 function getPollState() {
-  const saved = readStorage(pollStorageKey, {});
   const votes = {};
-  for (const [key, count] of Object.entries(saved.votes ?? {})) {
+  for (const [key, count] of Object.entries(pollShared.votes)) {
     if (pollCatalogByKey.has(key) && Number.isInteger(count) && count > 0) {
       votes[key] = count;
     }
   }
-  const custom = (Array.isArray(saved.custom) ? saved.custom : [])
+  const custom = pollShared.custom
     .filter((key) => pollCatalogByKey.has(key) && !pollDefaultCities.includes(key));
   return { votes, custom };
+}
+
+async function loadSharedPoll() {
+  try {
+    const response = await fetch(`${pollResultsUrl}?t=${Date.now()}`, { cache: "no-store" });
+    if (!response.ok) {
+      throw new Error(String(response.status));
+    }
+    const data = await response.json();
+    pollShared = {
+      votes: data.votes && typeof data.votes === "object" ? data.votes : {},
+      custom: Array.isArray(data.custom) ? data.custom.filter((name) => typeof name === "string") : [],
+      loaded: true
+    };
+  } catch {
+    pollShared.loaded = false;
+  }
+  renderPoll();
 }
 
 // The daily allowance resets automatically because it is keyed to today's local date.
@@ -1668,9 +1692,8 @@ function getPollVoter() {
   return { date: today, cities: cities.filter((key) => pollCatalogByKey.has(key)) };
 }
 
-function savePoll(state, voter) {
+function saveVoter(voter) {
   try {
-    localStorage.setItem(pollStorageKey, JSON.stringify(state));
     localStorage.setItem(pollVoterKey, JSON.stringify(voter));
     return true;
   } catch {
@@ -1683,8 +1706,9 @@ function setPollStatus(message) {
 }
 
 // Returns "ok", "limit", "duplicate" or "error".
-function castPollVote(key, isNewCity) {
-  const state = getPollState();
+// The visitor's daily allowance is tracked in this browser; the vote itself is submitted as a
+// pre-filled GitHub issue that the record-vote workflow adds to poll-results.json.
+function castPollVote(key) {
   const voter = getPollVoter();
   if (voter.cities.length >= pollMaxVotesPerDay) {
     return "limit";
@@ -1692,12 +1716,15 @@ function castPollVote(key, isNewCity) {
   if (voter.cities.includes(key)) {
     return "duplicate";
   }
-  if (isNewCity && !pollDefaultCities.includes(key) && !state.custom.includes(key)) {
-    state.custom.push(key);
-  }
-  state.votes[key] = (state.votes[key] ?? 0) + 1;
   voter.cities.push(key);
-  return savePoll(state, voter) ? "ok" : "error";
+  if (!saveVoter(voter)) {
+    return "error";
+  }
+  const issueUrl = new URL(`https://github.com/${pollRepo}/issues/new`);
+  issueUrl.searchParams.set("title", `Vote: ${key}`);
+  issueUrl.searchParams.set("body", "Press **Submit new issue** to cast this vote. Do not edit the title.");
+  window.open(issueUrl.href, "_blank", "noopener");
+  return "ok";
 }
 
 function renderPoll(focusKey) {
@@ -1717,6 +1744,7 @@ function renderPoll(focusKey) {
       .replace("{left}", String(pollMaxVotesPerDay - voter.cities.length))
       .replace("{max}", String(pollMaxVotesPerDay));
   pollList.setAttribute("aria-label", text.pollListLabel);
+  updatePollSyncNote();
 
   pollList.replaceChildren(...ranked.map(({ key, count }) => {
     const name = getPollCityName(key);
@@ -1743,7 +1771,7 @@ function renderPoll(focusKey) {
     button.setAttribute("aria-label", text.pollVoteFor.replace("{city}", name));
     button.disabled = voted || limitReached;
     button.addEventListener("click", () => {
-      const result = castPollVote(key, false);
+      const result = castPollVote(key);
       setPollStatus(getPollResultMessage(result, key, false));
       renderPoll(key);
     });
@@ -1780,6 +1808,13 @@ function getPollResultMessage(result, key, isNewCity) {
   return (isNewCity ? text.pollAdded : text.pollThanks).replace("{city}", city);
 }
 
+function updatePollSyncNote() {
+  const note = document.querySelector("#poll-sync-note");
+  if (note) {
+    note.textContent = translations[currentLanguage][pollShared.loaded ? "pollSharedNote" : "pollOffline"];
+  }
+}
+
 pollForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const key = findPollCity(pollCityInput.value);
@@ -1789,7 +1824,7 @@ pollForm.addEventListener("submit", (event) => {
     return;
   }
   const alreadyListed = pollDefaultCities.includes(key) || getPollState().custom.includes(key);
-  const result = castPollVote(key, true);
+  const result = castPollVote(key);
   setPollStatus(getPollResultMessage(result, key, !alreadyListed));
   if (result === "ok") {
     pollCityInput.value = "";
@@ -1885,3 +1920,4 @@ discussionForm.addEventListener("submit", (event) => {
 });
 
 applyLanguage("zh");
+loadSharedPoll();
