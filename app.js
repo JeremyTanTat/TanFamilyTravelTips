@@ -675,24 +675,18 @@ const translations = {
     googleSearchLink: "在 Google 搜索{city}套餐价格",
     pollEyebrow: "全家一起投票",
     pollTitle: "下一次，你最想去哪座城市？",
-    pollIntro: "每人每天最多投3票，同一城市每天只能投一次。",
-    pollRemaining: "今天还可以投 {left} 票（每天最多 {max} 票）。",
-    pollLimitReached: "今天的 {max} 票已经用完，请明天再来投票。",
+    pollIntro: "每人只能投一票，选出你最想去的城市。",
+    pollYourVote: "你已投给{city}，谢谢参与！",
     pollVotes: "票数：{n}",
     pollVoteButton: "投票",
     pollVoteFor: "投给{city}",
     pollVoted: "已投票",
-    pollAddLabel: "没有想去的城市？输入其他城市",
-    pollAddHint: "请从建议列表中选择正确的城市名称（支持中文或英文）。",
-    pollAddButton: "加入并投票",
-    pollNote: "所有人看到的都是同一份实时结果。每位访客每天最多投3票（同一城市一票），次数每天（新加坡时间）重置，结果会自动刷新。",
+    pollNote: "每位访客只有一次投票机会，票数会自动记录并定期刷新。",
     pollSharedNote: "显示的是最新的共享投票结果。",
     pollOffline: "暂时无法加载共享投票结果，请稍后再试。",
-    pollNotConfigured: "共享投票计数器尚未开通，投票暂时停用。",
+    pollNotConfigured: "共享计数器尚未开通：目前的投票只记录在本设备的浏览器中，其他访客看不到。",
     pollThanks: "谢谢！已为{city}投上一票。",
-    pollAdded: "已将{city}加入列表，并为它投上一票。",
-    pollAlreadyVoted: "今天已经投过{city}了，请选择其他城市，或明天再来。",
-    pollInvalidCity: "无法识别这个城市，请从建议列表中选择正确的城市名称。",
+    pollAlreadyVoted: "你已经投过票了（{city}）。",
     pollSaveFailed: "此浏览器无法保存投票。",
     pollListLabel: "城市投票结果",
     discussionEyebrow: "一家人的留言板",
@@ -863,24 +857,18 @@ const translations = {
     googleSearchLink: "Search {city} package prices on Google",
     pollEyebrow: "VOTE TOGETHER",
     pollTitle: "Which city would you like to visit next?",
-    pollIntro: "Each visitor can cast up to 3 votes a day, and only one vote per city per day.",
-    pollRemaining: "You have {left} of {max} votes left today.",
-    pollLimitReached: "You have used all {max} votes for today. Please come back tomorrow to vote again.",
+    pollIntro: "Each visitor gets one vote for the city they would most like to visit.",
+    pollYourVote: "You voted for {city}. Thank you!",
     pollVotes: "Votes: {n}",
     pollVoteButton: "Vote",
     pollVoteFor: "Vote for {city}",
     pollVoted: "Voted",
-    pollAddLabel: "Not on the list? Type another city",
-    pollAddHint: "Choose a valid city name from the suggestions (English or Chinese).",
-    pollAddButton: "Add and vote",
-    pollNote: "Everyone sees the same live results. Each visitor can cast up to 3 votes per day (one per city); the limit resets daily (Singapore time). Results refresh automatically.",
+    pollNote: "Each visitor has one vote. Votes are counted automatically and refresh regularly.",
     pollSharedNote: "Showing the latest shared results.",
     pollOffline: "The shared results could not be loaded right now. Please try again shortly.",
-    pollNotConfigured: "The shared vote counter is not switched on yet, so voting is paused.",
+    pollNotConfigured: "The shared counter is not switched on yet: votes are recorded in this device's browser only, so other visitors cannot see them.",
     pollThanks: "Thanks! Your vote for {city} was counted.",
-    pollAdded: "{city} was added to the list and your vote was counted.",
-    pollAlreadyVoted: "You have already voted for {city} today. Try another city, or come back tomorrow.",
-    pollInvalidCity: "We could not recognise that city. Please pick a valid city name from the suggestions.",
+    pollAlreadyVoted: "You have already voted ({city}).",
     pollSaveFailed: "This browser could not save your vote.",
     pollListLabel: "City vote results",
     discussionEyebrow: "OUR FAMILY NOTICE BOARD",
@@ -1581,86 +1569,48 @@ languageToggle.addEventListener("click", () => {
   applyLanguage(currentLanguage === "zh" ? "en" : "zh");
 });
 
-// Cities accepted by the poll: [English name, Simplified Chinese name, optional aliases]. Free-text entries must match one of these.
-const pollCatalog = [
+// The ten poll cities: [English name, Simplified Chinese name].
+const pollCities = [
   ["Seoul", "首尔"], ["Tokyo", "东京"], ["Bangkok", "曼谷"], ["Beijing", "北京"], ["Shanghai", "上海"],
-  ["Dubai", "迪拜"], ["Sydney", "悉尼"], ["Taipei", "台北"], ["Guangzhou", "广州"], ["Bali", "巴厘岛", ["Denpasar"]],
-  ["Singapore", "新加坡"], ["Kuala Lumpur", "吉隆坡"], ["Penang", "槟城", ["George Town"]], ["Kota Kinabalu", "亚庇"],
-  ["Kuching", "古晋"], ["Johor Bahru", "新山"], ["Malacca", "马六甲", ["Melaka"]], ["Langkawi", "兰卡威"],
-  ["Jakarta", "雅加达"], ["Yogyakarta", "日惹"], ["Manila", "马尼拉"], ["Cebu", "宿务"], ["Hanoi", "河内"],
-  ["Ho Chi Minh City", "胡志明市", ["Saigon"]], ["Da Nang", "岘港"], ["Siem Reap", "暹粒"], ["Phnom Penh", "金边"],
-  ["Vientiane", "万象"], ["Luang Prabang", "琅勃拉邦"], ["Yangon", "仰光"], ["Phuket", "普吉岛"],
-  ["Chiang Mai", "清迈"], ["Pattaya", "芭堤雅"], ["Krabi", "甲米"], ["Hong Kong", "香港"], ["Macau", "澳门", ["Macao"]],
-  ["Shenzhen", "深圳"], ["Chengdu", "成都"], ["Chongqing", "重庆"], ["Hangzhou", "杭州"], ["Suzhou", "苏州"],
-  ["Xi'an", "西安", ["Xian"]], ["Nanjing", "南京"], ["Xiamen", "厦门"], ["Guilin", "桂林"], ["Kunming", "昆明"],
-  ["Lijiang", "丽江"], ["Harbin", "哈尔滨"], ["Qingdao", "青岛"], ["Kaohsiung", "高雄"], ["Taichung", "台中"],
-  ["Hualien", "花莲"], ["Osaka", "大阪"], ["Kyoto", "京都"], ["Nagoya", "名古屋"], ["Sapporo", "札幌"],
-  ["Fukuoka", "福冈"], ["Hiroshima", "广岛"], ["Okinawa", "冲绳"], ["Nara", "奈良"], ["Busan", "釜山"],
-  ["Jeju", "济州岛"], ["Ulaanbaatar", "乌兰巴托"], ["Kathmandu", "加德满都"], ["Colombo", "科伦坡"], ["Male", "马累"],
-  ["Delhi", "德里", ["New Delhi"]], ["Mumbai", "孟买"], ["Jaipur", "斋浦尔"], ["Agra", "阿格拉"],
-  ["Istanbul", "伊斯坦布尔"], ["Abu Dhabi", "阿布扎比"], ["Doha", "多哈"], ["Cairo", "开罗"],
-  ["Marrakech", "马拉喀什", ["Marrakesh"]], ["Cape Town", "开普敦"], ["Nairobi", "内罗毕"], ["Paris", "巴黎"],
-  ["London", "伦敦"], ["Rome", "罗马"], ["Venice", "威尼斯"], ["Florence", "佛罗伦萨"], ["Milan", "米兰"],
-  ["Barcelona", "巴塞罗那"], ["Madrid", "马德里"], ["Lisbon", "里斯本"], ["Amsterdam", "阿姆斯特丹"],
-  ["Berlin", "柏林"], ["Munich", "慕尼黑"], ["Vienna", "维也纳"], ["Prague", "布拉格"], ["Budapest", "布达佩斯"],
-  ["Zurich", "苏黎世"], ["Geneva", "日内瓦"], ["Athens", "雅典"], ["Santorini", "圣托里尼"], ["Edinburgh", "爱丁堡"],
-  ["Dublin", "都柏林"], ["Copenhagen", "哥本哈根"], ["Stockholm", "斯德哥尔摩"], ["Oslo", "奥斯陆"],
-  ["Helsinki", "赫尔辛基"], ["Reykjavik", "雷克雅未克"], ["Moscow", "莫斯科"], ["Melbourne", "墨尔本"],
-  ["Brisbane", "布里斯班"], ["Perth", "珀斯"], ["Gold Coast", "黄金海岸"], ["Auckland", "奥克兰"],
-  ["Queenstown", "皇后镇"], ["Vancouver", "温哥华"], ["Toronto", "多伦多"], ["New York", "纽约", ["New York City", "NYC"]],
-  ["Los Angeles", "洛杉矶"], ["San Francisco", "旧金山"], ["Las Vegas", "拉斯维加斯"], ["Honolulu", "檀香山", ["Hawaii"]],
-  ["Seattle", "西雅图"], ["Chicago", "芝加哥"], ["Mexico City", "墨西哥城"], ["Cancun", "坎昆"],
-  ["Rio de Janeiro", "里约热内卢"], ["Buenos Aires", "布宜诺斯艾利斯"], ["Lima", "利马"]
+  ["Dubai", "迪拜"], ["Sydney", "悉尼"], ["Taipei", "台北"], ["Guangzhou", "广州"], ["Bali", "巴厘岛"]
 ];
-const pollDefaultCities = ["Seoul", "Tokyo", "Bangkok", "Beijing", "Shanghai", "Dubai", "Sydney", "Taipei", "Guangzhou", "Bali"];
-const pollMaxVotesPerDay = 3;
+const pollDefaultCities = pollCities.map(([name]) => name);
 const pollVoterKey = "tanFamilyCityPollVoterId";
-// Public URL of the deployed Cloudflare Worker (`poll-worker.js`; setup steps in README.md). While empty, the poll shows a "not switched on" notice.
+const pollLocalKey = "tanFamilyCityPollLocal";
+// Public URL of the deployed Cloudflare Worker (`poll-worker.js`; setup steps in README.md). While empty, votes are counted in this browser only.
 const pollApiUrl = "";
 const pollRefreshMs = 30000;
-let pollShared = { votes: {}, custom: [], voted: [], loaded: false };
+let pollShared = { votes: {}, voted: "", loaded: false };
 let pollBusy = false;
-const pollCatalogByKey = new Map(pollCatalog.map((entry) => [entry[0], entry]));
+const pollCatalogByKey = new Map(pollCities.map((entry) => [entry[0], entry]));
 
 const pollList = document.querySelector("#poll-list");
-const pollForm = document.querySelector("#poll-form");
-const pollCityInput = document.querySelector("#poll-city");
-const pollCityOptions = document.querySelector("#poll-city-options");
 const pollRemaining = document.querySelector("#poll-remaining");
 const pollStatus = document.querySelector("#poll-status");
-
-function normalizeCityText(value) {
-  return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
-}
-
-function findPollCity(value) {
-  const wanted = normalizeCityText(value);
-  if (!wanted) {
-    return null;
-  }
-  const match = pollCatalog.find(([en, zh, aliases = []]) =>
-    [en, zh, ...aliases].some((name) => normalizeCityText(name) === wanted)
-  );
-  return match ? match[0] : null;
-}
 
 function getPollCityName(key) {
   return pollCatalogByKey.get(key)[currentLanguage === "zh" ? 1 : 0];
 }
 
-function getPollState() {
+function getPollVotes() {
   const votes = {};
-  for (const [key, count] of Object.entries(pollShared.votes)) {
-    if (pollCatalogByKey.has(key) && Number.isInteger(count) && count > 0) {
-      votes[key] = count;
-    }
+  for (const key of pollDefaultCities) {
+    const count = pollShared.votes[key];
+    votes[key] = Number.isInteger(count) && count > 0 ? count : 0;
   }
-  const custom = pollShared.custom
-    .filter((key) => pollCatalogByKey.has(key) && !pollDefaultCities.includes(key));
-  return { votes, custom };
+  return votes;
 }
 
-// Anonymous per-browser id; the server counts each id's votes per day (Singapore time), so it is not personal data.
+function loadLocalPoll() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(pollLocalKey) ?? "{}");
+    return { votes: saved.votes, voted: saved.voted };
+  } catch {
+    return {};
+  }
+}
+
+// Anonymous per-browser id; the Worker allows one vote per id, so it is not personal data.
 function getPollVoterId() {
   try {
     let id = localStorage.getItem(pollVoterKey);
@@ -1693,15 +1643,14 @@ async function pollRequest(path, body) {
 function applyPollData(data) {
   pollShared = {
     votes: data.votes && typeof data.votes === "object" ? data.votes : {},
-    custom: Array.isArray(data.custom) ? data.custom.filter((name) => typeof name === "string") : [],
-    voted: Array.isArray(data.voted) ? data.voted.filter((name) => typeof name === "string") : [],
+    voted: typeof data.voted === "string" && pollCatalogByKey.has(data.voted) ? data.voted : "",
     loaded: true
   };
 }
 
 async function loadSharedPoll() {
   if (!pollApiUrl) {
-    pollShared.loaded = false;
+    applyPollData(loadLocalPoll());
     renderPoll();
     return;
   }
@@ -1719,21 +1668,35 @@ function setPollStatus(message) {
   pollStatus.textContent = message;
 }
 
-// Returns "ok", "limit", "duplicate", "invalid" or "error"; the server enforces 3 votes per voter per day.
+// Returns "ok", "duplicate" or "error"; each visitor gets one vote.
 async function castPollVote(key) {
-  if (!pollApiUrl || !pollShared.loaded) {
+  if (!pollShared.loaded) {
     return "error";
+  }
+  if (pollShared.voted) {
+    return "duplicate";
+  }
+  if (!pollApiUrl) {
+    const votes = getPollVotes();
+    votes[key] += 1;
+    try {
+      localStorage.setItem(pollLocalKey, JSON.stringify({ votes, voted: key }));
+    } catch {
+      return "error";
+    }
+    applyPollData({ votes, voted: key });
+    return "ok";
   }
   pollBusy = true;
   try {
     applyPollData(await pollRequest("/vote", { city: key }));
     return "ok";
   } catch (error) {
-    if (error.code === "limit" || error.code === "duplicate") {
+    if (error.code === "duplicate") {
       await loadSharedPoll();
-      return error.code;
+      return "duplicate";
     }
-    return error.code === "invalid_city" || error.code === "too_many_cities" ? "invalid" : "error";
+    return "error";
   } finally {
     pollBusy = false;
   }
@@ -1741,22 +1704,16 @@ async function castPollVote(key) {
 
 function renderPoll(focusKey) {
   const text = translations[currentLanguage];
-  const state = getPollState();
-  const voter = { cities: pollShared.voted };
-  const keys = [...pollDefaultCities, ...state.custom];
-  const ranked = keys
-    .map((key, index) => ({ key, index, count: state.votes[key] ?? 0 }))
+  const votes = getPollVotes();
+  const ranked = pollDefaultCities
+    .map((key, index) => ({ key, index, count: votes[key] }))
     .sort((a, b) => b.count - a.count || a.index - b.index);
   const topCount = Math.max(1, ...ranked.map((item) => item.count));
-  const limitReached = voter.cities.length >= pollMaxVotesPerDay;
+  const hasVoted = Boolean(pollShared.voted);
 
-  pollRemaining.textContent = !pollShared.loaded
-    ? ""
-    : limitReached
-    ? text.pollLimitReached.replace("{max}", String(pollMaxVotesPerDay))
-    : text.pollRemaining
-      .replace("{left}", String(pollMaxVotesPerDay - voter.cities.length))
-      .replace("{max}", String(pollMaxVotesPerDay));
+  pollRemaining.textContent = pollShared.loaded && hasVoted
+    ? text.pollYourVote.replace("{city}", getPollCityName(pollShared.voted))
+    : "";
   pollList.setAttribute("aria-label", text.pollListLabel);
   updatePollSyncNote();
 
@@ -1780,23 +1737,16 @@ function renderPoll(focusKey) {
     button.type = "button";
     button.className = "poll-vote";
     button.dataset.city = key;
-    const voted = voter.cities.includes(key);
-    button.textContent = voted ? text.pollVoted : text.pollVoteButton;
+    button.textContent = pollShared.voted === key ? text.pollVoted : text.pollVoteButton;
     button.setAttribute("aria-label", text.pollVoteFor.replace("{city}", name));
-    button.disabled = voted || limitReached || !pollShared.loaded;
+    button.disabled = hasVoted || !pollShared.loaded;
     button.addEventListener("click", async () => {
       const result = await castPollVote(key);
-      setPollStatus(getPollResultMessage(result, key, false));
+      setPollStatus(getPollResultMessage(result, key));
       renderPoll(key);
     });
     item.append(label, total, bar, button);
     return item;
-  }));
-
-  pollCityOptions.replaceChildren(...pollCatalog.map((entry) => {
-    const option = document.createElement("option");
-    option.value = entry[currentLanguage === "zh" ? 1 : 0];
-    return option;
   }));
 
   if (focusKey) {
@@ -1807,22 +1757,15 @@ function renderPoll(focusKey) {
   }
 }
 
-function getPollResultMessage(result, key, isNewCity) {
+function getPollResultMessage(result, key) {
   const text = translations[currentLanguage];
-  const city = getPollCityName(key);
-  if (result === "limit") {
-    return text.pollLimitReached.replace("{max}", String(pollMaxVotesPerDay));
-  }
   if (result === "duplicate") {
-    return text.pollAlreadyVoted.replace("{city}", city);
+    return text.pollAlreadyVoted.replace("{city}", getPollCityName(pollShared.voted || key));
   }
   if (result === "error") {
     return text.pollSaveFailed;
   }
-  if (result === "invalid") {
-    return text.pollInvalidCity;
-  }
-  return (isNewCity ? text.pollAdded : text.pollThanks).replace("{city}", city);
+  return text.pollThanks.replace("{city}", getPollCityName(key));
 }
 
 function updatePollSyncNote() {
@@ -1832,23 +1775,6 @@ function updatePollSyncNote() {
     note.textContent = translations[currentLanguage][key];
   }
 }
-
-pollForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  const key = findPollCity(pollCityInput.value);
-  if (!key) {
-    setPollStatus(translations[currentLanguage].pollInvalidCity);
-    pollCityInput.focus();
-    return;
-  }
-  const alreadyListed = pollDefaultCities.includes(key) || getPollState().custom.includes(key);
-  const result = await castPollVote(key);
-  setPollStatus(getPollResultMessage(result, key, !alreadyListed));
-  if (result === "ok") {
-    pollCityInput.value = "";
-  }
-  renderPoll();
-});
 
 const discussionForm = document.querySelector("#discussion-form");
 const discussionList = document.querySelector("#discussion-list");

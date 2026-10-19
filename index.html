@@ -319,21 +319,12 @@
         <div class="poll-heading">
           <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span><span data-i18n="pollEyebrow">全家一起投票</span></p>
           <h2 id="poll-title" data-i18n="pollTitle">下一次，你最想去哪座城市？</h2>
-          <p class="poll-intro" data-i18n="pollIntro">每人每天最多投3票，同一城市每天只能投一次。</p>
+          <p class="poll-intro" data-i18n="pollIntro">每人只能投一票，选出你最想去的城市。</p>
         </div>
         <p id="poll-remaining" class="poll-remaining" role="status" aria-live="polite"></p>
         <ul id="poll-list" class="poll-list"></ul>
-        <form id="poll-form" class="poll-form" novalidate>
-          <label class="field-group" for="poll-city">
-            <span class="field-label" data-i18n="pollAddLabel">没有想去的城市？输入其他城市</span>
-            <input id="poll-city" name="city" type="text" list="poll-city-options" maxlength="60" autocomplete="off" aria-describedby="poll-city-hint" required>
-            <datalist id="poll-city-options"></datalist>
-            <small class="field-hint" id="poll-city-hint" data-i18n="pollAddHint">请从建议列表中选择正确的城市名称（支持中文或英文）。</small>
-          </label>
-          <button class="submit-button" type="submit"><span data-i18n="pollAddButton">加入并投票</span><span aria-hidden="true">→</span></button>
-        </form>
         <p id="poll-status" class="poll-status" role="status" aria-live="polite"></p>
-        <p class="discussion-note" data-i18n="pollNote">所有人看到的都是同一份实时结果。每位访客每天最多投3票（同一城市一票），次数每天（新加坡时间）重置，结果会自动刷新。</p>
+        <p class="discussion-note" data-i18n="pollNote">每位访客只有一次投票机会，票数会自动记录并定期刷新。</p>
         <p id="poll-sync-note" class="discussion-note"></p>
       </section>
 

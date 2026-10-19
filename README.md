@@ -8,7 +8,7 @@ Package-based estimates: when a city has a recorded sample in `tripPackageSample
 
 Recommendation matching runs locally from the destination list in `app.js`; it does not fetch or rank live inventory. Each city card links to the [Trip.com Flight + Hotel packages](https://sg.trip.com/packages/?sourceFrom=IBUBundle_home&locale=en-SG&curr=SGD) results page pre-filled with example dates, departure and arrival codes, and headcount as adults, plus a Google search link for cross-checking package prices. Trip.com may ignore the pre-filled parameters. Example dates usually start on the 15th of the selected month, or about a week from today if the 15th has passed, and use the recommended trip length. Change passenger ages and dates on the provider site. Availability, prices, route codes, and dates should be checked directly with the providers.
 
-The **city vote poll** above the planner lists ten default cities (Seoul, Tokyo, Bangkok, Beijing, Shanghai, Dubai, Sydney, Taipei, Guangzhou, Bali). Visitors can add another city, but only names that match the built-in list of known cities (English or Chinese, with suggestions) are accepted; an added city joins the list and counts as the visitor's vote. Each visitor gets 3 votes per day, one per city, and is asked to return the next day once they are used. Votes are shared by every visitor through a small free Cloudflare Worker (`poll-worker.js`, configured by `poll-wrangler.toml`) that stores the tally in Workers KV; the page reads `GET /results` every 30 seconds and sends votes with `POST /vote`. No secret is in the site code. The server allows 3 votes per visitor per day (Singapore time, one per city) using an anonymous random id kept in the browser, plus a coarse 30-votes-per-IP daily cap. The poll stays paused until `pollApiUrl` in `app.js` is set to the Worker's URL.
+The **city vote poll** above the planner lists ten fixed cities (Seoul, Tokyo, Bangkok, Beijing, Shanghai, Dubai, Sydney, Taipei, Guangzhou, Bali). Each visitor gets one vote, and the count for each city is recorded and displayed. Until `pollApiUrl` in `app.js` is set to a deployed Worker URL, votes are counted in the visitor's own browser only (`localStorage`) and other visitors do not see them; the page says so. Once the free Cloudflare Worker (`poll-worker.js`, configured by `poll-wrangler.toml`) is deployed and its URL is set, all visitors share one tally stored in Workers KV: the page reads `GET /results` every 30 seconds and sends votes with `POST /vote`. One vote per visitor is enforced using an anonymous random id kept in the browser, so clearing browser data lets someone vote again. No secret is in the site code.
 
 **One-time Worker setup** (needs a free Cloudflare account; run in a terminal in this folder):
 ```powershell
@@ -17,13 +17,13 @@ npx wrangler kv namespace create POLL -c poll-wrangler.toml   # copy the printed
 npx wrangler secret put ADMIN_TOKEN -c poll-wrangler.toml     # choose a long private password
 npx wrangler deploy -c poll-wrangler.toml                     # prints https://tan-family-poll.<account>.workers.dev
 ```
-Then set `const pollApiUrl = "<that URL>";` in `app.js`, commit and push. If the site address changes, update `ALLOWED_ORIGINS` in `poll-wrangler.toml` and redeploy.
+Then set `const pollApiUrl = "<that URL>";` in `app.js`, commit and push.
 
-**Reset (admin):** zeroes all counts, clears added cities and gives everyone a fresh daily allowance:
+**Reset (admin):** zeroes all counts and lets every visitor vote again:
 ```powershell
 curl.exe -X POST https://tan-family-poll.<account>.workers.dev/admin/reset -H "Authorization: Bearer <ADMIN_TOKEN>"
 ```
-KV is not transactional, so two votes in the same instant may overwrite each other. Added cities must pass the website's built-in city list to be displayed; the Worker only checks the name format. The old GitHub-issue method is retired: delete `.github/workflows/record-vote.yml` and `poll-results.json`.
+KV is not transactional, so two votes in the same instant may overwrite each other. The old GitHub-issue method is retired: delete `.github/workflows/record-vote.yml` and `poll-results.json`.
 
 The **family notice board** lets relatives post precious moments and website suggestions. Comments are saved in each visitor's own browser (`localStorage`), so they are not shared between devices; a shared board would need a hosted service such as GitHub Discussions (giscus).
 
