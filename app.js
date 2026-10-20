@@ -680,13 +680,20 @@ const translations = {
     cityExplorerSearchLabel: "查找其他城市",
     cityExplorerSearchPlaceholder: "输入城市名称，例如：罗马",
     cityExplorerSearchButton: "查找",
-    cityExplorerSearchHint: "可查找本指南和旅行规划器中的城市，并尝试匹配相近拼写；这不是全球城市数据库。",
+    cityExplorerSearchHint: "输入时会从100个热门城市与目的地建议中筛选；该清单是精选建议，不是官方实时排名。提交后，其他目的地的信息会尝试从 Wikivoyage 获取，需要联网。",
     cityExplorerSearchFound: "已匹配到{city}。",
     cityExplorerSearchSuggested: "没有完全匹配，已为你显示最接近的城市：{city}。请确认是否正确。",
     cityExplorerSearchNoMatch: "没有找到接近的城市。请检查拼写，或从建议列表中选择。",
+    cityExplorerSearchLoading: "正在查找{city}的旅行资料…",
+    cityExplorerGuideError: "暂时无法查找{city}的旅行资料。请检查网络后重试。",
+    cityExplorerSectionUnavailable: "当前旅行指南没有提供这部分信息；出行前请查阅当地可靠来源。",
+    cityExplorerEnglishFallback: "未找到简体中文旅行指南，以下资料以英文显示。",
+    cityExplorerSourceNote: "动态旅行指南摘录来自 Wikivoyage，并非实时天气或官方建议：",
+    cityExplorerLicenseLink: "CC BY-SA 4.0",
+    cityExplorerSourceLink: "查看{city}的 Wikivoyage 指南",
     cityWeatherLabel: "季节与天气",
     cityCultureLabel: "文化与习俗",
-    cityPeopleLabel: "人文与日常",
+    cityPeopleLabel: "日常生活与交通",
     cityFoodLabel: "当地风味",
     cityAttractionsLabel: "景点灵感",
     cityExplorerNote: "季节信息为概略介绍，不是实时天气预报；出行前请查看当地天气并确认景点开放信息。图片用于旅行灵感，可能不完全对应所列景点。",
@@ -865,13 +872,20 @@ const translations = {
     cityExplorerSearchLabel: "Look up another city",
     cityExplorerSearchPlaceholder: "Enter a city, for example: Rome",
     cityExplorerSearchButton: "Find city",
-    cityExplorerSearchHint: "Looks up cities in this guide and trip planner, including close spelling matches; it is not a worldwide city database.",
+    cityExplorerSearchHint: "Typing filters 100 popular city and destination suggestions. This curated list is not an official live ranking. On submission, other destinations are looked up on Wikivoyage and require internet access.",
     cityExplorerSearchFound: "Matched {city}.",
     cityExplorerSearchSuggested: "No exact match; showing the closest city, {city}. Please check that this is the one you meant.",
     cityExplorerSearchNoMatch: "No close city match found. Check the spelling or choose a suggested city.",
+    cityExplorerSearchLoading: "Looking up travel-guide information for {city}…",
+    cityExplorerGuideError: "Could not load travel-guide information for {city}. Check your connection and try again.",
+    cityExplorerSectionUnavailable: "This travel guide does not provide this information; check a reliable local source before travelling.",
+    cityExplorerEnglishFallback: "A Simplified Chinese travel guide was not found; the information below is shown in English.",
+    cityExplorerSourceNote: "Travel-guide excerpts are from Wikivoyage; they are not live weather or official advice:",
+    cityExplorerLicenseLink: "CC BY-SA 4.0",
+    cityExplorerSourceLink: "View the Wikivoyage guide for {city}",
     cityWeatherLabel: "Seasons and weather",
     cityCultureLabel: "Culture and customs",
-    cityPeopleLabel: "People and everyday life",
+    cityPeopleLabel: "Daily life and getting around",
     cityFoodLabel: "Local food",
     cityAttractionsLabel: "Attraction ideas",
     cityExplorerNote: "Seasonal descriptions are broad guidance, not a live forecast. Check local weather and attraction opening information before travelling. Photos are for inspiration and may not depict the exact attraction named.",
@@ -1279,12 +1293,15 @@ const attractionPhotoCache = new Map();
 // Looks up a current Wikipedia lead image (public, keyless endpoint) for each candidate title; resolves to null so the bundled photos are used instead.
 function fetchAttractionPhoto(attraction) {
   const titles = attraction.wikiTitles ?? [attraction.name.en];
-  const cacheKey = titles.join("|");
+  const wikiLanguage = attraction.wikiLanguage ?? "en";
+  const cacheKey = `${wikiLanguage}|${titles.join("|")}`;
   if (!attractionPhotoCache.has(cacheKey)) {
     const lookup = async () => {
       for (const title of titles) {
         try {
-          const response = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`);
+          const response = await fetch(
+            `https://${wikiLanguage}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`
+          );
           const data = response.ok ? await response.json() : null;
           if (data && data.type === "standard" && data.thumbnail) {
             return data.thumbnail.source;
@@ -1826,6 +1843,92 @@ const cityExplorerNames = {
   RioDeJaneiro: { zh: "里约热内卢", en: "Rio de Janeiro" }
 };
 
+const popularCitySuggestions = [
+  ...Object.entries(cityExplorerNames).map(([cityKey, names]) => ({ cityKey, ...names })),
+  { en: "Hong Kong", zh: "香港" },
+  { en: "Macau", zh: "澳门" },
+  { en: "Chengdu", zh: "成都" },
+  { en: "Shenzhen", zh: "深圳" },
+  { en: "Xi'an", zh: "西安" },
+  { en: "Hangzhou", zh: "杭州" },
+  { en: "Nanjing", zh: "南京" },
+  { en: "Chongqing", zh: "重庆" },
+  { en: "Kyoto", zh: "京都" },
+  { en: "Yokohama", zh: "横滨" },
+  { en: "Fukuoka", zh: "福冈" },
+  { en: "Hiroshima", zh: "广岛" },
+  { en: "Busan", zh: "釜山" },
+  { en: "Jeju City", zh: "济州市" },
+  { en: "Chiang Mai", zh: "清迈" },
+  { en: "Phuket", zh: "普吉" },
+  { en: "Hanoi", zh: "河内" },
+  { en: "Ho Chi Minh City", zh: "胡志明市" },
+  { en: "Da Nang", zh: "岘港" },
+  { en: "Hoi An", zh: "会安" },
+  { en: "Kuala Lumpur", zh: "吉隆坡" },
+  { en: "Penang", zh: "槟城" },
+  { en: "Jakarta", zh: "雅加达" },
+  { en: "Manila", zh: "马尼拉" },
+  { en: "Cebu City", zh: "宿务市" },
+  { en: "Phnom Penh", zh: "金边" },
+  { en: "Siem Reap", zh: "暹粒" },
+  { en: "Delhi", zh: "德里" },
+  { en: "Mumbai", zh: "孟买" },
+  { en: "Jaipur", zh: "斋浦尔" },
+  { en: "Agra", zh: "阿格拉" },
+  { en: "Kathmandu", zh: "加德满都" },
+  { en: "Colombo", zh: "科伦坡" },
+  { en: "Malé", zh: "马累" },
+  { en: "Abu Dhabi", zh: "阿布扎比" },
+  { en: "Doha", zh: "多哈" },
+  { en: "Istanbul", zh: "伊斯坦布尔" },
+  { en: "Antalya", zh: "安塔利亚" },
+  { en: "Jerusalem", zh: "耶路撒冷" },
+  { en: "São Paulo", zh: "圣保罗" },
+  { en: "Barcelona", zh: "巴塞罗那" },
+  { en: "Madrid", zh: "马德里" },
+  { en: "Amsterdam", zh: "阿姆斯特丹" },
+  { en: "Berlin", zh: "柏林" },
+  { en: "Vienna", zh: "维也纳" },
+  { en: "Prague", zh: "布拉格" },
+  { en: "Budapest", zh: "布达佩斯" },
+  { en: "Athens", zh: "雅典" },
+  { en: "Milan", zh: "米兰" },
+  { en: "Venice", zh: "威尼斯" },
+  { en: "Florence", zh: "佛罗伦萨" },
+  { en: "Lisbon", zh: "里斯本" },
+  { en: "Edinburgh", zh: "爱丁堡" },
+  { en: "Dublin", zh: "都柏林" },
+  { en: "Munich", zh: "慕尼黑" },
+  { en: "Brussels", zh: "布鲁塞尔" },
+  { en: "Copenhagen", zh: "哥本哈根" },
+  { en: "Stockholm", zh: "斯德哥尔摩" },
+  { en: "Zurich", zh: "苏黎世" },
+  { en: "Kraków", zh: "克拉科夫" },
+  { en: "New York", zh: "纽约" },
+  { en: "Los Angeles", zh: "洛杉矶" },
+  { en: "San Francisco", zh: "旧金山" },
+  { en: "Las Vegas", zh: "拉斯维加斯" },
+  { en: "Miami", zh: "迈阿密" },
+  { en: "Orlando", zh: "奥兰多" },
+  { en: "Chicago", zh: "芝加哥" },
+  { en: "Toronto", zh: "多伦多" },
+  { en: "Montreal", zh: "蒙特利尔" },
+  { en: "Mexico City", zh: "墨西哥城" },
+  { en: "Cancún", zh: "坎昆" },
+  { en: "Buenos Aires", zh: "布宜诺斯艾利斯" },
+  { en: "Cairo", zh: "开罗" },
+  { en: "Marrakech", zh: "马拉喀什" },
+  { en: "Casablanca", zh: "卡萨布兰卡" },
+  { en: "Johannesburg", zh: "约翰内斯堡" },
+  { en: "Nairobi", zh: "内罗毕" },
+  { en: "Zanzibar City", zh: "桑给巴尔市" },
+  { en: "Melbourne", zh: "墨尔本" },
+  { en: "Auckland", zh: "奥克兰" },
+  { en: "Queenstown", zh: "皇后镇" },
+  { en: "Honolulu", zh: "檀香山" }
+];
+
 const cityExplorerContent = {
   Seoul: {
     weather: { zh: "春秋通常较温和；夏季炎热潮湿并有雨季，冬季寒冷干燥。", en: "Spring and autumn are often mild; summers are hot, humid, and rainy, while winters are cold and dry." },
@@ -2025,7 +2128,6 @@ const cityExplorerExtraAttractions = {
   ]
 };
 
-const cityExplorerLookupKeys = Object.keys(cityExplorerNames);
 const cityExplorerButtons = document.querySelector("#city-explorer-buttons");
 const cityExplorerDetail = document.querySelector("#city-explorer-detail");
 const cityExplorerSearchForm = document.querySelector("#city-explorer-search");
@@ -2033,6 +2135,9 @@ const cityExplorerSearchInput = document.querySelector("#city-explorer-query");
 const cityExplorerSuggestions = document.querySelector("#city-explorer-suggestions");
 const cityExplorerSearchStatus = document.querySelector("#city-explorer-search-status");
 let selectedExplorerCity = "";
+let selectedExplorerSuggestion = null;
+let cityGuideRequestId = 0;
+const wikivoyageGuideCache = new Map();
 
 function makeExplorerPhoto(attraction, language) {
   const figure = document.createElement("figure");
@@ -2074,6 +2179,8 @@ function makeExplorerPhoto(attraction, language) {
 }
 
 function showCityExplorerCity(cityKey) {
+  selectedExplorerSuggestion = null;
+  cityGuideRequestId += 1;
   selectedExplorerCity = cityKey;
   const language = currentLanguage;
   const text = translations[language];
@@ -2120,6 +2227,195 @@ function showCityExplorerCity(cityKey) {
   });
 }
 
+function renderWikivoyageGuide(city, guide) {
+  const language = currentLanguage;
+  const text = translations[language];
+  const detailTitle = document.createElement("h3");
+  detailTitle.textContent = city[language];
+  const facts = document.createElement("div");
+  facts.className = "city-explorer-facts";
+
+  for (const [label, key] of [
+    [text.cityWeatherLabel, "climate"],
+    [text.cityCultureLabel, "culture"],
+    [text.cityPeopleLabel, "dailyLife"],
+    [text.cityFoodLabel, "food"]
+  ]) {
+    const fact = document.createElement("section");
+    const heading = document.createElement("h4");
+    heading.textContent = label;
+    const paragraph = document.createElement("p");
+    paragraph.textContent = guide.sections[key] || text.cityExplorerSectionUnavailable;
+    fact.append(heading, paragraph);
+    facts.append(fact);
+  }
+
+  const galleryTitle = document.createElement("h4");
+  galleryTitle.className = "city-explorer-gallery-title";
+  galleryTitle.textContent = text.cityAttractionsLabel;
+  const gallery = document.createElement("div");
+  gallery.className = "city-explorer-gallery";
+  gallery.setAttribute("aria-label", text.cityAttractionsLabel);
+  gallery.replaceChildren(...guide.attractions.map((attraction) => makeExplorerPhoto(attraction, language)));
+  if (guide.attractions.length === 0) {
+    const unavailable = document.createElement("p");
+    unavailable.className = "city-explorer-note";
+    unavailable.textContent = text.cityExplorerSectionUnavailable;
+    gallery.append(unavailable);
+  }
+
+  const sourceNote = document.createElement("p");
+  sourceNote.className = "city-explorer-source";
+  sourceNote.textContent = text.cityExplorerSourceNote;
+  const sourceLink = document.createElement("a");
+  sourceLink.href = guide.sourceUrl;
+  sourceLink.target = "_blank";
+  sourceLink.rel = "noopener noreferrer";
+  sourceLink.textContent = text.cityExplorerSourceLink.replace("{city}", city[language]);
+  const licenseLink = document.createElement("a");
+  licenseLink.href = "https://creativecommons.org/licenses/by-sa/4.0/";
+  licenseLink.target = "_blank";
+  licenseLink.rel = "noopener noreferrer";
+  licenseLink.textContent = text.cityExplorerLicenseLink;
+  sourceNote.append(" ", sourceLink, " · ", licenseLink);
+  cityExplorerDetail.replaceChildren(detailTitle, facts, galleryTitle, gallery, sourceNote);
+  cityExplorerDetail.hidden = false;
+  cityExplorerButtons.querySelectorAll("button").forEach((button) => {
+    button.setAttribute("aria-pressed", "false");
+    button.classList.remove("is-selected");
+  });
+}
+
+function extractWikivoyageSectionText(html) {
+  const documentFragment = new DOMParser().parseFromString(html, "text/html");
+  documentFragment.querySelectorAll("script, style, table, .navbox, .metadata, .noprint").forEach((node) => node.remove());
+  const text = (documentFragment.body.textContent ?? "").replace(/\s+/g, " ").trim();
+  return text.slice(0, 900);
+}
+
+function extractWikivoyageAttractions(html, city, language) {
+  const documentFragment = new DOMParser().parseFromString(html, "text/html");
+  const seen = new Set();
+  return Array.from(documentFragment.querySelectorAll('a[href^="/wiki/"]'))
+    .map((link) => {
+      const title = decodeURIComponent(link.getAttribute("href").slice("/wiki/".length).split("#")[0].replace(/_/g, " "));
+      const name = link.textContent.trim();
+      return { title, name };
+    })
+    .filter(({ title, name }) => {
+      const normalizedTitle = normalizeCityName(title);
+      const normalizedName = normalizeCityName(name);
+      if (
+        !title
+        || !name
+        || title.includes(":")
+        || normalizedTitle === normalizeCityName(city.en)
+        || normalizedTitle === normalizeCityName(city.zh)
+        || normalizedName.length < 3
+        || seen.has(normalizedTitle)
+      ) {
+        return false;
+      }
+      seen.add(normalizedTitle);
+      return true;
+    })
+    .slice(0, 4)
+    .map(({ title, name }) => ({
+      name: { zh: name, en: name },
+      wikiTitles: [title],
+      wikiLanguage: language,
+      alt: {
+        zh: `${city.zh}的景点灵感：${name}`,
+        en: `Attraction inspiration in ${city.en}: ${name}`
+      }
+    }));
+}
+
+async function requestWikivoyageGuide(city, language) {
+  const pageTitle = language === "zh" ? city.zh : city.en;
+  const apiUrl = `https://${language}.wikivoyage.org/w/api.php`;
+  const params = new URLSearchParams({
+    action: "parse",
+    page: pageTitle,
+    prop: "tocdata",
+    format: "json",
+    origin: "*"
+  });
+  const response = await fetch(`${apiUrl}?${params}`);
+  if (!response.ok) {
+    throw new Error(`Wikivoyage returned HTTP ${response.status}`);
+  }
+  const pageData = await response.json();
+  if (pageData.error || !pageData.parse?.tocdata?.sections) {
+    throw new Error("No Wikivoyage city page was found.");
+  }
+
+  const sections = pageData.parse.tocdata.sections;
+  const findSection = (...terms) => sections.find((section) =>
+    terms.some((term) => normalizeCityName(section.line).includes(normalizeCityName(term)))
+  );
+  const sectionDefinitions = {
+    climate: findSection("climate", "weather", "气候", "天气"),
+    culture: findSection("understand", "culture", "了解", "文化"),
+    dailyLife: findSection("get around", "getting around", "交通"),
+    food: findSection("eat", "饮食", "吃"),
+    see: findSection("see", "景点", "看")
+  };
+  const sectionHtml = {};
+  await Promise.all(Object.entries(sectionDefinitions).map(async ([key, section]) => {
+    if (!section) {
+      sectionHtml[key] = "";
+      return;
+    }
+    const sectionParams = new URLSearchParams({
+      action: "parse",
+      page: pageTitle,
+      prop: "text",
+      section: section.index,
+      format: "json",
+      origin: "*"
+    });
+    const sectionResponse = await fetch(`${apiUrl}?${sectionParams}`);
+    if (!sectionResponse.ok) {
+      throw new Error(`Wikivoyage returned HTTP ${sectionResponse.status}`);
+    }
+    const sectionData = await sectionResponse.json();
+    sectionHtml[key] = sectionData.parse?.text?.["*"] ?? "";
+  }));
+
+  return {
+    language,
+    sourceUrl: `https://${language}.wikivoyage.org/wiki/${encodeURIComponent(pageTitle.replace(/ /g, "_"))}`,
+    sections: {
+      climate: extractWikivoyageSectionText(sectionHtml.climate),
+      culture: extractWikivoyageSectionText(sectionHtml.culture),
+      dailyLife: extractWikivoyageSectionText(sectionHtml.dailyLife),
+      food: extractWikivoyageSectionText(sectionHtml.food)
+    },
+    attractions: extractWikivoyageAttractions(sectionHtml.see, city, language)
+  };
+}
+
+async function loadWikivoyageGuide(city) {
+  const preferredLanguage = currentLanguage;
+  const cacheKey = `${city.en}|${preferredLanguage}`;
+  if (!wikivoyageGuideCache.has(cacheKey)) {
+    const lookup = (async () => {
+      try {
+        return await requestWikivoyageGuide(city, preferredLanguage);
+      } catch (error) {
+        if (preferredLanguage !== "zh") {
+          throw error;
+        }
+        const englishGuide = await requestWikivoyageGuide(city, "en");
+        return { ...englishGuide, usedEnglishFallback: true };
+      }
+    })();
+    wikivoyageGuideCache.set(cacheKey, lookup);
+  }
+  return wikivoyageGuideCache.get(cacheKey);
+}
+
 function normalizeCityName(value) {
   return value
     .normalize("NFD")
@@ -2150,18 +2446,18 @@ function findCityExplorerMatch(query) {
     return null;
   }
 
-  for (const cityKey of cityExplorerLookupKeys) {
-    const names = Object.values(cityExplorerNames[cityKey]).map(normalizeCityName);
+  for (const city of popularCitySuggestions) {
+    const names = [city.en, city.zh].map(normalizeCityName);
     if (names.includes(normalizedQuery)) {
-      return { cityKey, exact: true };
+      return { city, exact: true };
     }
   }
 
-  const ranked = cityExplorerLookupKeys
-    .map((cityKey) => ({
-      cityKey,
+  const ranked = popularCitySuggestions
+    .map((city) => ({
+      city,
       distance: Math.min(
-        ...Object.values(cityExplorerNames[cityKey])
+        [city.en, city.zh]
           .map(normalizeCityName)
           .map((name) => getCityNameEditDistance(normalizedQuery, name))
       )
@@ -2175,7 +2471,23 @@ function findCityExplorerMatch(query) {
   ) {
     return null;
   }
-  return { cityKey: closest.cityKey, exact: false };
+  return { city: closest.city, exact: false };
+}
+
+function updateCityExplorerSuggestions() {
+  const query = normalizeCityName(cityExplorerSearchInput.value);
+  const matches = popularCitySuggestions.filter((city) =>
+    !query || [city.en, city.zh].some((name) => normalizeCityName(name).includes(query))
+  ).slice(0, 15);
+  cityExplorerSuggestions.replaceChildren(...matches.flatMap((city) => {
+    const values = [city[currentLanguage], city[currentLanguage === "zh" ? "en" : "zh"]];
+    return values.map((value, index) => {
+      const option = document.createElement("option");
+      option.value = value;
+      option.label = values[1 - index];
+      return option;
+    });
+  }));
 }
 
 function renderCityExplorer() {
@@ -2199,29 +2511,65 @@ function renderCityExplorer() {
     });
     return button;
   }));
-  cityExplorerSuggestions.replaceChildren(...cityExplorerLookupKeys.map((cityKey) => {
-    const option = document.createElement("option");
-    option.value = cityExplorerNames[cityKey][currentLanguage];
-    return option;
-  }));
+  updateCityExplorerSuggestions();
   if (selectedExplorerCity) {
     showCityExplorerCity(selectedExplorerCity);
+  } else if (selectedExplorerSuggestion) {
+    displayPopularCityGuide(selectedExplorerSuggestion);
   }
 }
+
+function displayPopularCityGuide(city) {
+  selectedExplorerSuggestion = city;
+  selectedExplorerCity = "";
+  const requestId = ++cityGuideRequestId;
+  const cityName = city[currentLanguage];
+  cityExplorerDetail.hidden = true;
+  cityExplorerSearchStatus.textContent = translations[currentLanguage].cityExplorerSearchLoading.replace("{city}", cityName);
+  loadWikivoyageGuide(city).then((guide) => {
+    if (requestId !== cityGuideRequestId || selectedExplorerSuggestion !== city) {
+      return;
+    }
+    renderWikivoyageGuide(city, guide);
+    cityExplorerSearchStatus.textContent = guide.usedEnglishFallback
+      ? translations[currentLanguage].cityExplorerEnglishFallback
+      : "";
+  }).catch(() => {
+    if (requestId === cityGuideRequestId && selectedExplorerSuggestion === city) {
+      cityExplorerSearchStatus.textContent = translations[currentLanguage].cityExplorerGuideError.replace("{city}", cityName);
+    }
+  });
+}
+
+cityExplorerSearchInput.addEventListener("input", () => {
+  cityGuideRequestId += 1;
+  updateCityExplorerSuggestions();
+});
 
 cityExplorerSearchForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const query = cityExplorerSearchInput.value.trim();
   const match = findCityExplorerMatch(query);
   if (!match) {
+    cityGuideRequestId += 1;
     cityExplorerSearchStatus.textContent = translations[currentLanguage].cityExplorerSearchNoMatch;
     return;
   }
 
-  showCityExplorerCity(match.cityKey);
-  const cityName = cityExplorerNames[match.cityKey][currentLanguage];
   const resultKey = match.exact ? "cityExplorerSearchFound" : "cityExplorerSearchSuggested";
-  cityExplorerSearchStatus.textContent = translations[currentLanguage][resultKey].replace("{city}", cityName);
+  const cityName = match.city[currentLanguage];
+  cityExplorerSearchInput.value = cityName;
+  if (match.city.cityKey) {
+    selectedExplorerSuggestion = null;
+    cityGuideRequestId += 1;
+    showCityExplorerCity(match.city.cityKey);
+    cityExplorerSearchStatus.textContent = translations[currentLanguage][resultKey].replace(
+      "{city}",
+      cityExplorerNames[match.city.cityKey][currentLanguage]
+    );
+    return;
+  }
+  displayPopularCityGuide(match.city);
 });
 
 const discussionForm = document.querySelector("#discussion-form");
