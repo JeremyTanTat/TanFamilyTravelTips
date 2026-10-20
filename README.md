@@ -24,7 +24,7 @@ The **family notice board** lets relatives post precious moments and website sug
 
 Each recommended city card includes two different attraction themes rather than repeating the same type of stop within the city. Attraction images use the lead image from the matching Wikipedia article when available and a labeled local illustration otherwise; internet access is required for remote Wikipedia images.
 
-The photo-led travel journal uses all 21 images in the family's `Past Travel Photos/` album, after the travel planner and recommendations. Its Jiufen inspiration card links to the Trip.com moment shared by the family; it is an external community story, not a claim that the pictured family photos were taken in Jiufen.
+The photo-led travel journal uses all 21 images in the family's `Past Travel Photos/` album, after the travel planner and recommendations. Family photos fit inside their frames without cropping; empty space may appear around images with different proportions. Its Jiufen inspiration card links to the Trip.com moment shared by the family; it is an external community story, not a claim that the pictured family photos were taken in Jiufen.
 
 The header's WhatsApp icon shares the public GitHub Pages URL. WhatsApp creates the image preview by reading the page's Open Graph metadata, which points to [thumbnail.svg](./thumbnail.svg), a brightened collage of four family album photos; the thumbnail is not attached as a separate WhatsApp message. The GitHub Pages URL and image must be public, and WhatsApp may cache previews after publishing. Publishing the site also makes the included family photos publicly accessible.
 

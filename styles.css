@@ -556,7 +556,7 @@ html[lang="zh-CN"] .footer-year {
 .hero-photo {
   position: relative;
   width: min(100%, 425px);
-  height: 300px;
+  height: auto;
   justify-self: end;
   overflow: hidden;
   margin: 0;
@@ -567,34 +567,30 @@ html[lang="zh-CN"] .footer-year {
 }
 
 .hero-photo::after {
-  position: absolute;
-  inset: 35% 0 0;
-  background: linear-gradient(180deg, transparent, rgba(21, 31, 27, 0.45));
-  content: "";
+  content: none;
 }
 
 .hero-photo img {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 48%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #e8c5aa;
   filter: brightness(1.25) saturate(1.03);
 }
 
 .photo-caption {
-  position: absolute;
-  right: 20px;
-  bottom: 17px;
-  left: 20px;
-  z-index: 1;
+  position: relative;
   display: grid;
   gap: 4px;
-  color: white;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+  padding: 11px 13px;
+  background: var(--white);
+  color: var(--ink);
 }
 
 .caption-kicker {
-  color: #ffe18f;
+  color: var(--green-dark);
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 1.25px;
@@ -615,7 +611,7 @@ html[lang="zh-CN"] .footer-year {
 }
 
 .caption-meta {
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--muted);
   font-size: 10px;
 }
 
@@ -686,21 +682,18 @@ html[lang="zh-CN"] .footer-year {
   display: block;
   width: 100%;
   height: 205px;
-  object-fit: cover;
+  object-fit: contain;
+  background: #f5e9e2;
   filter: brightness(1.16) saturate(1.03);
-  transition: transform 260ms ease;
-}
-
-.moment-card img[src*="20161024_180436"] {
-  filter: brightness(1.28) saturate(1.03);
+  transition: filter 260ms ease;
 }
 
 .moment-card:hover img {
-  transform: scale(1.035);
+  filter: brightness(1.2) saturate(1.05);
 }
 
 .moment-card-tall img {
-  object-position: center 39%;
+  object-position: center;
 }
 
 .moment-caption {
@@ -1331,7 +1324,7 @@ a:focus-visible {
 
   .hero-photo {
     width: min(100% - 8px, 420px);
-    height: 255px;
+    height: auto;
     justify-self: center;
     margin-top: 2px;
   }
