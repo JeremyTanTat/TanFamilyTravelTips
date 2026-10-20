@@ -564,6 +564,7 @@ const translations = {
   zh: {
     brand: "Tan 家庭旅行时光",
     headerNote: "一家人，慢慢走，一起看世界",
+    whatsappShareLabel: "通过 WhatsApp 分享",
     heroEyebrow: "下一站，一起出发",
     heroTitle: "最好的旅行，",
     heroTitleAccent: "是每个人都自在开心。",
@@ -757,6 +758,7 @@ const translations = {
   en: {
     brand: "Tan Family Travel Tips",
     headerNote: "Making little memories, together",
+    whatsappShareLabel: "Share on WhatsApp",
     heroEyebrow: "OUR NEXT FAMILY ADVENTURE",
     heroTitle: "The best trips",
     heroTitleAccent: "make everyone feel at home.",
@@ -1173,6 +1175,10 @@ function applyLanguage(language) {
   );
   languageToggle.textContent = language === "zh" ? "EN" : "中文";
   languageToggle.setAttribute("aria-label", language === "zh" ? "Switch to English" : "切换到简体中文");
+  const whatsappShareLink = document.querySelector("#whatsapp-share");
+  const shareText = `${document.title} https://jeremytantat.github.io/TanFamilyTravelTips/`;
+  whatsappShareLink.href = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
+  whatsappShareLink.setAttribute("aria-label", translations[language].whatsappShareLabel);
   populateUpcomingMonths();
   updateTravelerValidity();
   discussionStatus.textContent = "";
