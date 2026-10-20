@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Tan Family Travel Tips</title>
+  <desc id="description">A brightened collage of four family travel photos.</desc>
+  <image href="Past%20Travel%20Photos/20141105_193244_mr1415190298670_mh1415190345712.jpg" x="0" y="0" width="596" height="312" preserveAspectRatio="xMidYMid slice" style="filter: brightness(1.12) saturate(1.03)"/>
+  <image href="Past%20Travel%20Photos/20161024_180747.jpg" x="604" y="0" width="596" height="312" preserveAspectRatio="xMidYMid slice" style="filter: brightness(1.24) saturate(1.03)"/>
+  <image href="Past%20Travel%20Photos/IMG-20141021-WA0028.jpg" x="0" y="318" width="596" height="312" preserveAspectRatio="xMidYMid slice" style="filter: brightness(1.12) saturate(1.03)"/>
+  <image href="Past%20Travel%20Photos/WhatsApp%20Image%202026-10-19%20at%2010.18.47.jpeg" x="604" y="318" width="596" height="312" preserveAspectRatio="xMidYMid slice" style="filter: brightness(1.12) saturate(1.03)"/>
+  <path d="M600 0v630M0 315h1200" stroke="#fff9ef" stroke-width="8"/>
+</svg>

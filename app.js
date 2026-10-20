@@ -452,8 +452,8 @@ const cityAttractions = {
   ],
   Bangkok: [
     {
-      name: { zh: "曼谷寺庙", en: "Bangkok temples" },
-      alt: { zh: "曼谷寺庙与城市景色", en: "A temple and city scene in Bangkok" },
+      name: { zh: "卧佛寺", en: "Wat Pho" },
+      alt: { zh: "曼谷卧佛寺的寺院建筑灵感", en: "Temple architecture inspiration at Wat Pho in Bangkok" },
       src: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=800&q=80"
     },
     {
@@ -680,7 +680,7 @@ const translations = {
     cityExplorerSearchLabel: "查找其他城市",
     cityExplorerSearchPlaceholder: "输入城市名称，例如：罗马",
     cityExplorerSearchButton: "查找",
-    cityExplorerSearchHint: "输入时会从100个热门城市与目的地建议中筛选；该清单是精选建议，不是官方实时排名。提交后，其他目的地的信息会尝试从 Wikivoyage 获取，需要联网。",
+    cityExplorerSearchHint: "输入时会从100个热门城市与目的地建议中筛选；该清单是精选建议，不是官方实时排名。选择建议城市后会自动显示资料；输入其他城市后按“查找”，系统会尝试从 Wikivoyage 获取信息，需要联网。",
     cityExplorerSearchFound: "已匹配到{city}。",
     cityExplorerSearchSuggested: "没有完全匹配，已为你显示最接近的城市：{city}。请确认是否正确。",
     cityExplorerSearchNoMatch: "没有找到接近的城市。请检查拼写，或从建议列表中选择。",
@@ -696,7 +696,7 @@ const translations = {
     cityPeopleLabel: "日常生活与交通",
     cityFoodLabel: "当地风味",
     cityAttractionsLabel: "景点灵感",
-    cityExplorerNote: "季节信息为概略介绍，不是实时天气预报；出行前请查看当地天气并确认景点开放信息。图片用于旅行灵感，可能不完全对应所列景点。",
+    cityExplorerNote: "季节信息为概略介绍，不是实时天气预报；出行前请查看当地天气并确认景点开放信息。景点图片优先使用对应维基百科条目的图片；如无法取得，会显示标注景点名称的本地插图。",
     discussionEyebrow: "一家人的留言板",
     discussionTitle: "说说心里话，一起改进网站",
     discussionIntro: "欢迎家人分享旅途中的珍贵时刻，也提出对网站的建议。",
@@ -736,6 +736,7 @@ const translations = {
     packageSourceNote: "估算 = Trip.com 机票+酒店套餐样本（共{count}个，{date}记录；经济型取最便宜10%的平均，中档型取第30–50百分位的平均）+ 全程餐饮、交通与休闲平均开销（约 S${daily}/人/天）。",
     baselineSourceNote: "尚无已记录的 Trip.com 套餐样本，暂用网站内置的基准估算（含餐饮、交通与休闲）。",
     photoUnavailable: "暂时无法加载景点图片",
+    photoIllustrationAlt: "标注“{name}”的本地插图，并非该景点的实景照片。",
     groupDefault: "全家人",
     singleGroupSummary: "计划于{year}年{month}出行，同行人员：{group}{departure}{count}{budget}。",
     multiGroupPrefix: "计划于{year}年{month}出行，同行人员包括{group}{departure}{count}{budget}。",
@@ -745,7 +746,7 @@ const translations = {
     localStaycationNote: "新加坡按本地住宿度假估算，不含机票。",
     departureEstimateNote: "当前估算和预算筛选不会根据所选出发城市调整，请另行核对当地交通与机票费用。",
     attractionsTitle: "城市景点",
-    photoDisclaimer: "图片仅供旅行灵感参考，可能不完全对应所列景点。",
+    photoDisclaimer: "优先显示对应维基百科条目的图片；无法取得时会显示标注景点名称的本地插图。",
     seasonalFit: "适合的季节",
     offSeason: "可考虑其他季节",
     tipSingle: "给旅程的小建议：",
@@ -872,7 +873,7 @@ const translations = {
     cityExplorerSearchLabel: "Look up another city",
     cityExplorerSearchPlaceholder: "Enter a city, for example: Rome",
     cityExplorerSearchButton: "Find city",
-    cityExplorerSearchHint: "Typing filters 100 popular city and destination suggestions. This curated list is not an official live ranking. On submission, other destinations are looked up on Wikivoyage and require internet access.",
+    cityExplorerSearchHint: "Typing filters 100 popular city and destination suggestions. This curated list is not an official live ranking. Selecting an exact suggestion opens its guide; enter another city and choose Find city to look it up on Wikivoyage. Internet access is required.",
     cityExplorerSearchFound: "Matched {city}.",
     cityExplorerSearchSuggested: "No exact match; showing the closest city, {city}. Please check that this is the one you meant.",
     cityExplorerSearchNoMatch: "No close city match found. Check the spelling or choose a suggested city.",
@@ -888,7 +889,7 @@ const translations = {
     cityPeopleLabel: "Daily life and getting around",
     cityFoodLabel: "Local food",
     cityAttractionsLabel: "Attraction ideas",
-    cityExplorerNote: "Seasonal descriptions are broad guidance, not a live forecast. Check local weather and attraction opening information before travelling. Photos are for inspiration and may not depict the exact attraction named.",
+    cityExplorerNote: "Seasonal descriptions are broad guidance, not a live forecast. Check local weather and attraction opening information before travelling. Attraction images use the matching Wikipedia article image when available; otherwise, a local illustration labeled with the attraction name is shown.",
     discussionEyebrow: "OUR FAMILY NOTICE BOARD",
     discussionTitle: "Share your thoughts and help us improve the site",
     discussionIntro: "Share precious travel moments and suggest ways to improve the website.",
@@ -929,6 +930,7 @@ const translations = {
     packageSourceNote: "Estimate = Trip.com flight + hotel package sample ({count} packages, recorded {date}; budget = average of the cheapest 10%, mid-tier = average of the 30th–50th percentile) + average food, transport and leisure for the whole trip (about S${daily}/person/day).",
     baselineSourceNote: "No recorded Trip.com package sample yet, so the site's built-in baseline estimate (including food, transport and leisure) is used.",
     photoUnavailable: "Attraction photo unavailable right now",
+    photoIllustrationAlt: "Local illustration labeled {name}; it is not a photograph of the attraction.",
     groupDefault: "your group",
     singleGroupSummary: "Ideas for {group} travelling in {month} {year}{departure}{count}{budget}.",
     multiGroupPrefix: "Ideas for {group} travelling in {month} {year}{departure}{count}{budget}.",
@@ -938,7 +940,7 @@ const translations = {
     localStaycationNote: "Singapore is estimated as a local staycation; airfare is excluded.",
     departureEstimateNote: "Estimates and budget filtering are not adjusted for your selected departure city; check local transfers and airfare separately.",
     attractionsTitle: "City attractions",
-    photoDisclaimer: "Images are for travel inspiration and may not depict the exact attraction listed.",
+    photoDisclaimer: "The matching Wikipedia article image is used when available; otherwise, a local illustration labeled with the attraction name is shown.",
     seasonalFit: "Good seasonal fit",
     offSeason: "Consider other seasons",
     tipSingle: "A thought for your trip: ",
@@ -1290,9 +1292,9 @@ function makeProviderLink(href, label) {
 
 const attractionPhotoCache = new Map();
 
-// Looks up a current Wikipedia lead image (public, keyless endpoint) for each candidate title; resolves to null so the bundled photos are used instead.
+// Looks up the matching Wikipedia article image; resolves to null when that article has no image.
 function fetchAttractionPhoto(attraction) {
-  const titles = attraction.wikiTitles ?? [attraction.name.en];
+  const titles = [attraction.wikiTitles?.[0] ?? attraction.name.en];
   const wikiLanguage = attraction.wikiLanguage ?? "en";
   const cacheKey = `${wikiLanguage}|${titles.join("|")}`;
   if (!attractionPhotoCache.has(cacheKey)) {
@@ -1393,19 +1395,21 @@ function makeDestinationCard(destination, fit, travelers, plan) {
   for (const attraction of cityAttractions[destination.cityKey]) {
     const figure = document.createElement("figure");
     const image = document.createElement("img");
-    let sources = [attraction.src, ...(attraction.fallbacks ?? []), makeFallbackPhoto(attraction.name[language])];
+    let sources = [makeFallbackPhoto(attraction.name[language])];
     let sourceIndex = 0;
+    const illustrationAlt = text.photoIllustrationAlt.replace("{name}", attraction.name[language]);
     image.referrerPolicy = "no-referrer";
     image.addEventListener("error", () => {
       sourceIndex += 1;
       if (sourceIndex < sources.length) {
+        image.alt = illustrationAlt;
         image.src = sources[sourceIndex];
         return;
       }
       const placeholder = document.createElement("div");
       placeholder.className = "photo-placeholder";
       placeholder.setAttribute("role", "img");
-      placeholder.setAttribute("aria-label", attraction.alt[language]);
+      placeholder.setAttribute("aria-label", illustrationAlt);
       placeholder.textContent = text.photoUnavailable;
       image.replaceWith(placeholder);
     });
@@ -1413,6 +1417,8 @@ function makeDestinationCard(destination, fit, travelers, plan) {
       if (url) {
         sources = [url, ...sources];
         sourceIndex = 0;
+      } else {
+        image.alt = illustrationAlt;
       }
       image.src = sources[0];
     });
@@ -2142,12 +2148,9 @@ const wikivoyageGuideCache = new Map();
 function makeExplorerPhoto(attraction, language) {
   const figure = document.createElement("figure");
   const image = document.createElement("img");
-  const sources = [
-    attraction.src,
-    ...(attraction.fallbacks ?? []),
-    makeFallbackPhoto(attraction.name[language])
-  ].filter(Boolean);
+  const sources = [makeFallbackPhoto(attraction.name[language])];
   let sourceIndex = 0;
+  const illustrationAlt = translations[language].photoIllustrationAlt.replace("{name}", attraction.name[language]);
   image.referrerPolicy = "no-referrer";
   image.alt = attraction.alt[language];
   image.loading = "lazy";
@@ -2155,13 +2158,14 @@ function makeExplorerPhoto(attraction, language) {
   image.addEventListener("error", () => {
     sourceIndex += 1;
     if (sourceIndex < sources.length) {
+      image.alt = illustrationAlt;
       image.src = sources[sourceIndex];
       return;
     }
     const placeholder = document.createElement("div");
     placeholder.className = "photo-placeholder";
     placeholder.setAttribute("role", "img");
-    placeholder.setAttribute("aria-label", attraction.alt[language]);
+    placeholder.setAttribute("aria-label", illustrationAlt);
     placeholder.textContent = translations[language].photoUnavailable;
     image.replaceWith(placeholder);
   });
@@ -2169,6 +2173,8 @@ function makeExplorerPhoto(attraction, language) {
     if (url) {
       sources.unshift(url);
       sourceIndex = 0;
+    } else {
+      image.alt = illustrationAlt;
     }
     image.src = sources[0];
   });
@@ -2176,6 +2182,38 @@ function makeExplorerPhoto(attraction, language) {
   caption.textContent = attraction.name[language];
   figure.append(image, caption);
   return figure;
+}
+
+function formatExplorerSummary(description, category, language) {
+  const sentences = String(description)
+    .replace(/\s+/g, " ")
+    .trim()
+    .match(/[^.!?。！？;；]+[.!?。！？;；]?/g)
+    ?.map((sentence) => sentence.trim().replace(/[;；]$/, "."))
+    .filter(Boolean)
+    .slice(0, 3) ?? [];
+  const context = {
+    weather: {
+      zh: "实际天气会随日期变化，出发前请查看当地预报。",
+      en: "Conditions vary by date, so check a local forecast before you go."
+    },
+    culture: {
+      zh: "不同场所的习俗可能不同，请遵从当地提示。",
+      en: "Customs can vary by venue, so follow local guidance."
+    },
+    people: {
+      zh: "路线和通行条件因街区而异，出发前请核对行程。",
+      en: "Routes and access vary by neighbourhood, so check your journey details ahead."
+    },
+    food: {
+      zh: "菜单和食材因店家而异，有饮食需要时请先向店家确认。",
+      en: "Menus and ingredients vary, so check with the venue about dietary needs."
+    }
+  };
+  if (sentences.length === 1) {
+    sentences.push(context[category][language]);
+  }
+  return sentences.join(language === "zh" ? "" : " ");
 }
 
 function showCityExplorerCity(cityKey) {
@@ -2191,17 +2229,17 @@ function showCityExplorerCity(cityKey) {
   const facts = document.createElement("div");
   facts.className = "city-explorer-facts";
 
-  for (const [label, description] of [
-    [text.cityWeatherLabel, content.weather[language]],
-    [text.cityCultureLabel, content.culture[language]],
-    [text.cityPeopleLabel, content.dailyLife[language]],
-    [text.cityFoodLabel, content.food[language]]
+  for (const [label, description, category] of [
+    [text.cityWeatherLabel, content.weather[language], "weather"],
+    [text.cityCultureLabel, content.culture[language], "culture"],
+    [text.cityPeopleLabel, content.dailyLife[language], "people"],
+    [text.cityFoodLabel, content.food[language], "food"]
   ]) {
     const fact = document.createElement("section");
     const heading = document.createElement("h4");
     heading.textContent = label;
     const paragraph = document.createElement("p");
-    paragraph.textContent = description;
+    paragraph.textContent = formatExplorerSummary(description, category, language);
     fact.append(heading, paragraph);
     facts.append(fact);
   }
@@ -2245,7 +2283,9 @@ function renderWikivoyageGuide(city, guide) {
     const heading = document.createElement("h4");
     heading.textContent = label;
     const paragraph = document.createElement("p");
-    paragraph.textContent = guide.sections[key] || text.cityExplorerSectionUnavailable;
+    paragraph.textContent = guide.sections[key]
+      ? formatExplorerSummary(guide.sections[key], key === "climate" ? "weather" : key === "dailyLife" ? "people" : key, language)
+      : text.cityExplorerSectionUnavailable;
     fact.append(heading, paragraph);
     facts.append(fact);
   }
@@ -2296,7 +2336,7 @@ function extractWikivoyageSectionText(html) {
 function extractWikivoyageAttractions(html, city, language) {
   const documentFragment = new DOMParser().parseFromString(html, "text/html");
   const seen = new Set();
-  return Array.from(documentFragment.querySelectorAll('a[href^="/wiki/"]'))
+  return Array.from(documentFragment.querySelectorAll('li a[href^="/wiki/"]'))
     .map((link) => {
       const title = decodeURIComponent(link.getAttribute("href").slice("/wiki/".length).split("#")[0].replace(/_/g, " "));
       const name = link.textContent.trim();
@@ -2546,8 +2586,7 @@ cityExplorerSearchInput.addEventListener("input", () => {
   updateCityExplorerSuggestions();
 });
 
-cityExplorerSearchForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+function submitCityExplorerSearch() {
   const query = cityExplorerSearchInput.value.trim();
   const match = findCityExplorerMatch(query);
   if (!match) {
@@ -2570,6 +2609,17 @@ cityExplorerSearchForm.addEventListener("submit", (event) => {
     return;
   }
   displayPopularCityGuide(match.city);
+}
+
+cityExplorerSearchInput.addEventListener("change", () => {
+  if (findCityExplorerMatch(cityExplorerSearchInput.value)?.exact) {
+    submitCityExplorerSearch();
+  }
+});
+
+cityExplorerSearchForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  submitCityExplorerSearch();
 });
 
 const discussionForm = document.querySelector("#discussion-form");

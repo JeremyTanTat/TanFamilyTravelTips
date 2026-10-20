@@ -107,6 +107,7 @@
 }
 
 .city-explorer-search input:focus-visible {
+  border-color: var(--green);
   outline: 2px solid var(--orange);
   outline-offset: 2px;
 }
@@ -539,7 +540,7 @@ html[lang="zh-CN"] .footer-year {
 .hero-photo::after {
   position: absolute;
   inset: 35% 0 0;
-  background: linear-gradient(180deg, transparent, rgba(21, 31, 27, 0.82));
+  background: linear-gradient(180deg, transparent, rgba(21, 31, 27, 0.45));
   content: "";
 }
 
@@ -548,6 +549,7 @@ html[lang="zh-CN"] .footer-year {
   height: 100%;
   object-fit: cover;
   object-position: center 48%;
+  filter: brightness(1.25) saturate(1.03);
 }
 
 .photo-caption {
@@ -559,6 +561,7 @@ html[lang="zh-CN"] .footer-year {
   display: grid;
   gap: 4px;
   color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
 }
 
 .caption-kicker {
@@ -655,7 +658,12 @@ html[lang="zh-CN"] .footer-year {
   width: 100%;
   height: 205px;
   object-fit: cover;
+  filter: brightness(1.16) saturate(1.03);
   transition: transform 260ms ease;
+}
+
+.moment-card img[src*="20161024_180436"] {
+  filter: brightness(1.28) saturate(1.03);
 }
 
 .moment-card:hover img {
