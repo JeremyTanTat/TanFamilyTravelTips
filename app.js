@@ -673,22 +673,23 @@ const translations = {
     resultsDisclaimer: "推荐由本网站的季节、预算和同行人员资料筛选，并非实时从平台抓取。每人预算估算按建议天数相对4天3晚基准按比例调整，团体总额按人数相乘；这只是规划估算。Trip.com 套餐链接已预填示例日期和人数，Google 链接用于对照搜索当前价格；示例日期通常从所选月份15日开始，若该日期已过，则改为约一周后。预算筛选仍按从新加坡出发估算，不会按所选出发城市重新计算。链接中的人数按成人示例处理，请在平台按实际年龄修改；平台也可能忽略预填条件。预订前请核对日期、实际价格、官方信息和无障碍需求。",
     tripSearchLink: "在 Trip.com 查看{city}机票+酒店套餐（{count}位成人，{start}至{end}）",
     googleSearchLink: "在 Google 搜索{city}套餐价格",
-    pollEyebrow: "全家一起投票",
-    pollTitle: "下一次，你最想去哪座城市？",
-    pollIntro: "每人只能投一票，选出你最想去的城市。",
-    pollYourVote: "你已投给{city}，谢谢参与！",
-    pollVotes: "票数：{n}",
-    pollVoteButton: "投票",
-    pollVoteFor: "投给{city}",
-    pollVoted: "已投票",
-    pollNote: "每位访客只有一次投票机会，票数会自动记录并定期刷新。",
-    pollSharedNote: "显示的是最新的共享投票结果。",
-    pollOffline: "暂时无法加载共享投票结果，请稍后再试。",
-    pollNotConfigured: "共享计数器尚未开通：目前的投票只记录在本设备的浏览器中，其他访客看不到。",
-    pollThanks: "谢谢！已为{city}投上一票。",
-    pollAlreadyVoted: "你已经投过票了（{city}）。",
-    pollSaveFailed: "此浏览器无法保存投票。",
-    pollListLabel: "城市投票结果",
+    cityExplorerEyebrow: "目的地灵感",
+    cityExplorerTitle: "选一个目的地，看看有什么精彩",
+    cityExplorerIntro: "点击目的地，或在下方输入城市名称，了解天气、文化日常、当地饮食和景点灵感。",
+    cityExplorerSelectAria: "探索{city}",
+    cityExplorerSearchLabel: "查找其他城市",
+    cityExplorerSearchPlaceholder: "输入城市名称，例如：罗马",
+    cityExplorerSearchButton: "查找",
+    cityExplorerSearchHint: "可查找本指南和旅行规划器中的城市，并尝试匹配相近拼写；这不是全球城市数据库。",
+    cityExplorerSearchFound: "已匹配到{city}。",
+    cityExplorerSearchSuggested: "没有完全匹配，已为你显示最接近的城市：{city}。请确认是否正确。",
+    cityExplorerSearchNoMatch: "没有找到接近的城市。请检查拼写，或从建议列表中选择。",
+    cityWeatherLabel: "季节与天气",
+    cityCultureLabel: "文化与习俗",
+    cityPeopleLabel: "人文与日常",
+    cityFoodLabel: "当地风味",
+    cityAttractionsLabel: "景点灵感",
+    cityExplorerNote: "季节信息为概略介绍，不是实时天气预报；出行前请查看当地天气并确认景点开放信息。图片用于旅行灵感，可能不完全对应所列景点。",
     discussionEyebrow: "一家人的留言板",
     discussionTitle: "说说心里话，一起改进网站",
     discussionIntro: "欢迎家人分享旅途中的珍贵时刻，也提出对网站的建议。",
@@ -698,12 +699,14 @@ const translations = {
     discussionTypeSuggestion: "网站改进建议",
     discussionMessageLabel: "留言内容",
     discussionSubmit: "发布留言",
-    discussionNote: "留言目前保存在本设备的浏览器中，其他家人暂时看不到。请勿填写护照、银行卡等敏感信息。",
+    discussionNote: "留言保存在本设备的浏览器中，其他家人暂时看不到。若浏览器无法保存，留言仍会显示到本页面关闭为止。请勿填写护照、银行卡等敏感信息。",
     discussionEmpty: "还没有留言，来写下第一条吧。",
     discussionListLabel: "留言列表",
     discussionDelete: "删除",
     discussionDeleteConfirm: "确定删除这条留言吗？",
     discussionPosted: "留言已发布。",
+    discussionPostedSession: "留言已显示在本页面，但浏览器无法持久保存；关闭页面后将无法保留。",
+    discussionDeletedSession: "留言已从本页面移除，但浏览器无法持久保存此更改。",
     discussionInvalid: "请填写名字和留言内容。",
     discussionSaveFailed: "此浏览器无法保存留言。",
     noResults: "没有找到符合条件的推荐城市，请尝试调整月份、预算或同行人员。",
@@ -855,22 +858,23 @@ const translations = {
     resultsDisclaimer: "Recommendations are filtered from this site's seasonal, budget, and group-fit guidance; they are not fetched live from travel platforms. Per-person estimates scale the 4-day / 3-night baseline in proportion to the suggested stay; group totals multiply the estimate by traveller count. These are planning estimates only. The Trip.com package link is pre-filled with example dates and party size, and the Google link lets you cross-check current prices; example dates usually start on the 15th of the selected month, or about a week from today if that date has passed. Budget filtering still assumes departure from Singapore. Links treat the party size as adults; change ages on the provider site, which may also ignore pre-filled parameters. Verify dates, prices, official information, and access needs before booking.",
     tripSearchLink: "View {city} Flight + Hotel packages on Trip.com ({count} adults, {start} to {end})",
     googleSearchLink: "Search {city} package prices on Google",
-    pollEyebrow: "VOTE TOGETHER",
-    pollTitle: "Which city would you like to visit next?",
-    pollIntro: "Each visitor gets one vote for the city they would most like to visit.",
-    pollYourVote: "You voted for {city}. Thank you!",
-    pollVotes: "Votes: {n}",
-    pollVoteButton: "Vote",
-    pollVoteFor: "Vote for {city}",
-    pollVoted: "Voted",
-    pollNote: "Each visitor has one vote. Votes are counted automatically and refresh regularly.",
-    pollSharedNote: "Showing the latest shared results.",
-    pollOffline: "The shared results could not be loaded right now. Please try again shortly.",
-    pollNotConfigured: "The shared counter is not switched on yet: votes are recorded in this device's browser only, so other visitors cannot see them.",
-    pollThanks: "Thanks! Your vote for {city} was counted.",
-    pollAlreadyVoted: "You have already voted ({city}).",
-    pollSaveFailed: "This browser could not save your vote.",
-    pollListLabel: "City vote results",
+    cityExplorerEyebrow: "DESTINATION INSPIRATION",
+    cityExplorerTitle: "Choose a destination to explore",
+    cityExplorerIntro: "Choose a destination, or enter a city name below to explore its weather, culture, daily life, food, and attraction ideas.",
+    cityExplorerSelectAria: "Explore {city}",
+    cityExplorerSearchLabel: "Look up another city",
+    cityExplorerSearchPlaceholder: "Enter a city, for example: Rome",
+    cityExplorerSearchButton: "Find city",
+    cityExplorerSearchHint: "Looks up cities in this guide and trip planner, including close spelling matches; it is not a worldwide city database.",
+    cityExplorerSearchFound: "Matched {city}.",
+    cityExplorerSearchSuggested: "No exact match; showing the closest city, {city}. Please check that this is the one you meant.",
+    cityExplorerSearchNoMatch: "No close city match found. Check the spelling or choose a suggested city.",
+    cityWeatherLabel: "Seasons and weather",
+    cityCultureLabel: "Culture and customs",
+    cityPeopleLabel: "People and everyday life",
+    cityFoodLabel: "Local food",
+    cityAttractionsLabel: "Attraction ideas",
+    cityExplorerNote: "Seasonal descriptions are broad guidance, not a live forecast. Check local weather and attraction opening information before travelling. Photos are for inspiration and may not depict the exact attraction named.",
     discussionEyebrow: "OUR FAMILY NOTICE BOARD",
     discussionTitle: "Share your thoughts and help us improve the site",
     discussionIntro: "Share precious travel moments and suggest ways to improve the website.",
@@ -880,12 +884,14 @@ const translations = {
     discussionTypeSuggestion: "Website suggestion",
     discussionMessageLabel: "Your comment",
     discussionSubmit: "Post comment",
-    discussionNote: "Comments are currently saved in this device's browser only, so other family members cannot see them yet. Please do not enter passport, bank card or other sensitive details.",
+    discussionNote: "Comments are saved in this device's browser only, so other family members cannot see them yet. If the browser blocks saving, a submitted comment remains visible until this page is closed. Please do not enter passport, bank card or other sensitive details.",
     discussionEmpty: "No comments yet. Be the first to write one.",
     discussionListLabel: "Comments",
     discussionDelete: "Delete",
     discussionDeleteConfirm: "Delete this comment?",
     discussionPosted: "Comment posted.",
+    discussionPostedSession: "Comment is displayed on this page, but the browser could not save it permanently; it will be lost when the page closes.",
+    discussionDeletedSession: "Comment was removed from this page, but the browser could not save this change permanently.",
     discussionInvalid: "Please enter your name and a comment.",
     discussionSaveFailed: "This browser could not save the comment.",
     noResults: "No recommended cities found. Try changing the month, budget, or travel group.",
@@ -1085,7 +1091,7 @@ function getPackageTierPrices(prices) {
 const main = document.querySelector("main");
 const momentsSection = document.querySelector(".moments-section");
 main.insertBefore(document.querySelector(".planner"), momentsSection);
-main.insertBefore(document.querySelector("#city-poll"), document.querySelector(".planner"));
+main.insertBefore(document.querySelector("#city-explorer"), document.querySelector(".planner"));
 main.insertBefore(results, momentsSection);
 
 function populateUpcomingMonths() {
@@ -1154,8 +1160,8 @@ function applyLanguage(language) {
   populateUpcomingMonths();
   updateTravelerValidity();
   discussionStatus.textContent = "";
-  setPollStatus("");
-  renderPoll();
+  cityExplorerSearchStatus.textContent = "";
+  renderCityExplorer();
   renderDiscussion();
 
   if (lastPlan) {
@@ -1569,19 +1575,24 @@ languageToggle.addEventListener("click", () => {
   applyLanguage(currentLanguage === "zh" ? "en" : "zh");
 });
 
-// The ten poll cities: [English name, Simplified Chinese name].
+// Destination order and labels used by the city explorer.
 const pollCities = [
   ["Seoul", "首尔"], ["Tokyo", "东京"], ["Bangkok", "曼谷"], ["Beijing", "北京"], ["Shanghai", "上海"],
   ["Dubai", "迪拜"], ["Sydney", "悉尼"], ["Taipei", "台北"], ["Guangzhou", "广州"], ["Bali", "巴厘岛"]
 ];
+const cityExplorerButtonCities = [
+  ...pollCities,
+  ["Paris", "巴黎"],
+  ["London", "伦敦"]
+];
 const pollDefaultCities = pollCities.map(([name]) => name);
 const pollVoterKey = "tanFamilyCityPollVoterId";
-const pollLocalKey = "tanFamilyCityPollLocal";
-// Public URL of the deployed Cloudflare Worker (`poll-worker.js`; setup steps in README.md). While empty, votes are counted in this browser only.
-const pollApiUrl = "";
-const pollRefreshMs = 30000;
-let pollShared = { votes: {}, voted: "", loaded: false };
+// Public URL of the separate poll API Worker (not the static-site Worker).
+const pollApiUrl = "https://tan-family-poll.tantat420.workers.dev";
+const pollRefreshMs = 10000;
+let pollShared = { votes: {}, voted: [], loaded: false };
 let pollBusy = false;
+let temporaryPollVoterId = "";
 const pollCatalogByKey = new Map(pollCities.map((entry) => [entry[0], entry]));
 
 const pollList = document.querySelector("#poll-list");
@@ -1601,26 +1612,38 @@ function getPollVotes() {
   return votes;
 }
 
-function loadLocalPoll() {
-  try {
-    const saved = JSON.parse(localStorage.getItem(pollLocalKey) ?? "{}");
-    return { votes: saved.votes, voted: saved.voted };
-  } catch {
-    return {};
+function createPollVoterId() {
+  if (globalThis.crypto?.randomUUID) {
+    return globalThis.crypto.randomUUID();
   }
+  const bytes = new Uint8Array(16);
+  if (globalThis.crypto?.getRandomValues) {
+    globalThis.crypto.getRandomValues(bytes);
+  } else {
+    bytes.forEach((_, index) => {
+      bytes[index] = Math.floor(Math.random() * 256);
+    });
+  }
+  bytes[6] = (bytes[6] & 0x0f) | 0x40;
+  bytes[8] = (bytes[8] & 0x3f) | 0x80;
+  const hex = [...bytes].map((byte) => byte.toString(16).padStart(2, "0")).join("");
+  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
 }
 
-// Anonymous per-browser id; the Worker allows one vote per id, so it is not personal data.
+// Anonymous browser id used to prevent repeat voting; it is not personal data.
 function getPollVoterId() {
   try {
     let id = localStorage.getItem(pollVoterKey);
     if (!id) {
-      id = crypto.randomUUID();
+      id = createPollVoterId();
       localStorage.setItem(pollVoterKey, id);
     }
     return id;
   } catch {
-    return "";
+    if (!temporaryPollVoterId) {
+      temporaryPollVoterId = createPollVoterId();
+    }
+    return temporaryPollVoterId;
   }
 }
 
@@ -1640,17 +1663,21 @@ async function pollRequest(path, body) {
   return data;
 }
 
+const pollMaxVotesPerDay = 3;
+
 function applyPollData(data) {
   pollShared = {
     votes: data.votes && typeof data.votes === "object" ? data.votes : {},
-    voted: typeof data.voted === "string" && pollCatalogByKey.has(data.voted) ? data.voted : "",
+    voted: Array.isArray(data.voted)
+      ? data.voted.filter((city) => typeof city === "string" && pollCatalogByKey.has(city))
+      : [],
     loaded: true
   };
 }
 
 async function loadSharedPoll() {
   if (!pollApiUrl) {
-    applyPollData(loadLocalPoll());
+    pollShared = { votes: {}, voted: [], loaded: false };
     renderPoll();
     return;
   }
@@ -1668,33 +1695,26 @@ function setPollStatus(message) {
   pollStatus.textContent = message;
 }
 
-// Returns "ok", "duplicate" or "error"; each visitor gets one vote.
+// Returns "ok", "duplicate", "limit" or "error"; the Worker enforces the daily limit.
 async function castPollVote(key) {
-  if (!pollShared.loaded) {
+  if (!pollApiUrl || !pollShared.loaded) {
     return "error";
   }
-  if (pollShared.voted) {
+  if (pollShared.voted.includes(key)) {
     return "duplicate";
   }
-  if (!pollApiUrl) {
-    const votes = getPollVotes();
-    votes[key] += 1;
-    try {
-      localStorage.setItem(pollLocalKey, JSON.stringify({ votes, voted: key }));
-    } catch {
-      return "error";
-    }
-    applyPollData({ votes, voted: key });
-    return "ok";
+  if (pollShared.voted.length >= pollMaxVotesPerDay) {
+    return "limit";
   }
   pollBusy = true;
+  renderPoll();
   try {
     applyPollData(await pollRequest("/vote", { city: key }));
     return "ok";
   } catch (error) {
-    if (error.code === "duplicate") {
+    if (error.code === "duplicate" || error.code === "limit") {
       await loadSharedPoll();
-      return "duplicate";
+      return error.code;
     }
     return "error";
   } finally {
@@ -1709,11 +1729,16 @@ function renderPoll(focusKey) {
     .map((key, index) => ({ key, index, count: votes[key] }))
     .sort((a, b) => b.count - a.count || a.index - b.index);
   const topCount = Math.max(1, ...ranked.map((item) => item.count));
-  const hasVoted = Boolean(pollShared.voted);
+  const cityAlreadyVoted = (key) => pollShared.voted.includes(key);
+  const limitReached = pollShared.voted.length >= pollMaxVotesPerDay;
 
-  pollRemaining.textContent = pollShared.loaded && hasVoted
-    ? text.pollYourVote.replace("{city}", getPollCityName(pollShared.voted))
-    : "";
+  pollRemaining.textContent = !pollShared.loaded
+    ? ""
+    : limitReached
+      ? text.pollLimitReached.replace("{max}", String(pollMaxVotesPerDay))
+      : text.pollRemaining
+        .replace("{left}", String(pollMaxVotesPerDay - pollShared.voted.length))
+        .replace("{max}", String(pollMaxVotesPerDay));
   pollList.setAttribute("aria-label", text.pollListLabel);
   updatePollSyncNote();
 
@@ -1737,9 +1762,10 @@ function renderPoll(focusKey) {
     button.type = "button";
     button.className = "poll-vote";
     button.dataset.city = key;
-    button.textContent = pollShared.voted === key ? text.pollVoted : text.pollVoteButton;
+    const voted = cityAlreadyVoted(key);
+    button.textContent = voted ? text.pollVoted : text.pollVoteButton;
     button.setAttribute("aria-label", text.pollVoteFor.replace("{city}", name));
-    button.disabled = hasVoted || !pollShared.loaded;
+    button.disabled = voted || limitReached || !pollShared.loaded || pollBusy;
     button.addEventListener("click", async () => {
       const result = await castPollVote(key);
       setPollStatus(getPollResultMessage(result, key));
@@ -1760,7 +1786,10 @@ function renderPoll(focusKey) {
 function getPollResultMessage(result, key) {
   const text = translations[currentLanguage];
   if (result === "duplicate") {
-    return text.pollAlreadyVoted.replace("{city}", getPollCityName(pollShared.voted || key));
+    return text.pollAlreadyVoted.replace("{city}", getPollCityName(key));
+  }
+  if (result === "limit") {
+    return text.pollLimitReachedStatus.replace("{max}", String(pollMaxVotesPerDay));
   }
   if (result === "error") {
     return text.pollSaveFailed;
@@ -1776,27 +1805,463 @@ function updatePollSyncNote() {
   }
 }
 
+const cityExplorerNames = {
+  Seoul: { zh: "首尔", en: "Seoul" },
+  Tokyo: { zh: "东京", en: "Tokyo" },
+  Bangkok: { zh: "曼谷", en: "Bangkok" },
+  Beijing: { zh: "北京", en: "Beijing" },
+  Shanghai: { zh: "上海", en: "Shanghai" },
+  Dubai: { zh: "迪拜", en: "Dubai" },
+  Sydney: { zh: "悉尼", en: "Sydney" },
+  Taipei: { zh: "台北", en: "Taipei" },
+  Guangzhou: { zh: "广州", en: "Guangzhou" },
+  Bali: { zh: "巴厘岛", en: "Bali" },
+  Singapore: { zh: "新加坡", en: "Singapore" },
+  Osaka: { zh: "大阪", en: "Osaka" },
+  Paris: { zh: "巴黎", en: "Paris" },
+  London: { zh: "伦敦", en: "London" },
+  Rome: { zh: "罗马", en: "Rome" },
+  Vancouver: { zh: "温哥华", en: "Vancouver" },
+  CapeTown: { zh: "开普敦", en: "Cape Town" },
+  RioDeJaneiro: { zh: "里约热内卢", en: "Rio de Janeiro" }
+};
+
+const cityExplorerContent = {
+  Seoul: {
+    weather: { zh: "春秋通常较温和；夏季炎热潮湿并有雨季，冬季寒冷干燥。", en: "Spring and autumn are often mild; summers are hot, humid, and rainy, while winters are cold and dry." },
+    culture: { zh: "传统宫殿、市场与当代音乐、设计和咖啡文化并存；进入宗教或历史场所时请留意现场礼仪。", en: "Historic palaces and markets sit alongside contemporary music, design, and café culture. Follow local etiquette at religious and historic sites." },
+    dailyLife: { zh: "地铁和步行是许多城区常见的出行方式，街区节奏各不相同；高峰时段和上下坡路线值得预留时间。", en: "Subways and walking are common ways to get around many districts. Neighbourhoods vary in pace, and rush hours or hilly routes can take extra time." },
+    food: { zh: "可尝试拌饭、烤肉、汤饭和街头小吃；辣度及常见食材因店家而异，可点餐时说明饮食需要。", en: "Try bibimbap, barbecue, soups, and street snacks. Spice levels and ingredients vary by venue, so explain dietary needs when ordering." }
+  },
+  Tokyo: {
+    weather: { zh: "春秋通常较舒适；夏季炎热潮湿，初夏和台风季可能多雨；冬季较凉，偶有降雪。", en: "Spring and autumn are often comfortable. Summers are hot and humid, with rainy and typhoon periods; winters are cool, with occasional snow." },
+    culture: { zh: "神社寺院、传统工艺与流行文化交织；公共场所通常重视安静、排队和遵守场地规则。", en: "Shrines, temples, traditional crafts, and pop culture all feature in the city. Quietness, queuing, and venue rules are generally valued in public spaces." },
+    dailyLife: { zh: "铁路网络覆盖广，但车站规模大、换乘和步行距离可能较长；按邻近街区安排活动会更轻松。", en: "Rail coverage is extensive, but stations can be large and transfers or walks long. Grouping activities by nearby districts can make days easier." },
+    food: { zh: "寿司、拉面、天妇罗和便当都很常见；菜单与过敏原标示不一，有饮食限制时建议事先确认。", en: "Sushi, ramen, tempura, and bento are widely available. Menus and allergen information vary, so check ahead if you have dietary restrictions." }
+  },
+  Bangkok: {
+    weather: { zh: "全年偏热，通常可概分为较干燥凉爽期、炎热期和多雨季；户外活动宜避开正午高温。", en: "It is warm year-round, with broadly cooler-drier, hot, and rainy periods. Plan outdoor activities around the midday heat." },
+    culture: { zh: "佛教寺庙、皇室历史与现代城市生活并行；参观寺庙时请穿着得体并遵从现场规定。", en: "Buddhist temples, royal history, and modern city life coexist. Dress respectfully and follow posted rules when visiting temples." },
+    dailyLife: { zh: "交通方式多样，繁忙时段道路拥挤；为转乘、天气和步行距离留出余裕，选择可靠交通服务。", en: "Transport options are varied and roads can be congested at busy times. Allow extra time for transfers, weather, and walking, and use reputable services." },
+    food: { zh: "街头摊贩和餐馆常见炒河粉、咖喱、汤品及水果；辣度可先询问，注意饮水和食物卫生。", en: "Street stalls and restaurants serve dishes such as stir-fried noodles, curries, soups, and fruit. Ask about spice levels and take care with food and drinking water." }
+  },
+  Beijing: {
+    weather: { zh: "四季分明；春季可能有风沙，夏季炎热多雨，秋季较舒适，冬季寒冷干燥。", en: "The seasons are distinct: spring can be windy or dusty, summer hot and rainy, autumn often comfortable, and winter cold and dry." },
+    culture: { zh: "宫殿、胡同、戏曲与当代艺术呈现不同面貌；重要历史景点常需提前了解预约和入场安排。", en: "Palaces, hutong lanes, opera, and contemporary arts offer different perspectives. Check booking and entry arrangements for major historic sights." },
+    dailyLife: { zh: "城市范围大，地铁适合连接主要区域，但景点间仍可能相距较远；每日安排少数片区更从容。", en: "The city is large. Metro lines connect major areas, but sights can still be far apart; focusing on a few districts each day is more relaxed." },
+    food: { zh: "可品尝北京烤鸭、面食、饺子和豆汁等地方风味；饮食口味与做法因餐馆而异。", en: "Local favourites include Peking duck, noodles, dumplings, and fermented mung-bean drinks. Recipes and flavours vary between restaurants." }
+  },
+  Shanghai: {
+    weather: { zh: "春秋通常较温和；夏季炎热潮湿，冬季偏冷且可能阴雨，夏秋也需留意强降雨和台风天气。", en: "Spring and autumn are often mild; summers are hot and humid, while winters can be chilly and damp. Heavy rain and typhoons are possible in summer and autumn." },
+    culture: { zh: "历史街区、江南园林、博物馆和现代建筑展现城市多层次面貌；热门场所可提前确认预约要求。", en: "Historic districts, classical gardens, museums, and modern architecture reflect the city's varied character. Check reservation requirements at popular venues." },
+    dailyLife: { zh: "地铁连接许多城区，但城市范围广；街区漫步时可结合室内休息点，避开酷热或雨天。", en: "Metro lines serve many districts, though the city is extensive. Add indoor rest stops when exploring on foot, especially in heat or rain." },
+    food: { zh: "小笼包、生煎、面食和本帮菜都值得认识；用餐选择从小店到餐馆丰富，留意过敏原和个人口味。", en: "Xiaolongbao, pan-fried buns, noodles, and Shanghainese dishes are well known. Dining ranges from small eateries to restaurants; check allergens and preferences." }
+  },
+  Dubai: {
+    weather: { zh: "气候干燥，夏季极热，户外活动宜安排在清晨或傍晚；冬季较温和，通常更适合户外游览。", en: "The climate is arid, with extremely hot summers when outdoor plans are best kept to early or late hours. Winters are milder and generally better for outdoor visits." },
+    culture: { zh: "阿联酋传统、阿拉伯文化与多元国际社区共同构成城市生活；在公共和宗教场所请尊重当地规范。", en: "Emirati traditions, Arab culture, and diverse international communities all shape city life. Respect local norms in public and religious spaces." },
+    dailyLife: { zh: "城区分布较广，空调交通和步行距离会影响行程；安排活动时考虑接送点、热度与休息需求。", en: "Districts are spread out, and air-conditioned transport and walking distances shape a day. Consider pickup points, heat, and rest needs when planning." },
+    food: { zh: "可找到阿拉伯烤肉、米饭菜肴、椰枣及各地国际料理；清真选择普遍，具体食材仍应向店家确认。", en: "Look for Arabic grilled dishes, rice meals, dates, and international cuisine. Halal options are common, but confirm specific ingredients with venues." }
+  },
+  Sydney: {
+    weather: { zh: "南半球季节与亚洲相反；夏季温暖偏热，冬季较温和，春秋适合户外活动，但天气会有变化。", en: "Seasons are opposite to those in Asia. Summers are warm to hot, winters milder, and spring or autumn can suit outdoor plans, though conditions vary." },
+    culture: { zh: "港湾城市生活、艺术活动与多元社群文化并存；了解并尊重原住民文化及其与土地的联系。", en: "Harbour life, arts, and diverse communities shape the city. Learn about and respect Aboriginal and Torres Strait Islander cultures and connections to Country." },
+    dailyLife: { zh: "公共交通、渡轮和步行都可用于探索，但海岸和景点之间距离不短；留意日晒、坡道和交通班次。", en: "Public transport, ferries, and walking all help explore, but distances between beaches and sights can be considerable. Consider sun exposure, slopes, and schedules." },
+    food: { zh: "海鲜、咖啡馆早午餐以及多元亚洲料理选择丰富；海鲜供应和菜单会随季节、餐馆而变化。", en: "Seafood, café brunches, and a broad range of Asian cuisines are easy to find. Seafood availability and menus vary by season and venue." }
+  },
+  Taipei: {
+    weather: { zh: "全年湿度较高；春季多雨，夏季炎热且有台风风险，秋季较舒适，冬季温和但常阴雨。", en: "Humidity is high through much of the year. Spring can be rainy, summer hot with typhoon risk, autumn often more comfortable, and winter mild but damp." },
+    culture: { zh: "庙宇、夜市、茶文化和当代设计相邻而存；参观宗教场所时请留意礼仪并尊重正在进行的活动。", en: "Temples, night markets, tea culture, and contemporary design sit close together. Be mindful of etiquette and ongoing worship at religious sites." },
+    dailyLife: { zh: "捷运方便串联城区，夜市和街区适合慢慢探索；雨天或炎热时可穿插室内景点和休息。", en: "The MRT links many districts, while neighbourhoods and night markets reward unhurried exploring. Mix in indoor sights and breaks in rain or heat." },
+    food: { zh: "牛肉面、豆浆早餐、芋圆和夜市小吃各具特色；摊位选择多，点餐前可确认食材和过敏原。", en: "Beef noodle soup, soy-milk breakfasts, taro desserts, and night-market snacks are popular. Check ingredients and allergens when ordering." }
+  },
+  Guangzhou: {
+    weather: { zh: "亚热带气候湿润；夏季漫长炎热多雨，冬季较短且温和，春季湿度较高。", en: "The subtropical climate is humid. Summers are long, hot, and rainy; winters are shorter and mild, while spring can feel damp." },
+    culture: { zh: "粤语文化、岭南建筑、茶楼和现代商业共同构成城市风貌；进入宗祠、寺庙等场所请遵从现场礼仪。", en: "Cantonese culture, Lingnan architecture, teahouses, and modern commerce all shape the city. Follow local etiquette at ancestral halls and temples." },
+    dailyLife: { zh: "地铁连接主要城区，夏季炎热潮湿时室内休息很重要；将相邻景点排在同一天可减少往返。", en: "Metro lines connect key districts. Indoor breaks matter in hot, humid weather, and grouping nearby sights can reduce backtracking." },
+    food: { zh: "早茶、点心、烧腊和汤品是常见粤式风味；茶楼较热闹，过敏原和烹调方式需向店家确认。", en: "Dim sum brunch, roast meats, and soups are familiar Cantonese favourites. Teahouses can be busy; confirm allergens and preparation with staff." }
+  },
+  Bali: {
+    weather: { zh: "热带气候全年温暖；大致分为较干燥和较多雨的季节，雨季可能有短时强降雨，户外安排宜保留弹性。", en: "The tropical climate is warm year-round, with broadly drier and wetter seasons. Wet-season showers can be heavy, so keep outdoor plans flexible." },
+    culture: { zh: "巴厘印度教传统、村落仪式与艺术工艺在岛上可见；祭仪可能临时影响道路或场所，请保持尊重并遵从指引。", en: "Balinese Hindu traditions, village ceremonies, arts, and crafts are visible across the island. Ceremonies may affect roads or venues; be respectful and follow guidance." },
+    dailyLife: { zh: "不同地区从城镇到乡村各有节奏，路程可能比地图显示更久；安排较少地点并预留交通时间会更轻松。", en: "Areas range from busy towns to quieter rural settings, and journeys may take longer than map distances suggest. Plan fewer stops and allow transfer time." },
+    food: { zh: "可尝试印尼炒饭、沙嗲、巴厘烤乳猪及传统香料料理；饮食习惯和清真需求不一，点餐时请具体询问。", en: "Try Indonesian fried rice, satay, Balinese roast pork, and spiced dishes. Dietary practices and halal availability vary, so ask specifically when ordering." }
+  },
+  Singapore: {
+    weather: { zh: "全年炎热潮湿，常有阵雨或雷雨；不同月份温差不大，户外行程宜安排遮阴和室内休息。", en: "It is hot and humid year-round, with frequent showers or thunderstorms. Temperatures vary little, so plan for shade and indoor breaks." },
+    culture: { zh: "多语言、多族群的城市生活融合了华人、马来、印度及其他传统；进入宗教场所请尊重当地礼仪。", en: "Multilingual, multicultural city life reflects Chinese, Malay, Indian, and other traditions. Observe local etiquette at religious sites." },
+    dailyLife: { zh: "地铁和公交连接多数热门区域，步行路线常有遮棚但仍会炎热；用餐时段热门食阁可能较拥挤。", en: "MRT and buses connect many popular areas. Walkways are often sheltered but can still feel hot, and food centres may be busy at mealtimes." },
+    food: { zh: "海南鸡饭、叻沙、印度煎饼和沙爹等风味选择丰富；食阁通常有多种餐饮选择，仍需确认过敏原。", en: "Hainanese chicken rice, laksa, roti prata, and satay are among many local favourites. Food centres offer variety; check allergens with vendors." }
+  },
+  Osaka: {
+    weather: { zh: "春秋通常较舒适；夏季炎热潮湿，冬季较凉，初夏和台风季可能多雨。", en: "Spring and autumn are often comfortable. Summers are hot and humid, winters cool, and early summer or typhoon periods can be rainy." },
+    culture: { zh: "商业街、剧场与历史场所交织，城市以鲜明的本地口音和喜剧传统闻名；景点规则各有不同。", en: "Shopping streets, theatres, and historic sites share the city. Osaka is known for its local dialect and comedy traditions; venue rules vary." },
+    dailyLife: { zh: "铁路网络发达，但换乘站和繁忙商圈人流较多；按邻近区域安排行程可减少重复搭车。", en: "Rail connections are extensive, though transfer stations and shopping districts can be crowded. Group nearby activities to avoid unnecessary travel." },
+    food: { zh: "章鱼烧、大阪烧和串炸是常见在地美食；热门餐馆可能排队，可预留时间并询问食材。", en: "Takoyaki, okonomiyaki, and kushikatsu are familiar local dishes. Popular venues may have queues; allow time and ask about ingredients." }
+  },
+  Paris: {
+    weather: { zh: "四季分明但天气多变；冬季偏凉，春秋温和，夏季温暖且偶有热浪，全年都可能有阵雨。", en: "Seasons are distinct but changeable. Winters are cool, spring and autumn mild, and summers warm with occasional heatwaves; showers can occur year-round." },
+    culture: { zh: "博物馆、建筑、艺术和街区生活各具特色；参观宗教场所和纪念地时请尊重现场规范。", en: "Museums, architecture, art, and neighbourhood life each offer a different perspective. Follow local guidance at religious and memorial sites." },
+    dailyLife: { zh: "地铁覆盖广，部分车站有较多楼梯；历史街区步行路面不一，规划路线时可安排休息和替代交通。", en: "The Metro covers much of the city, but some stations have many stairs. Historic districts have varied walking surfaces, so plan breaks and alternative transport." },
+    food: { zh: "面包、奶酪、糕点和各地法国料理都很常见；餐馆菜单和用餐时段不同，有饮食需要时建议先确认。", en: "Bread, cheese, pastries, and regional French dishes are widely available. Menus and dining hours vary; check ahead for dietary needs." }
+  },
+  London: {
+    weather: { zh: "天气常有变化；冬季凉爽，春秋温和，夏季通常温暖但偶有热浪，任何季节都可能下雨。", en: "Conditions are changeable. Winters are cool, spring and autumn mild, and summers usually warm with occasional heatwaves; rain is possible in any season." },
+    culture: { zh: "剧院、博物馆、历史建筑与多元社区构成丰富的城市文化；大型景点可提前查看预约和开放安排。", en: "Theatre, museums, historic buildings, and diverse communities shape the city's cultural life. Check booking and opening arrangements for major sights." },
+    dailyLife: { zh: "地铁、公交和步行都很常用，城市范围广且部分车站有楼梯；将同一区域景点排在一起更轻松。", en: "The Tube, buses, and walking are widely used. The city is extensive and some stations have stairs, so grouping nearby sights can make days easier." },
+    food: { zh: "传统馅饼、烤肉和下午茶之外，也有丰富的国际料理；餐馆选择多，仍应逐家确认过敏原。", en: "Traditional pies, roasts, and afternoon tea sit alongside a wide range of international food. Options are plentiful, but confirm allergens with each venue." }
+  },
+  Rome: {
+    weather: { zh: "夏季炎热干燥，春秋通常较温和，冬季偏凉且较多雨；热门古迹附近遮阴有限。", en: "Summers are hot and dry, spring and autumn often mild, and winters cooler and wetter. Shade can be limited around major ruins." },
+    culture: { zh: "古罗马遗迹、教堂、广场和当代街区并存；宗教场所通常有着装和参观礼仪要求。", en: "Ancient Roman sites, churches, piazzas, and contemporary neighbourhoods coexist. Religious sites often have dress and visitor-etiquette requirements." },
+    dailyLife: { zh: "历史中心适合分区慢走，但鹅卵石路面和景点距离会增加体力需求；安排饮水、休息和室内时段。", en: "The historic centre suits neighbourhood-based exploring, but cobbles and distances can add physical demands. Plan water, rest, and indoor breaks." },
+    food: { zh: "意面、披萨、烩饭和冰淇淋选择丰富；餐馆特色各异，热门区域用餐可能需要预订。", en: "Pasta, pizza, risotto, and gelato are easy to find. Restaurants vary by area, and popular spots may require reservations." }
+  },
+  Vancouver: {
+    weather: { zh: "沿海气候温和湿润；冬季多雨，夏季通常较干且温暖，春秋天气变化较快。", en: "The coastal climate is mild and damp. Winters are rainy, summers generally drier and warm, and spring or autumn conditions can shift quickly." },
+    culture: { zh: "城市由多元社群共同塑造，也有重要的原住民文化与历史；参观相关场所或艺术时请留意其背景与礼仪。", en: "Many communities shape the city, alongside important Indigenous cultures and histories. Be attentive to context and etiquette at related sites and works." },
+    dailyLife: { zh: "公共交通服务主要城区，海滨、公园和山地之间距离较远；留意降雨、坡度和季节性交通安排。", en: "Public transport serves central areas, while waterfronts, parks, and mountains can be far apart. Consider rain, gradients, and seasonal transport." },
+    food: { zh: "海鲜、咖啡馆和多元亚洲料理选择丰富；菜单随季节和餐馆变化，点餐时可确认食材来源及过敏原。", en: "Seafood, cafés, and diverse Asian cuisines are widely available. Menus vary by season and venue; check ingredients and allergens when ordering." }
+  },
+  CapeTown: {
+    weather: { zh: "南半球夏季通常较暖且偏干，冬季较凉且多雨；山地和海岸天气可能不同，出发前查看预报。", en: "Southern-hemisphere summers are generally warmer and drier, while winters are cooler and wetter. Mountain and coastal conditions can differ; check forecasts." },
+    culture: { zh: "城市拥有多元文化与复杂历史，也承载科伊桑及其他原住民社群的历史；以尊重和具体背景了解当地。", en: "The city has diverse cultures and a complex history, including the histories of Khoisan and other Indigenous communities. Learn with respect and context." },
+    dailyLife: { zh: "海岸、山地和市区景点分布较广，部分路线有坡度；提前规划可靠交通，并关注最新当地出行建议。", en: "Coastal, mountain, and urban sights are spread out, and some routes are hilly. Plan reliable transport and check current local travel advice." },
+    food: { zh: "可找到开普马来料理、海鲜和烧烤等多种风味；餐馆与地区差异明显，饮食限制需逐家确认。", en: "Cape Malay dishes, seafood, and braai are among the varied options. Choices differ by venue and area; confirm dietary needs individually." }
+  },
+  RioDeJaneiro: {
+    weather: { zh: "南半球夏季炎热潮湿且可能多雨，冬季较温和；海岸、山地和城区的体感天气各有不同。", en: "Southern-hemisphere summers are hot, humid, and sometimes rainy, while winters are milder. Coastal, mountain, and urban conditions can differ." },
+    culture: { zh: "音乐、舞蹈、海滨生活与多元巴西文化交织；大型节庆和活动期间人流与交通安排会改变。", en: "Music, dance, beach life, and Brazil's diverse cultures intersect here. Crowds and transport can change during major festivals and events." },
+    dailyLife: { zh: "海滩、山坡和市区活动相距较远，天气也会影响户外安排；预留交通时间并查看最新本地建议。", en: "Beaches, hills, and city activities can be far apart, and weather affects outdoor plans. Allow transfer time and check current local guidance." },
+    food: { zh: "巴西炖豆饭、烤肉、奶酪面包和热带水果都可尝试；食材、份量和饮食选择因店家而异。", en: "Feijoada, grilled meats, cheese bread, and tropical fruit are among the options. Ingredients, portions, and dietary choices vary by venue." }
+  }
+};
+
+function makeExplorerAttraction(name, wikiTitle) {
+  return {
+    name,
+    wikiTitles: [wikiTitle],
+    alt: {
+      zh: `以${name.zh}为主题的旅行灵感图片，不一定是该景点的实景照片。`,
+      en: `Illustrative travel inspiration for ${name.en}; this may not be a photograph of the attraction itself.`
+    }
+  };
+}
+
+const cityExplorerExtraAttractions = {
+  Seoul: [
+    makeExplorerAttraction({ zh: "北村韩屋村", en: "Bukchon Hanok Village" }, "Bukchon Hanok Village"),
+    makeExplorerAttraction({ zh: "国立中央博物馆", en: "National Museum of Korea" }, "National Museum of Korea")
+  ],
+  Tokyo: [
+    makeExplorerAttraction({ zh: "明治神宫", en: "Meiji Shrine" }, "Meiji Shrine"),
+    makeExplorerAttraction({ zh: "上野公园", en: "Ueno Park" }, "Ueno Park")
+  ],
+  Bangkok: [
+    makeExplorerAttraction({ zh: "郑王庙", en: "Wat Arun" }, "Wat Arun"),
+    makeExplorerAttraction({ zh: "吉姆·汤普森故居", en: "Jim Thompson House" }, "Jim Thompson House")
+  ],
+  Beijing: [
+    makeExplorerAttraction({ zh: "颐和园", en: "Summer Palace" }, "Summer Palace"),
+    makeExplorerAttraction({ zh: "天坛", en: "Temple of Heaven" }, "Temple of Heaven")
+  ],
+  Shanghai: [
+    makeExplorerAttraction({ zh: "上海博物馆", en: "Shanghai Museum" }, "Shanghai Museum"),
+    makeExplorerAttraction({ zh: "朱家角古镇", en: "Zhujiajiao" }, "Zhujiajiao")
+  ],
+  Dubai: [
+    makeExplorerAttraction({ zh: "阿法迪历史街区", en: "Al Fahidi Historical Neighbourhood" }, "Al Fahidi"),
+    makeExplorerAttraction({ zh: "迪拜沙漠保护区", en: "Dubai Desert Conservation Reserve" }, "Dubai Desert Conservation Reserve")
+  ],
+  Sydney: [
+    makeExplorerAttraction({ zh: "悉尼皇家植物园", en: "Royal Botanic Garden Sydney" }, "Royal Botanic Garden, Sydney"),
+    makeExplorerAttraction({ zh: "塔龙加动物园", en: "Taronga Zoo" }, "Taronga Zoo")
+  ],
+  Taipei: [
+    makeExplorerAttraction({ zh: "中正纪念堂", en: "Chiang Kai-shek Memorial Hall" }, "Chiang Kai-shek Memorial Hall"),
+    makeExplorerAttraction({ zh: "北投温泉", en: "Beitou Hot Spring" }, "Beitou Hot Spring")
+  ],
+  Guangzhou: [
+    makeExplorerAttraction({ zh: "沙面岛", en: "Shamian Island" }, "Shamian Island"),
+    makeExplorerAttraction({ zh: "白云山", en: "Baiyun Mountain" }, "Baiyun Mountain")
+  ],
+  Bali: [
+    makeExplorerAttraction({ zh: "乌布皇宫", en: "Ubud Palace" }, "Ubud Palace"),
+    makeExplorerAttraction({ zh: "德格拉朗梯田", en: "Tegallalang Rice Terraces" }, "Tegallalang rice terraces"),
+    makeExplorerAttraction({ zh: "乌鲁瓦图寺", en: "Uluwatu Temple" }, "Uluwatu Temple"),
+    makeExplorerAttraction({ zh: "贝萨基母庙", en: "Besakih Temple" }, "Besakih Temple")
+  ],
+  Singapore: [
+    makeExplorerAttraction({ zh: "新加坡国家美术馆", en: "National Gallery Singapore" }, "National Gallery Singapore"),
+    makeExplorerAttraction({ zh: "新加坡植物园", en: "Singapore Botanic Gardens" }, "Singapore Botanic Gardens")
+  ],
+  Osaka: [
+    makeExplorerAttraction({ zh: "四天王寺", en: "Shitennoji" }, "Shitennō-ji"),
+    makeExplorerAttraction({ zh: "大阪海游馆", en: "Osaka Aquarium Kaiyukan" }, "Osaka Aquarium Kaiyukan")
+  ],
+  Paris: [
+    makeExplorerAttraction({ zh: "巴黎圣母院", en: "Notre-Dame Cathedral" }, "Notre-Dame de Paris"),
+    makeExplorerAttraction({ zh: "卢森堡公园", en: "Luxembourg Gardens" }, "Jardin du Luxembourg")
+  ],
+  London: [
+    makeExplorerAttraction({ zh: "伦敦塔", en: "Tower of London" }, "Tower of London"),
+    makeExplorerAttraction({ zh: "大英博物馆", en: "British Museum" }, "British Museum")
+  ],
+  Rome: [
+    makeExplorerAttraction({ zh: "万神殿", en: "Pantheon" }, "Pantheon, Rome"),
+    makeExplorerAttraction({ zh: "纳沃纳广场", en: "Piazza Navona" }, "Piazza Navona")
+  ],
+  Vancouver: [
+    makeExplorerAttraction({ zh: "格兰维尔岛", en: "Granville Island" }, "Granville Island"),
+    makeExplorerAttraction({ zh: "温哥华水族馆", en: "Vancouver Aquarium" }, "Vancouver Aquarium")
+  ],
+  CapeTown: [
+    makeExplorerAttraction({ zh: "好望角", en: "Cape of Good Hope" }, "Cape of Good Hope"),
+    makeExplorerAttraction({ zh: "博尔德斯海滩", en: "Boulders Beach" }, "Boulders Beach")
+  ],
+  RioDeJaneiro: [
+    makeExplorerAttraction({ zh: "糖面包山", en: "Sugarloaf Mountain" }, "Sugarloaf Mountain"),
+    makeExplorerAttraction({ zh: "科帕卡巴纳海滩", en: "Copacabana Beach" }, "Copacabana")
+  ]
+};
+
+const cityExplorerLookupKeys = Object.keys(cityExplorerNames);
+const cityExplorerButtons = document.querySelector("#city-explorer-buttons");
+const cityExplorerDetail = document.querySelector("#city-explorer-detail");
+const cityExplorerSearchForm = document.querySelector("#city-explorer-search");
+const cityExplorerSearchInput = document.querySelector("#city-explorer-query");
+const cityExplorerSuggestions = document.querySelector("#city-explorer-suggestions");
+const cityExplorerSearchStatus = document.querySelector("#city-explorer-search-status");
+let selectedExplorerCity = "";
+
+function makeExplorerPhoto(attraction, language) {
+  const figure = document.createElement("figure");
+  const image = document.createElement("img");
+  const sources = [
+    attraction.src,
+    ...(attraction.fallbacks ?? []),
+    makeFallbackPhoto(attraction.name[language])
+  ].filter(Boolean);
+  let sourceIndex = 0;
+  image.referrerPolicy = "no-referrer";
+  image.alt = attraction.alt[language];
+  image.loading = "lazy";
+  image.decoding = "async";
+  image.addEventListener("error", () => {
+    sourceIndex += 1;
+    if (sourceIndex < sources.length) {
+      image.src = sources[sourceIndex];
+      return;
+    }
+    const placeholder = document.createElement("div");
+    placeholder.className = "photo-placeholder";
+    placeholder.setAttribute("role", "img");
+    placeholder.setAttribute("aria-label", attraction.alt[language]);
+    placeholder.textContent = translations[language].photoUnavailable;
+    image.replaceWith(placeholder);
+  });
+  fetchAttractionPhoto(attraction).then((url) => {
+    if (url) {
+      sources.unshift(url);
+      sourceIndex = 0;
+    }
+    image.src = sources[0];
+  });
+  const caption = document.createElement("figcaption");
+  caption.textContent = attraction.name[language];
+  figure.append(image, caption);
+  return figure;
+}
+
+function showCityExplorerCity(cityKey) {
+  selectedExplorerCity = cityKey;
+  const language = currentLanguage;
+  const text = translations[language];
+  const cityName = cityExplorerNames[cityKey][language];
+  const content = cityExplorerContent[cityKey];
+  const detailTitle = document.createElement("h3");
+  detailTitle.textContent = cityName;
+  const facts = document.createElement("div");
+  facts.className = "city-explorer-facts";
+
+  for (const [label, description] of [
+    [text.cityWeatherLabel, content.weather[language]],
+    [text.cityCultureLabel, content.culture[language]],
+    [text.cityPeopleLabel, content.dailyLife[language]],
+    [text.cityFoodLabel, content.food[language]]
+  ]) {
+    const fact = document.createElement("section");
+    const heading = document.createElement("h4");
+    heading.textContent = label;
+    const paragraph = document.createElement("p");
+    paragraph.textContent = description;
+    fact.append(heading, paragraph);
+    facts.append(fact);
+  }
+
+  const galleryTitle = document.createElement("h4");
+  galleryTitle.className = "city-explorer-gallery-title";
+  galleryTitle.textContent = text.cityAttractionsLabel;
+  const gallery = document.createElement("div");
+  gallery.className = "city-explorer-gallery";
+  gallery.setAttribute("aria-label", text.cityAttractionsLabel);
+  const attractions = [
+    ...(cityAttractions[cityKey] ?? []).slice(0, 2),
+    ...cityExplorerExtraAttractions[cityKey]
+  ].slice(0, 4);
+  gallery.replaceChildren(...attractions.map((attraction) => makeExplorerPhoto(attraction, language)));
+  cityExplorerDetail.replaceChildren(detailTitle, facts, galleryTitle, gallery);
+  cityExplorerDetail.hidden = false;
+  cityExplorerSearchStatus.textContent = "";
+  cityExplorerButtons.querySelectorAll("button").forEach((button) => {
+    const active = button.dataset.city === cityKey;
+    button.setAttribute("aria-pressed", String(active));
+    button.classList.toggle("is-selected", active);
+  });
+}
+
+function normalizeCityName(value) {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLocaleLowerCase()
+    .replace(/[^a-z0-9\u4e00-\u9fff]/g, "");
+}
+
+function getCityNameEditDistance(first, second) {
+  const previous = Array.from({ length: second.length + 1 }, (_, index) => index);
+  for (let firstIndex = 1; firstIndex <= first.length; firstIndex += 1) {
+    const current = [firstIndex];
+    for (let secondIndex = 1; secondIndex <= second.length; secondIndex += 1) {
+      current[secondIndex] = Math.min(
+        current[secondIndex - 1] + 1,
+        previous[secondIndex] + 1,
+        previous[secondIndex - 1] + (first[firstIndex - 1] === second[secondIndex - 1] ? 0 : 1)
+      );
+    }
+    previous.splice(0, previous.length, ...current);
+  }
+  return previous[second.length];
+}
+
+function findCityExplorerMatch(query) {
+  const normalizedQuery = normalizeCityName(query);
+  if (!normalizedQuery) {
+    return null;
+  }
+
+  for (const cityKey of cityExplorerLookupKeys) {
+    const names = Object.values(cityExplorerNames[cityKey]).map(normalizeCityName);
+    if (names.includes(normalizedQuery)) {
+      return { cityKey, exact: true };
+    }
+  }
+
+  const ranked = cityExplorerLookupKeys
+    .map((cityKey) => ({
+      cityKey,
+      distance: Math.min(
+        ...Object.values(cityExplorerNames[cityKey])
+          .map(normalizeCityName)
+          .map((name) => getCityNameEditDistance(normalizedQuery, name))
+      )
+    }))
+    .sort((first, second) => first.distance - second.distance);
+  const closest = ranked[0];
+  const maxDistance = Math.max(1, Math.floor(normalizedQuery.length * 0.15));
+  if (
+    closest.distance > maxDistance
+    || (ranked[1] && ranked[1].distance === closest.distance)
+  ) {
+    return null;
+  }
+  return { cityKey: closest.cityKey, exact: false };
+}
+
+function renderCityExplorer() {
+  const text = translations[currentLanguage];
+  cityExplorerButtons.setAttribute("aria-label", text.cityExplorerTitle);
+  cityExplorerButtons.replaceChildren(...cityExplorerButtonCities.map(([cityKey]) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "city-explorer-button";
+    button.dataset.city = cityKey;
+    button.textContent = cityExplorerNames[cityKey][currentLanguage];
+    button.setAttribute(
+      "aria-label",
+      text.cityExplorerSelectAria.replace("{city}", cityExplorerNames[cityKey][currentLanguage])
+    );
+    button.setAttribute("aria-pressed", String(cityKey === selectedExplorerCity));
+    button.classList.toggle("is-selected", cityKey === selectedExplorerCity);
+    button.addEventListener("click", () => {
+      cityExplorerSearchInput.value = "";
+      showCityExplorerCity(cityKey);
+    });
+    return button;
+  }));
+  cityExplorerSuggestions.replaceChildren(...cityExplorerLookupKeys.map((cityKey) => {
+    const option = document.createElement("option");
+    option.value = cityExplorerNames[cityKey][currentLanguage];
+    return option;
+  }));
+  if (selectedExplorerCity) {
+    showCityExplorerCity(selectedExplorerCity);
+  }
+}
+
+cityExplorerSearchForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const query = cityExplorerSearchInput.value.trim();
+  const match = findCityExplorerMatch(query);
+  if (!match) {
+    cityExplorerSearchStatus.textContent = translations[currentLanguage].cityExplorerSearchNoMatch;
+    return;
+  }
+
+  showCityExplorerCity(match.cityKey);
+  const cityName = cityExplorerNames[match.cityKey][currentLanguage];
+  const resultKey = match.exact ? "cityExplorerSearchFound" : "cityExplorerSearchSuggested";
+  cityExplorerSearchStatus.textContent = translations[currentLanguage][resultKey].replace("{city}", cityName);
+});
+
 const discussionForm = document.querySelector("#discussion-form");
 const discussionList = document.querySelector("#discussion-list");
 const discussionEmpty = document.querySelector("#discussion-empty");
 const discussionStatus = document.querySelector("#discussion-status");
 const discussionStorageKey = "tanFamilyDiscussion";
+let discussionMemory = [];
+let discussionLoaded = false;
 
 function loadDiscussion() {
+  if (discussionLoaded) {
+    return discussionMemory;
+  }
+  discussionLoaded = true;
   try {
     const saved = JSON.parse(localStorage.getItem(discussionStorageKey) ?? "[]");
-    return Array.isArray(saved) ? saved : [];
+    if (Array.isArray(saved)) {
+      discussionMemory = saved.filter((entry) =>
+        entry
+        && typeof entry.id === "string"
+        && typeof entry.name === "string"
+        && typeof entry.message === "string"
+        && typeof entry.createdAt === "string"
+      );
+      return discussionMemory;
+    }
   } catch {
-    return [];
+    return discussionMemory;
   }
+  return discussionMemory;
 }
 
 function saveDiscussion(entries) {
+  discussionMemory = entries;
   try {
     localStorage.setItem(discussionStorageKey, JSON.stringify(entries));
-    return true;
+    return "persistent";
   } catch {
-    return false;
+    return "session";
   }
 }
 
@@ -1824,7 +2289,10 @@ function renderDiscussion() {
     remove.textContent = text.discussionDelete;
     remove.addEventListener("click", () => {
       if (window.confirm(text.discussionDeleteConfirm)) {
-        saveDiscussion(loadDiscussion().filter((saved) => saved.id !== entry.id));
+        const saveResult = saveDiscussion(loadDiscussion().filter((saved) => saved.id !== entry.id));
+        if (saveResult === "session") {
+          discussionStatus.textContent = translations[currentLanguage].discussionDeletedSession;
+        }
         renderDiscussion();
       }
     });
@@ -1854,15 +2322,12 @@ discussionForm.addEventListener("submit", (event) => {
     type: data.get("type") === "suggestion" ? "suggestion" : "memory",
     createdAt: new Date().toISOString()
   };
-  if (!saveDiscussion([entry, ...loadDiscussion()])) {
-    discussionStatus.textContent = text.discussionSaveFailed;
-    return;
-  }
+  const saveResult = saveDiscussion([entry, ...loadDiscussion()]);
   discussionForm.elements.message.value = "";
-  discussionStatus.textContent = text.discussionPosted;
+  discussionStatus.textContent = saveResult === "persistent"
+    ? text.discussionPosted
+    : text.discussionPostedSession;
   renderDiscussion();
 });
 
 applyLanguage("zh");
-loadSharedPoll();
-setInterval(loadSharedPoll, pollRefreshMs);
